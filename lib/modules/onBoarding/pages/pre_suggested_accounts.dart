@@ -178,7 +178,7 @@ class _SuggestedCreatorScreenState extends State<SuggestedCreatorScreen> {
                     hMargin: 0,
                     onPressed: () {},
                     title: 'Follow all',
-                    backgroundColor: AppColors.black,
+                    backgroundColor: AppColors.primaryColor,
                     titleColor: AppColors.white,
                     borderRadius: 18,
                     shadowColor: AppColors.transparent),

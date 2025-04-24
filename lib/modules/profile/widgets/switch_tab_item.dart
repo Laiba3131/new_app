@@ -115,7 +115,7 @@ class SwitchTabItem extends StatelessWidget {
                               style: context.textTheme.bodySmall?.copyWith(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
-                                  color: AppColors.blue)))
+                                  color: AppColors.primaryColor)))
                           .toList(),
                     ),
                     h1,

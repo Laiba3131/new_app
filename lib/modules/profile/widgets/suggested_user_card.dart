@@ -60,6 +60,7 @@ class SuggestedUserCard extends StatelessWidget {
             title: 'Follow',
             shadowColor: AppColors.transparent,
             width: 100,
+            backgroundColor: AppColors.primaryColor,
             height: 25,
           )
         ],

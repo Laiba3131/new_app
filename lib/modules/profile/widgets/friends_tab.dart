@@ -186,7 +186,7 @@ class _FriendsTabWidgetState extends State<FriendsTabWidget> {
                   PrimaryButton(
                     onPressed: () {},
                     title: 'Follow',
-                    backgroundColor: AppColors.blue,
+                    backgroundColor: AppColors.primaryColor,
                     borderRadius: 11,
                     height: 36,
                     width: 85,
@@ -247,7 +247,7 @@ class _FriendsTabWidgetState extends State<FriendsTabWidget> {
                   PrimaryButton(
                     onPressed: () {},
                     title: 'Follow',
-                    backgroundColor: AppColors.blue,
+                    backgroundColor: AppColors.primaryColor,
                     borderRadius: 11,
                     height: 36,
                     width: 85,
@@ -285,7 +285,7 @@ class _FriendsTabWidgetState extends State<FriendsTabWidget> {
               Text(
                 'See all',
                 style: TextStyle(
-                  color: Colors.blue,
+                  color: AppColors.primaryColor,
                   fontSize: 14,
                 ),
               ),
@@ -322,7 +322,7 @@ class _FriendsTabWidgetState extends State<FriendsTabWidget> {
                   PrimaryButton(
                     onPressed: () {},
                     title: 'Follow',
-                    backgroundColor: AppColors.blue,
+                    backgroundColor: AppColors.primaryColor,
                     borderRadius: 11,
                     height: 36,
                     width: 85,

@@ -414,7 +414,7 @@ class _NotesScreenState extends State<NotesScreen> {
           PrimaryButton(
             onPressed: () {},
             title: 'Follow',
-            backgroundColor: AppColors.blue,
+            backgroundColor: AppColors.primaryColor,
             borderRadius: 11,
             height: 36,
             width: 85,
