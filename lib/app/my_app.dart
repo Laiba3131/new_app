@@ -10,6 +10,7 @@ import 'package:sizer/sizer.dart';
 
 import '../config/routes/nav_router.dart';
 import '../config/themes/light_theme.dart';
+import '../modules/profile/pages/customized_profile_screen.dart';
 import '../modules/profile/pages/profile_customization_screen.dart';
 import '../modules/questionnaire/pages/gender_selection_screen.dart';
 import 'bloc/bloc_di.dart';
@@ -41,7 +42,7 @@ class kultureApp extends StatelessWidget {
               // home: DashboardPersistentBottomBar(),
               // home: SplashPage(),
               // home: ProfileCustomizationScreen(),
-              home: UserInfoScreen(),
+              home: CustomizedProfileScreen(),
             );
           });
         },
