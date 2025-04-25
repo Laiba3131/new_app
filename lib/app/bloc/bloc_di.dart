@@ -5,6 +5,7 @@ import 'package:kulture/modules/search/cubit/search_cubit.dart';
 import 'package:kulture/modules/settings/cubit/push_notifications_cubit.dart';
 
 import '../../core/di/service_locator.dart';
+import '../../modules/questionnaire/cubit/questionnaire_cubit.dart';
 import '../../modules/settings/cubit/settings_cubit.dart';
 import '../cubit/app_cubit.dart';
 
@@ -28,6 +29,9 @@ class BlocDI extends StatelessWidget {
         ),
         BlocProvider<SearchCubit>(
           create: (context) => SearchCubit(),
+        ),
+         BlocProvider<QuestionnaireCubit>(
+          create: (context) => QuestionnaireCubit(),
         ),
       ],
       child: child,

@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kulture/config/themes/dark_theme.dart';
 import 'package:kulture/modules/dashboard/pages/dashboard_screen.dart';
+import 'package:kulture/modules/questionnaire/pages/user_info_screen.dart';
 import 'package:kulture/modules/start_up/splash_screen.dart';
 import 'package:kulture/modules/dashboard/pages/dashboard_persistent_bottom_bar.dart';
 import 'package:sizer/sizer.dart';
 
 import '../config/routes/nav_router.dart';
 import '../config/themes/light_theme.dart';
+import '../modules/questionnaire/pages/gender_selection_screen.dart';
 import 'bloc/bloc_di.dart';
 import 'cubit/app_cubit.dart';
 
@@ -36,7 +38,8 @@ class kultureApp extends StatelessWidget {
                 BotToastNavigatorObserver(),
               ],
               // home: DashboardPersistentBottomBar(),
-              home: SplashPage(),
+              // home: SplashPage(),
+              home: UserInfoScreen(),
             );
           });
         },
