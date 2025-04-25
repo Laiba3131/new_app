@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/modules/questionnaire/widgets/custom_progress_bar.dart';
+import 'package:kulture/ui/button/primary_button.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
-
 import '../cubit/questionnaire_cubit.dart';
-import '../model/questionnaire_model.dart';
 
 class GenderSelectionScreen extends StatefulWidget {
-  const GenderSelectionScreen({Key? key}) : super(key: key);
+  const GenderSelectionScreen({super.key});
 
   @override
   State<GenderSelectionScreen> createState() => _GenderSelectionScreenState();
@@ -16,6 +15,7 @@ class GenderSelectionScreen extends StatefulWidget {
 
 class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
   String? selectedGender;
+  bool isSelected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
           children: [
             CustomProgressBar(
               segmentColors: [
-                AppColors.textFieldBorderColor,
+                AppColors.primaryColor,
                 AppColors.primaryColor,
               ],
               flexValues: [1, 1],
@@ -41,60 +41,48 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Stack(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 20),
-                  Text(
-                    "Choose Your Gender",
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
+              const SizedBox(height: 20),
+              Text(
+                "Choose Your Gender",
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      fontSize: 32,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.textblackColor,
                     ),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    "Select one of the options below",
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.grey[600],
-                    ),
-                  ),
-                  const SizedBox(height: 24),
-                  _buildGenderOption("Male", Gender.male.name),
-                  const SizedBox(height: 12),
-                  _buildGenderOption("Female", Gender.female.name),
-                  const SizedBox(height: 12),
-                  _buildGenderOption("Others", Gender.others.name),
-                ],
               ),
-              Positioned(
-                bottom: 20,
-                left: 0,
-                right: 0,
-                child: Container(
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color:
-                        selectedGender != null ? Colors.blue : Colors.grey[500],
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                  child: TextButton(
-                    onPressed: _submitForm,
-                    child: const Text(
-                      "Next",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
+              const SizedBox(height: 6),
+              Text(
+                "This helps us personalize content and recommendations to better suit your interests.",
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      fontSize: 17,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.searchBarTextColor,
                     ),
-                  ),
-                ),
               ),
+              const SizedBox(height: 24),
+              _buildGenderOption("Male", "male", AppColors.primaryColor),
+              const SizedBox(height: 12),
+              _buildGenderOption("Female", "female", AppColors.pink),
+              const SizedBox(height: 12),
+              _buildGenderOption("Others", "others", AppColors.purple),
+              const Spacer(),
+              PrimaryButton(
+                onPressed: _submitForm,
+                title: 'Next',
+                height: 60,
+                backgroundColor: selectedGender == null
+                    ? AppColors.greyColor
+                    : AppColors.primaryColor,
+                borderRadius: 50,
+                width: double.infinity,
+                shadowColor: AppColors.transparent,
+                hMargin: 0,
+                titleColor: AppColors.white,
+              ),
+              h1,
             ],
           ),
         ),
@@ -102,7 +90,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
     );
   }
 
-  Widget _buildGenderOption(String label, String value) {
+  Widget _buildGenderOption(String label, String value, containerColor) {
     final isSelected = selectedGender == value;
 
     return InkWell(
@@ -116,7 +104,8 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
-            color: isSelected ? Colors.blue : Colors.grey[300]!,
+            color:
+                isSelected ? AppColors.primaryColor : AppColors.searchBarColor,
             width: 1,
           ),
         ),
@@ -125,26 +114,21 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
           children: [
             Text(
               label,
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.black,
-                fontWeight: isSelected ? FontWeight.w500 : FontWeight.normal,
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.searchBarTextColor,
+                  ),
+            ),
+            // if (isSelected)
+            Container(
+              width: 20,
+              height: 20,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: containerColor,
               ),
             ),
-            if (isSelected)
-              Container(
-                width: 20,
-                height: 20,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.blue,
-                ),
-                child: const Icon(
-                  Icons.check,
-                  color: Colors.white,
-                  size: 14,
-                ),
-              ),
           ],
         ),
       ),
