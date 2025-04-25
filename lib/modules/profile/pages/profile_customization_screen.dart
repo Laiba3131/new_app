@@ -5,10 +5,12 @@ class ProfileCustomizationScreen extends StatefulWidget {
   const ProfileCustomizationScreen({Key? key}) : super(key: key);
 
   @override
-  State<ProfileCustomizationScreen> createState() => _ProfileCustomizationScreenState();
+  State<ProfileCustomizationScreen> createState() =>
+      _ProfileCustomizationScreenState();
 }
 
-class _ProfileCustomizationScreenState extends State<ProfileCustomizationScreen> {
+class _ProfileCustomizationScreenState
+    extends State<ProfileCustomizationScreen> {
   bool _hidePhoneNumber = true;
   bool _privateProfile = false;
 
@@ -39,7 +41,8 @@ class _ProfileCustomizationScreenState extends State<ProfileCustomizationScreen>
                   ),
                   Row(
                     children: [
-                      Icon(Icons.signal_cellular_4_bar, size: 16, color: Colors.black),
+                      Icon(Icons.signal_cellular_4_bar,
+                          size: 16, color: Colors.black),
                       const SizedBox(width: 4),
                       Icon(Icons.wifi, size: 16, color: Colors.black),
                       const SizedBox(width: 4),
@@ -66,7 +69,8 @@ class _ProfileCustomizationScreenState extends State<ProfileCustomizationScreen>
                       padding: const EdgeInsets.only(top: 8.0),
                       child: Row(
                         children: [
-                          Icon(Icons.chevron_left, size: 20, color: Colors.black),
+                          Icon(Icons.chevron_left,
+                              size: 20, color: Colors.black),
                           const Text(
                             'Back',
                             style: TextStyle(
@@ -109,7 +113,7 @@ class _ProfileCustomizationScreenState extends State<ProfileCustomizationScreen>
                       ],
                     ),
                     const SizedBox(height: 20),
-                    
+
                     // Profile fields
                     // Name field
                     _buildProfileField(
@@ -334,4 +338,4 @@ class _ProfileCustomizationScreenState extends State<ProfileCustomizationScreen>
       ),
     );
   }
-} 
+}

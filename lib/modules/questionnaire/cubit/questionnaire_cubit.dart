@@ -38,4 +38,4 @@ class QuestionnaireCubit extends Cubit<QuestionnaireState> {
   void submitGenderInfo() {
     emit(state.copyWith(isGenderInfoSubmitted: true));
   }
-} 
+}

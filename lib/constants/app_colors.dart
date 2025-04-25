@@ -14,6 +14,7 @@ class AppColors {
   static const greyColor = Colors.grey;
   static const borderColor = Color(0xffd4d4d4);
   static const containerColor = Color(0xffcfcfcf);
+  static const searchBarTextColor = Color(0xff677682);
 
   static const secondary = Color(0xffFFC034);
 
@@ -21,8 +22,10 @@ class AppColors {
   static const white = Color(0xFFFFFFFF);
   static const lightGrey = Color(0xFFA5A5A5);
   static const black = Color(0xFF000000);
+  static const textblackColor = Color(0xFF0f1419);
   static const red = Color(0xFFc81211);
   static const textGrey = Color(0xFF979696);
+  static const textFieldBorderColor = Color(0xFFcfd9d3);
   static const hintTextGrey = Color(0xFFb5b5b5);
   static const lightGreyColor = Color(0xFFd9d9d9);
   static const bgGrey = Color(0xFFE5E5E5);

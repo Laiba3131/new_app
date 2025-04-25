@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kulture/constants/app_colors.dart';
+import 'package:kulture/modules/questionnaire/widgets/custom_progress_bar.dart';
+import 'package:kulture/utils/heights_and_widths.dart';
 
 import '../cubit/questionnaire_cubit.dart';
 import '../model/questionnaire_model.dart';
@@ -23,60 +26,14 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
         elevation: 0,
         automaticallyImplyLeading: false,
         toolbarHeight: 60,
-        title: Column(
+        title: const Column(
           children: [
-            // Status bar time and icons
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    '8:00',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      Icon(Icons.signal_cellular_4_bar, size: 16, color: Colors.black),
-                      const SizedBox(width: 4),
-                      Icon(Icons.wifi, size: 16, color: Colors.black),
-                      const SizedBox(width: 4),
-                      Icon(Icons.battery_full, size: 16, color: Colors.black),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            // Progress indicator
-            Container(
-              margin: const EdgeInsets.only(top: 8),
-              height: 4,
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 7,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(2),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 3,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(2),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+            CustomProgressBar(
+              segmentColors: [
+                AppColors.textFieldBorderColor,
+                AppColors.primaryColor,
+              ],
+              flexValues: [1, 1],
             ),
           ],
         ),
@@ -121,7 +78,8 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                 child: Container(
                   height: 50,
                   decoration: BoxDecoration(
-                    color: selectedGender != null ? Colors.blue : Colors.grey[500],
+                    color:
+                        selectedGender != null ? Colors.blue : Colors.grey[500],
                     borderRadius: BorderRadius.circular(25),
                   ),
                   child: TextButton(
@@ -146,7 +104,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
 
   Widget _buildGenderOption(String label, String value) {
     final isSelected = selectedGender == value;
-    
+
     return InkWell(
       onTap: () {
         setState(() {
@@ -198,14 +156,14 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
       final cubit = context.read<QuestionnaireCubit>();
       cubit.updateGender(selectedGender!);
       cubit.submitGenderInfo();
-      
+
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text("Questionnaire completed successfully!"),
           backgroundColor: Colors.green,
         ),
       );
-      
+
       Navigator.of(context).popUntil((route) => route.isFirst);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -216,4 +174,4 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
       );
     }
   }
-} 
+}

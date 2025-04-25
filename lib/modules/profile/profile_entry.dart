@@ -8,4 +8,4 @@ class ProfileEntry extends StatelessWidget {
   Widget build(BuildContext context) {
     return const ProfileCustomizationScreen();
   }
-} 
+}

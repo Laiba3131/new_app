@@ -36,4 +36,4 @@ class QuestionnaireModel {
   }
 }
 
-enum Gender { male, female, others } 
+enum Gender { male, female, others }

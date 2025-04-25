@@ -36,13 +36,13 @@ class _TrendingGridState extends State<TrendingGrid> {
     }
   }
 
-    final List<String> assetImages = [
-      Assets.pngImage1,
-      Assets.pngImage2,
-      Assets.pngImage3,
-      Assets.img1,
-      // Add more as needed
-    ];
+  final List<String> assetImages = [
+    Assets.pngImage1,
+    Assets.pngImage2,
+    Assets.pngImage3,
+    Assets.img1,
+    // Add more as needed
+  ];
   Future<void> _loadMoreItems() async {
     if (_isLoading) return;
 
@@ -73,7 +73,7 @@ class _TrendingGridState extends State<TrendingGrid> {
         }
 
         return TrendingItem(
-        imageUrl: assetImages[index % assetImages.length],
+          imageUrl: assetImages[index % assetImages.length],
           username: 'User ${totalIndex + 1}',
           likes: (100 + totalIndex * 127), // More varied like counts
           aspectRatio: aspectRatio,

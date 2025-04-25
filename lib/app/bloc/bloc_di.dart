@@ -30,7 +30,7 @@ class BlocDI extends StatelessWidget {
         BlocProvider<SearchCubit>(
           create: (context) => SearchCubit(),
         ),
-         BlocProvider<QuestionnaireCubit>(
+        BlocProvider<QuestionnaireCubit>(
           create: (context) => QuestionnaireCubit(),
         ),
       ],

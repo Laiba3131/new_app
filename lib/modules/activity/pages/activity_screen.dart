@@ -47,8 +47,13 @@ class _ActivityScreenState extends State<ActivityScreen> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 16, vertical: 8),
                         decoration: BoxDecoration(
-                          color: isSelected ? AppColors.primaryColor : Colors.white,
-                          border: Border.all(color:isSelected?AppColors.primaryColor: Colors.black),
+                          color: isSelected
+                              ? AppColors.primaryColor
+                              : Colors.white,
+                          border: Border.all(
+                              color: isSelected
+                                  ? AppColors.primaryColor
+                                  : Colors.black),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Center(

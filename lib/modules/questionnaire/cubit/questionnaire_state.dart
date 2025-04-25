@@ -19,10 +19,12 @@ class QuestionnaireState extends Equatable {
     return QuestionnaireState(
       model: model ?? this.model,
       isBasicInfoSubmitted: isBasicInfoSubmitted ?? this.isBasicInfoSubmitted,
-      isGenderInfoSubmitted: isGenderInfoSubmitted ?? this.isGenderInfoSubmitted,
+      isGenderInfoSubmitted:
+          isGenderInfoSubmitted ?? this.isGenderInfoSubmitted,
     );
   }
 
   @override
-  List<Object?> get props => [model, isBasicInfoSubmitted, isGenderInfoSubmitted];
-} 
+  List<Object?> get props =>
+      [model, isBasicInfoSubmitted, isGenderInfoSubmitted];
+}

@@ -40,7 +40,8 @@ class kultureApp extends StatelessWidget {
               ],
               // home: DashboardPersistentBottomBar(),
               // home: SplashPage(),
-              home: ProfileCustomizationScreen(),
+              // home: ProfileCustomizationScreen(),
+              home: UserInfoScreen(),
             );
           });
         },
