@@ -147,14 +147,15 @@ class _CommentItemState extends State<CommentItem> {
                         w2,
                         InkWell(
                           onTap: () {
-                            if (widget.onReply != null) {
-                              widget.onReply!(widget.comment);
-                            } else {
-                              setState(() {
-                                showReplyField = !showReplyField;
-                              });
-                            }
-                          },
+  setState(() {
+    showReplyField = true;
+  });
+  
+  if (widget.onReply != null) {
+    widget.onReply!(widget.comment);
+  }
+},
+
                           child: Text(
                             "Reply",
                             style: context.textTheme.bodySmall?.copyWith(
@@ -242,28 +243,29 @@ class _CommentItemState extends State<CommentItem> {
                       fillColor: AppColors.white,
                     ),
                   ),
-                  IconButton(
-                    onPressed: _pickReplyMedia,
-                    icon: SvgPicture.asset(
-                      Assets.camers,
-                      height: 20,
-                      color: AppColors.searchBarTextColor,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      // Add reply logic here - in a real app, this would add the reply to the database
-                      // and update the UI accordingly
+                  // IconButton(
+                  //   onPressed: _pickReplyMedia,
+                  //   icon: SvgPicture.asset(
+                  //     Assets.camers,
+                  //     height: 20,
+                  //     color: AppColors.searchBarTextColor,
+                  //   ),
+                  // ),
+                  // IconButton(
+                  //   onPressed: () {
+                  //     // Add reply logic here - in a real app, this would add the reply to the database
+                  //     // and update the UI accordingly
                       
-                      // For demo, just clear the input and hide the reply field
-                      setState(() {
-                        showReplyField = false;
-                        _replyController.clear();
-                        _selectedReplyMedia = null;
-                      });
-                    },
-                    icon: const Icon(Icons.send, size: 20, color: AppColors.primaryColor),
-                  ),
+                  //     // For demo, just clear the input and hide the reply field
+                  //     setState(() {
+                  //       showReplyField = false;
+                  //       _replyController.clear();
+                  //       _selectedReplyMedia = null;
+                  //     });
+                  //   },
+                  //   icon: const Icon(Icons.send, size: 20, color: AppColors.primaryColor),
+                  // ),
+                
                 ],
               ),
             ),
