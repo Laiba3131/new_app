@@ -18,7 +18,8 @@ class DropdownField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4), // Reduced vertical padding
+      constraints: const BoxConstraints(minHeight: 40), // Set minimum height
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey[300]!),
         borderRadius: BorderRadius.circular(8),
@@ -30,23 +31,18 @@ class DropdownField extends StatelessWidget {
           Text(
             hint,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  fontSize: 17,
+                  fontSize: 14, // Reduced font size for hint
                   fontWeight: FontWeight.w400,
                   color: AppColors.searchBarTextColor,
                 ),
           ),
+          const SizedBox(height: 2), // Reduced spacing between hint and dropdown
           DropdownButtonHideUnderline(
             child: DropdownButton<String>(
               value: value,
-              hint: Text(
-                '',
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.searchBarTextColor,
-                    ),
-              ),
-              icon: Icon(Icons.keyboard_arrow_down, color: Colors.grey[700]),
+              isDense: true, // Makes the dropdown more compact
+              hint: const Text(''),
+              icon: const Icon(Icons.keyboard_arrow_down, color:AppColors.searchBarTextColor, size: 20), // Smaller icon
               isExpanded: true,
               items: items.map((String item) {
                 return DropdownMenuItem<String>(
@@ -54,7 +50,7 @@ class DropdownField extends StatelessWidget {
                   child: Text(
                     item,
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          fontSize: 15,
+                          fontSize: 14, // Slightly reduced font size
                           fontWeight: FontWeight.w400,
                           color: AppColors.textblackColor,
                         ),

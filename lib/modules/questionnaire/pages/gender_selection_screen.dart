@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kulture/config/config.dart';
 import 'package:kulture/constants/app_colors.dart';
+import 'package:kulture/modules/profile/pages/customized_profile_screen.dart';
 import 'package:kulture/modules/questionnaire/widgets/custom_progress_bar.dart';
 import 'package:kulture/ui/button/primary_button.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
@@ -148,7 +150,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
         ),
       );
 
-      Navigator.of(context).popUntil((route) => route.isFirst);
+     NavRouter.push(context, const CustomizedProfileScreen());
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(

@@ -72,13 +72,17 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
     'German',
     'Hindi'
   ];
-  bool _isCountryDropdownOpen = false;
+  bool isCountryDropdownOpen = false;
+bool get isFormFilled {
+  return _nameController.text.isNotEmpty &&
+         _usernameController.text.isNotEmpty &&
+         _countryController.text.isNotEmpty &&
+         _languageController.text.isNotEmpty;
+}
 
   @override
   void initState() {
     super.initState();
-    // _nameController.text = 'Jade Smith';
-    // _usernameController.text = '@Jadesmith';
     _countryController.text = '';
     _filteredCountries = _countries;
     _filteredLanguages = _allLanguages;
@@ -165,7 +169,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
         onTap: () {
           FocusScope.of(context).unfocus();
           setState(() {
-            _isCountryDropdownOpen = false;
+            isCountryDropdownOpen = false;
           });
         },
         child: SafeArea(
@@ -312,10 +316,10 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                         ),
                         h2,
                         PrimaryButton(
-                          onPressed: _submitForm,
+                          onPressed: isFormFilled?_submitForm:(){},
                           title: 'Next',
                           height: 60,
-                          backgroundColor: AppColors.disableColor,
+                          backgroundColor:isFormFilled ?AppColors.primaryColor: AppColors.disableColor,
                           borderRadius: 50,
                           width: double.infinity,
                           shadowColor: AppColors.transparent,

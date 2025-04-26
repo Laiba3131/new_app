@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:kulture/config/config.dart';
 import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/modules/auth/pages/login_screen.dart';
+import 'package:kulture/modules/onBoarding/pages/pre_suggested_accounts.dart';
 import 'package:kulture/modules/profile/pages/bio_bottom_sheet.dart';
 import 'package:kulture/modules/profile/pages/interest_bottom_sheet.dart';
 import 'package:kulture/modules/profile/widgets/custom_input_field.dart';
@@ -321,7 +322,9 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
               ),
               h1,
               PrimaryButton(
-                onPressed: () {},
+                onPressed: () {
+                  NavRouter.push(context, const SuggestedCreatorScreen());
+                },
                 title: 'Next',
                 height: 60,
                 backgroundColor: AppColors.primaryColor,
