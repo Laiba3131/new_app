@@ -6,6 +6,7 @@ import 'package:kulture/core/service/bottm_sheet_service.dart';
 import 'package:kulture/generated/assets.dart';
 import 'package:kulture/modules/home/pages/home_screen.dart';
 import 'package:kulture/modules/profile/pages/your_profile_screen.dart';
+import 'package:kulture/ui/button/primary_button.dart';
 import 'package:kulture/ui/widgets/custom_favt_button.dart';
 import 'package:kulture/utils/extensions/extended_context.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
@@ -329,32 +330,16 @@ class _InfinityScrollingScreenState extends State<InfinityScrollingScreen>
                                               fontWeight: FontWeight.w700,
                                             )),
                                         const SizedBox(width: 8),
-                                        SizedBox(
-                                          height: 30,
-                                          child: OutlinedButton(
-                                            onPressed: () {},
-                                            style: OutlinedButton.styleFrom(
-                                              foregroundColor: Colors.white,
-                                              side: const BorderSide(
-                                                  color: Colors.white,
-                                                  width: 1),
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(5)),
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 10,
-                                                      vertical: 5),
-                                            ),
-                                            child: Text('Follow',
-                                                style: context
-                                                    .textTheme.bodyMedium
-                                                    ?.copyWith(
-                                                  color: AppColors.white,
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w700,
-                                                )),
-                                          ),
+                                       PrimaryButton(
+                                          title: 'Follow',
+                                          onPressed: () {},
+                                          backgroundColor:
+                                              AppColors.primaryColor,
+                                          titleColor: AppColors.white,
+                                          borderRadius: 6,
+                                          width: 75,
+                                          height: 25,
+                                          hMargin: 0,
                                         ),
                                       ],
                                     ),

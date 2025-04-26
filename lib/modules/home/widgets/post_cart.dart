@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/generated/assets.dart';
 import 'package:kulture/modules/home/model/post_model.dart';
+import 'package:kulture/ui/button/primary_button.dart';
 import 'package:kulture/utils/extensions/extended_context.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
 import '../../../core/service/bottm_sheet_service.dart';
@@ -72,23 +73,17 @@ class _PostCardState extends State<PostCard> {
                 ),
                 Row(
                   children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 4),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(6),
-                        border: Border.all(color: Colors.black, width: 1),
-                      ),
-                      child: const Text(
-                        'Follow',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
+                   PrimaryButton(
+                                          title: 'Follow',
+                                          onPressed: () {},
+                                          backgroundColor:
+                                              AppColors.primaryColor,
+                                          titleColor: AppColors.white,
+                                          borderRadius: 6,
+                                          width: 75,
+                                          height: 25,
+                                          hMargin: 0,
+                                        ),
                     const SizedBox(width: 8),
                     const Icon(Icons.more_horiz, color: Colors.black),
                   ],
