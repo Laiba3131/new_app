@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:kulture/config/config.dart';
 import 'package:kulture/constants/app_colors.dart';
+import 'package:kulture/modules/auth/pages/login_screen.dart';
 import 'package:kulture/modules/profile/pages/bio_bottom_sheet.dart';
 import 'package:kulture/modules/profile/pages/interest_bottom_sheet.dart';
 import 'package:kulture/modules/profile/widgets/custom_input_field.dart';
@@ -64,7 +66,9 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: const CustomAppbar(
+      
+      appBar:  CustomAppbar(
+        onBack: () => NavRouter.push(context,LoginScreen()),
         title: 'Back',
         showBack: true,
         centerTitle: false,

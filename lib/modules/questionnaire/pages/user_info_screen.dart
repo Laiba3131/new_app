@@ -65,7 +65,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
     'China',
     'India'
   ];
-  List<String> _allLanguages = [
+  final List<String> _allLanguages = [
     'English',
     'Spanish',
     'French',
@@ -315,7 +315,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                           onPressed: _submitForm,
                           title: 'Next',
                           height: 60,
-                          backgroundColor: AppColors.greyColor,
+                          backgroundColor: AppColors.disableColor,
                           borderRadius: 50,
                           width: double.infinity,
                           shadowColor: AppColors.transparent,

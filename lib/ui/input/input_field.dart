@@ -118,6 +118,7 @@ class _InputFieldState extends State<InputField> {
         Stack(
           children: [
             TextFormField(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               style: TextStyle(color: widget.textColor ?? Colors.black),
               controller: widget.controller,
               focusNode: widget.focusNode,
@@ -166,14 +167,14 @@ class _InputFieldState extends State<InputField> {
                 ),
                 errorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(widget.borderRadius),
-                  borderSide: BorderSide(
-                    color: widget.borderColor ?? Colors.transparent,
+                  borderSide: const BorderSide(
+                    color: AppColors.red,
                   ),
                 ),
                 focusedErrorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(widget.borderRadius),
-                  borderSide: BorderSide(
-                    color: widget.borderColor ?? Colors.transparent,
+                  borderSide: const BorderSide(
+                    color: AppColors.red,
                   ),
                 ),
                 filled: true,

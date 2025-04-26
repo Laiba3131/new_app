@@ -8,12 +8,39 @@ import 'package:kulture/ui/button/primary_button.dart';
 import 'package:kulture/ui/input/input_field.dart';
 import 'package:kulture/utils/extensions/extended_context.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
+import 'package:kulture/utils/validators/validators.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+class ForgotPasswordScreen extends StatefulWidget {
 
   ForgotPasswordScreen({super.key});
+
+  @override
+  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
+}
+
+class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+  TextEditingController emailController = TextEditingController();
+
+  TextEditingController passwordController = TextEditingController();
+   bool isEmailFilled = false;
+ @override
+  void initState() {
+    super.initState();
+    emailController.addListener(_onEmailChanged);
+  }
+
+  void _onEmailChanged() {
+    setState(() {
+      isEmailFilled = emailController.text.isNotEmpty;
+    });
+  }
+
+  @override
+  void dispose() {
+    emailController.removeListener(_onEmailChanged);
+    emailController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,23 +94,18 @@ class ForgotPasswordScreen extends StatelessWidget {
                 // ),
               ),
               h0P5,
-              InputField(
-                fillColor: AppColors.black,
-                controller: emailController,
-                label: "Enter your email...",
-                boxConstraints: 18.0,
-                hintColor: Colors.white,
-                borderRadius: 8.0,
-                textColor: Colors.white,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter an email';
-                  } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-                    return 'Enter a valid email';
-                  }
-                  return null;
-                },
-              ),
+               InputField(
+                            controller: emailController,
+                            label: "Email address",
+                            boxConstraints: 18.0,
+                            borderColor: AppColors.primaryColor,
+                            hintColor: AppColors.searchBarTextColor,
+                            borderRadius: 16.0,
+                            textColor: Colors.black,
+                             validator: (value) {
+                            return  Validators.email(emailController.text, );
+                            },
+                          ),
               h4,
               PrimaryButton(
                   height: 45,
@@ -98,7 +120,9 @@ class ForgotPasswordScreen extends StatelessWidget {
                     );
                   },
                   title: 'Send code',
-                  backgroundColor: AppColors.primaryColor,
+                  backgroundColor:isEmailFilled
+                    ? AppColors.primaryColor
+                    : AppColors.disableColor,
                   titleColor: AppColors.white,
                   borderRadius: 25,
                   shadowColor: AppColors.transparent),

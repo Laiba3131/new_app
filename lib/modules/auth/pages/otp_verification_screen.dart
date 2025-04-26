@@ -10,13 +10,30 @@ import 'package:kulture/ui/input/input_field.dart';
 import 'package:kulture/utils/extensions/extended_context.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
 
-class OtpVerificationScreen extends StatelessWidget {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+class OtpVerificationScreen extends StatefulWidget {
 
   OtpVerificationScreen({super.key});
+
+  @override
+  State<OtpVerificationScreen> createState() => _OtpVerificationScreenState();
+}
+
+class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
+  TextEditingController emailController = TextEditingController();
+
+  TextEditingController passwordController = TextEditingController();
+  String _enteredOtp = "";
+
+  void _onOtpCompleted(String otp) {
+    setState(() {
+      _enteredOtp = otp;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+        bool isOtpComplete = _enteredOtp.length == 6;
+
     return Scaffold(
       backgroundColor: AppColors.white,
       body: SafeArea(
@@ -46,30 +63,29 @@ class OtpVerificationScreen extends StatelessWidget {
               h3,
               OtpTextField(
                 numberOfFields: 6,
-                cursorColor: Colors.white,
+                cursorColor: Colors.black,
                 textStyle: const TextStyle(
-                  color: Colors.white,
+                  color: AppColors.black,
                   fontSize: 14,
                   fontWeight: FontWeight.w900,
                 ),
                 borderRadius: BorderRadius.circular(8),
                 fieldWidth: 45,
                 filled: true,
-                fillColor: Colors.black,
-                borderColor: Colors.white,
-                focusedBorderColor: Colors.white,
-                enabledBorderColor: Colors.white,
+                // fillColor: Colors.black,
+                
+                borderColor:AppColors.searchBarColor,
+                focusedBorderColor:AppColors.searchBarColor,
+                enabledBorderColor:AppColors.searchBarColor,
                 showFieldAsBox: true,
                 contentPadding: const EdgeInsets.symmetric(vertical: 15),
-                onSubmit: (otp) {
-                  debugPrint("OTP is => $otp");
-                },
+                onSubmit: _onOtpCompleted,
               ),
-              h0P5,
+              h2,
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       textAlign: TextAlign.right,
@@ -97,7 +113,7 @@ class OtpVerificationScreen extends StatelessWidget {
                     );
                   },
                   title: 'Send code',
-                  backgroundColor: AppColors.primaryColor,
+                  backgroundColor:isOtpComplete? AppColors.primaryColor:AppColors.disableColor,
                   titleColor: AppColors.white,
                   borderRadius: 25,
                   shadowColor: AppColors.transparent),
