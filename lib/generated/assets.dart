@@ -50,12 +50,12 @@ class Assets {
   static const String gridPicsImage = 'assets/images/grid_pics/image.png';
 
   //
-  static const String burder = 'assets/images/burger.png';
-  static const String aroplane = 'assets/images/aroplane.png';
-  static const String books = 'assets/images/books.png';
-  static const String emoji = 'assets/images/emoji.png';
-  static const String dress = 'assets/images/dress.png';
-  static const String lips = 'assets/images/lips.png';
+  static const String burder = 'assets/png/burger.png';
+  static const String aroplane = 'assets/png/aroplane.png';
+  static const String books = 'assets/png/books.png';
+  static const String emoji = 'assets/png/emoji.png';
+  static const String dress = 'assets/png/dress.png';
+  static const String lips = 'assets/png/lips.png';
 
 
 //PnGs

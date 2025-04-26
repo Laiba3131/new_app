@@ -21,8 +21,9 @@ class CommentBottomSheet extends StatefulWidget {
 }
 
 class _CommentBottomSheetState extends State<CommentBottomSheet> {
-    File? _selectedMedia;
+  File? _selectedMedia;
   final ImagePicker _picker = ImagePicker();
+  Comment? replyingTo;
 
   Future<void> _pickMedia() async {
     final XFile? media = await _picker.pickImage(source: ImageSource.gallery);
@@ -32,6 +33,13 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
       });
     }
   }
+  
+  void _clearSelectedMedia() {
+    setState(() {
+      _selectedMedia = null;
+    });
+  }
+
   final TextEditingController _commentController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
   final List<Comment> comments = DummyData.comments;
@@ -41,6 +49,78 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
     _commentController.dispose();
     _focusNode.dispose();
     super.dispose();
+  }
+
+  void _addComment() {
+    if (_commentController.text.isEmpty && _selectedMedia == null) return;
+    
+    // This is a simplified implementation - in a real app, you would
+    // upload the image to a server and get a URL back
+    String? imagePath = _selectedMedia?.path;
+    
+    setState(() {
+      if (replyingTo != null) {
+        // Add a reply to an existing comment
+        final replyComment = Comment(
+          username: "Current User", // In a real app, use the current user's name
+          text: _commentController.text,
+          timeAgo: "Just now",
+          userImage: Assets.pngImage1, // Use current user's image
+          likes: 0,
+          imagePath: imagePath,
+        );
+        
+        // Find the comment to add the reply to
+        for (int i = 0; i < comments.length; i++) {
+          if (comments[i] == replyingTo) {
+            // Add reply directly to the comment
+            List<Comment> updatedReplies = [...comments[i].replies, replyComment];
+            comments[i] = Comment(
+              username: comments[i].username,
+              text: comments[i].text,
+              timeAgo: comments[i].timeAgo,
+              userImage: comments[i].userImage,
+              likes: comments[i].likes,
+              imagePath: comments[i].imagePath,
+              replies: updatedReplies,
+            );
+            break;
+          }
+          
+          // Check if the replyingTo comment is in the replies of the current comment
+          for (int j = 0; j < comments[i].replies.length; j++) {
+            if (comments[i].replies[j] == replyingTo) {
+              // Add reply to the reply (as a new reply to the parent comment)
+              List<Comment> updatedReplies = [...comments[i].replies, replyComment];
+              comments[i] = Comment(
+                username: comments[i].username,
+                text: comments[i].text,
+                timeAgo: comments[i].timeAgo,
+                userImage: comments[i].userImage,
+                likes: comments[i].likes,
+                imagePath: comments[i].imagePath,
+                replies: updatedReplies,
+              );
+              break;
+            }
+          }
+        }
+      } else {
+        // Add a new top-level comment
+        comments.add(Comment(
+          username: "Current User", // In a real app, use the current user's name
+          text: _commentController.text,
+          timeAgo: "Just now",
+          userImage: Assets.pngImage1, // Use current user's image
+          likes: 0,
+          imagePath: imagePath,
+        ));
+      }
+      
+      _commentController.clear();
+      _selectedMedia = null;
+      replyingTo = null;
+    });
   }
 
   @override
@@ -88,7 +168,15 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CommentItem(comment: comment),
+                      CommentItem(
+                        comment: comment,
+                        onReply: (comment) {
+                          setState(() {
+                            replyingTo = comment;
+                            _focusNode.requestFocus();
+                          });
+                        },
+                      ),
                       if (comment.replies.isNotEmpty)
                         Padding(
                           padding: const EdgeInsets.only(left: 40),
@@ -100,7 +188,12 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
                               return CommentItem(
                                 comment: comment.replies[replyIndex],
                                 isReply: true,
-                                picLocation:_selectedMedia
+                                onReply: (comment) {
+                                  setState(() {
+                                    replyingTo = comment;
+                                    _focusNode.requestFocus();
+                                  });
+                                },
                               );
                             },
                           ),
@@ -111,6 +204,74 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
                 },
               ),
             ),
+
+            // Selected media preview
+            // if (_selectedMedia != null)
+            //   Container(
+            //     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            //     child: Stack(
+            //       children: [
+            //         Container(
+            //           height: 100,
+            //           width: 100,
+            //           decoration: BoxDecoration(
+            //             borderRadius: BorderRadius.circular(8),
+            //             image: DecorationImage(
+            //               image: FileImage(_selectedMedia!),
+            //               fit: BoxFit.cover,
+            //             ),
+            //           ),
+            //         ),
+            //         Positioned(
+            //           right: 0,
+            //           top: 0,
+            //           child: InkWell(
+            //             onTap: _clearSelectedMedia,
+            //             child: Container(
+            //               padding: const EdgeInsets.all(4),
+            //               decoration: const BoxDecoration(
+            //                 color: Colors.black54,
+            //                 shape: BoxShape.circle,
+            //               ),
+            //               child: const Icon(
+            //                 Icons.close,
+            //                 color: Colors.white,
+            //                 size: 16,
+            //               ),
+            //             ),
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+
+            // // Replying to indicator
+            // if (replyingTo != null)
+            //   Container(
+            //     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            //     color: AppColors.searchBarColor.withOpacity(0.3),
+            //     child: Row(
+            //       children: [
+            //         Expanded(
+            //           child: Text(
+            //             'Replying to ${replyingTo!.username}',
+            //             style: context.textTheme.bodySmall?.copyWith(
+            //               color: AppColors.primaryColor,
+            //               fontWeight: FontWeight.w500,
+            //             ),
+            //           ),
+            //         ),
+            //         InkWell(
+            //           onTap: () {
+            //             setState(() {
+            //               replyingTo = null;
+            //             });
+            //           },
+            //           child: const Icon(Icons.close, size: 16),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
 
             // Comment input bar
             Container(
@@ -130,16 +291,17 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
                   InkWell(
                     onTap: _pickMedia,
                     child: SvgPicture.asset(
-                            Assets.camers,
-                            height: 20,
-                            color: AppColors.searchBarTextColor,
-                          ),
+                      Assets.camers,
+                      height: 20,
+                      color: AppColors.searchBarTextColor,
+                    ),
                   ),
                   w2,
                   Expanded(
                     child: InputField(
                       controller: _commentController,
-                      label: 'Comment something',
+                      focusNode: _focusNode,
+                      label: replyingTo != null ? 'Write a reply...' : 'Comment something',
                       textColor: AppColors.black,
                       borderColor: AppColors.searchBarColor,
                       boxConstraints: 10,
@@ -149,6 +311,10 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
                     ),
                   ),
                   w1,
+                  IconButton(
+                    onPressed: _addComment,
+                    icon: const Icon(Icons.send, color: AppColors.primaryColor),
+                  ),
                 ],
               ),
             ),

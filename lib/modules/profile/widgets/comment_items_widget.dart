@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/generated/assets.dart';
 import 'package:kulture/modules/profile/model/comment_model.dart';
@@ -12,12 +13,12 @@ import 'package:kulture/utils/heights_and_widths.dart';
 class CommentItem extends StatefulWidget {
   final Comment comment;
   final bool isReply;
-  final File? picLocation;
+  final Function(Comment)? onReply;
 
   const CommentItem({
     required this.comment,
     this.isReply = false,
-    this.picLocation,
+    this.onReply,
     super.key,
   });
 
@@ -28,6 +29,23 @@ class CommentItem extends StatefulWidget {
 class _CommentItemState extends State<CommentItem> {
   bool showReplyField = false;
   final TextEditingController _replyController = TextEditingController();
+  File? _selectedReplyMedia;
+  final ImagePicker _picker = ImagePicker();
+
+  Future<void> _pickReplyMedia() async {
+    final XFile? media = await _picker.pickImage(source: ImageSource.gallery);
+    if (media != null) {
+      setState(() {
+        _selectedReplyMedia = File(media.path);
+      });
+    }
+  }
+  
+  void _clearSelectedReplyMedia() {
+    setState(() {
+      _selectedReplyMedia = null;
+    });
+  }
 
   @override
   void dispose() {
@@ -89,7 +107,23 @@ class _CommentItemState extends State<CommentItem> {
                       ),
                     ),
                     const SizedBox(height: 6),
-                     
+                    
+                    // Display image if available
+                    if (widget.comment.imagePath != null) ...[
+                      h1,
+                      Container(
+                        width: 200,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                            image: _getImageProvider(widget.comment.imagePath!),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      h1,
+                    ],
                      
                     Row(
                       children: [
@@ -113,9 +147,13 @@ class _CommentItemState extends State<CommentItem> {
                         w2,
                         InkWell(
                           onTap: () {
-                            setState(() {
-                              showReplyField = !showReplyField;
-                            });
+                            if (widget.onReply != null) {
+                              widget.onReply!(widget.comment);
+                            } else {
+                              setState(() {
+                                showReplyField = !showReplyField;
+                              });
+                            }
                           },
                           child: Text(
                             "Reply",
@@ -135,20 +173,6 @@ class _CommentItemState extends State<CommentItem> {
                         ),
                       ],
                     ),
-                    h1,
-                     if (widget.picLocation != null )
-                        Container(
-                          width: 150,
-                          height: 150,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                              image: FileImage(widget.picLocation!),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        h1,
                   ],
                 ),
               ),
@@ -156,17 +180,59 @@ class _CommentItemState extends State<CommentItem> {
           ),
           if (showReplyField) ...[
             const SizedBox(height: 8),
+            // Selected reply media preview
+            if (_selectedReplyMedia != null) ...[
+              Padding(
+                padding: const EdgeInsets.only(left: 50, bottom: 8),
+                child: Stack(
+                  children: [
+                    Container(
+                      height: 80,
+                      width: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        image: DecorationImage(
+                          image: FileImage(_selectedReplyMedia!),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      right: 0,
+                      top: 0,
+                      child: InkWell(
+                        onTap: _clearSelectedReplyMedia,
+                        child: Container(
+                          padding: const EdgeInsets.all(4),
+                          decoration: const BoxDecoration(
+                            color: Colors.black54,
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(
+                            Icons.close,
+                            color: Colors.white,
+                            size: 16,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          
             Padding(
               padding: const EdgeInsets.only(left: 50),
               child: Row(
                 children: [
-                   CircleAvatar(
-                radius: 18,
-                backgroundImage: AssetImage(widget.comment.userImage),
-              ),w1,
+                  CircleAvatar(
+                    radius: 18,
+                    backgroundImage: AssetImage(widget.comment.userImage),
+                  ),
+                  w1,
                   Expanded(
                     child: InputField(
-                      controller: TextEditingController(),
+                      controller: _replyController,
                       label: 'Write a response...',
                       textColor: AppColors.black,
                       borderColor: AppColors.searchBarColor,
@@ -176,13 +242,28 @@ class _CommentItemState extends State<CommentItem> {
                       fillColor: AppColors.white,
                     ),
                   ),
-                  w1,
-                  // IconButton(
-                  //   onPressed: () {
-                  //     // handle your reply logic here
-                  //   },
-                  //   icon: const Icon(Icons.send, size: 20, color: AppColors.primaryColor),
-                  // ),
+                  IconButton(
+                    onPressed: _pickReplyMedia,
+                    icon: SvgPicture.asset(
+                      Assets.camers,
+                      height: 20,
+                      color: AppColors.searchBarTextColor,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      // Add reply logic here - in a real app, this would add the reply to the database
+                      // and update the UI accordingly
+                      
+                      // For demo, just clear the input and hide the reply field
+                      setState(() {
+                        showReplyField = false;
+                        _replyController.clear();
+                        _selectedReplyMedia = null;
+                      });
+                    },
+                    icon: const Icon(Icons.send, size: 20, color: AppColors.primaryColor),
+                  ),
                 ],
               ),
             ),
@@ -190,5 +271,25 @@ class _CommentItemState extends State<CommentItem> {
         ],
       ),
     );
+  }
+  
+  ImageProvider _getImageProvider(String path) {
+    // Check if the path is a local file path (starts with /)
+    if (path.startsWith('/')) {
+      return FileImage(File(path));
+    } 
+    // Check if it's an asset path (starts with 'assets/')
+    else if (path.startsWith('assets/')) {
+      return AssetImage(path);
+    } 
+    // Otherwise, try to treat it as a network image (in production this would be a URL)
+    else {
+      try {
+        return FileImage(File(path));
+      } catch (e) {
+        // Fallback to a placeholder if the file can't be loaded
+        return const AssetImage('assets/images/placeholder.png');
+      }
+    }
   }
 }

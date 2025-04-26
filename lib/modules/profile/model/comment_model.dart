@@ -5,6 +5,7 @@ class Comment {
   final String userImage;
   final int likes;
   final List<Comment> replies;
+  final String? imagePath;
 
   Comment({
     required this.username,
@@ -13,5 +14,6 @@ class Comment {
     required this.userImage,
     required this.likes,
     this.replies = const [],
+    this.imagePath,
   });
 }
