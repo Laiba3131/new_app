@@ -73,12 +73,12 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
     'Hindi'
   ];
   bool isCountryDropdownOpen = false;
-bool get isFormFilled {
-  return _nameController.text.isNotEmpty &&
-         _usernameController.text.isNotEmpty &&
-         _countryController.text.isNotEmpty &&
-         _languageController.text.isNotEmpty;
-}
+  bool get isFormFilled {
+    return _nameController.text.isNotEmpty &&
+        _usernameController.text.isNotEmpty &&
+        _countryController.text.isNotEmpty &&
+        _languageController.text.isNotEmpty;
+  }
 
   @override
   void initState() {
@@ -316,10 +316,12 @@ bool get isFormFilled {
                         ),
                         h2,
                         PrimaryButton(
-                          onPressed: isFormFilled?_submitForm:(){},
+                          onPressed: isFormFilled ? _submitForm : () {},
                           title: 'Next',
                           height: 60,
-                          backgroundColor:isFormFilled ?AppColors.primaryColor: AppColors.disableColor,
+                          backgroundColor: isFormFilled
+                              ? AppColors.primaryColor
+                              : AppColors.disableColor,
                           borderRadius: 50,
                           width: double.infinity,
                           shadowColor: AppColors.transparent,

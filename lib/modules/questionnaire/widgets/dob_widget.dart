@@ -18,7 +18,8 @@ class DropdownField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4), // Reduced vertical padding
+      padding: const EdgeInsets.symmetric(
+          horizontal: 12, vertical: 4), // Reduced vertical padding
       constraints: const BoxConstraints(minHeight: 40), // Set minimum height
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey[300]!),
@@ -36,13 +37,16 @@ class DropdownField extends StatelessWidget {
                   color: AppColors.searchBarTextColor,
                 ),
           ),
-          const SizedBox(height: 2), // Reduced spacing between hint and dropdown
+          const SizedBox(
+              height: 2), // Reduced spacing between hint and dropdown
           DropdownButtonHideUnderline(
             child: DropdownButton<String>(
               value: value,
               isDense: true, // Makes the dropdown more compact
               hint: const Text(''),
-              icon: const Icon(Icons.keyboard_arrow_down, color:AppColors.searchBarTextColor, size: 20), // Smaller icon
+              icon: const Icon(Icons.keyboard_arrow_down,
+                  color: AppColors.searchBarTextColor,
+                  size: 20), // Smaller icon
               isExpanded: true,
               items: items.map((String item) {
                 return DropdownMenuItem<String>(

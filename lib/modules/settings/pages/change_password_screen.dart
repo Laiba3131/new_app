@@ -5,6 +5,7 @@ import 'package:kulture/ui/button/primary_button.dart';
 import 'package:kulture/ui/input/input_field.dart';
 import 'package:kulture/utils/extensions/extended_context.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
+import 'package:kulture/utils/validators/validators.dart';
 
 class ChangePasswordScreen extends StatefulWidget {
   const ChangePasswordScreen({super.key});
@@ -64,18 +65,15 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 ),
                 h0P5,
                 InputField(
-                  fillColor: AppColors.black,
                   controller: oldPasswordController,
-                  label: "Enter your old password...",
+                  label: "Password",
                   boxConstraints: 18.0,
-                  hintColor: Colors.white,
-                  borderRadius: 8.0,
-                  textColor: Colors.white,
+                  borderColor: AppColors.searchBarColor,
+                  hintColor: AppColors.searchBarTextColor,
+                  borderRadius: 16.0,
+                  textColor: Colors.black,
                   validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your password';
-                    }
-                    return null;
+                    return Validators.password(value);
                   },
                   obscureText: isoldObscureConfirm,
                   suffixIcon: InkWell(
@@ -86,9 +84,9 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     },
                     child: isoldObscureConfirm
                         ? const Icon(Icons.visibility_off_outlined,
-                            color: AppColors.white)
+                            color: AppColors.black)
                         : const Icon(Icons.visibility_outlined,
-                            color: AppColors.white),
+                            color: AppColors.black),
                   ),
                 ),
                 h1,
@@ -102,18 +100,15 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 ),
                 h0P5,
                 InputField(
-                  fillColor: AppColors.black,
                   controller: passwordController,
-                  label: "Enter your password...",
+                  label: "Password",
                   boxConstraints: 18.0,
-                  hintColor: Colors.white,
-                  borderRadius: 8.0,
-                  textColor: Colors.white,
+                  borderColor: AppColors.searchBarColor,
+                  hintColor: AppColors.searchBarTextColor,
+                  borderRadius: 16.0,
+                  textColor: Colors.black,
                   validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your password';
-                    }
-                    return null;
+                    return Validators.password(value);
                   },
                   obscureText: isObscure,
                   suffixIcon: InkWell(
@@ -124,9 +119,9 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     },
                     child: isObscure
                         ? const Icon(Icons.visibility_off_outlined,
-                            color: AppColors.white)
+                            color: AppColors.black)
                         : const Icon(Icons.visibility_outlined,
-                            color: AppColors.white),
+                            color: AppColors.black),
                   ),
                 ),
                 h1,
@@ -140,18 +135,17 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 ),
                 h0P5,
                 InputField(
-                  fillColor: AppColors.black,
                   controller: confirmPasswordController,
-                  label: "Confirm your password...",
+                  label: "Confirm password",
                   boxConstraints: 18.0,
-                  hintColor: Colors.white,
-                  borderRadius: 8.0,
-                  textColor: Colors.white,
+                  borderColor: AppColors.searchBarColor,
+                  hintColor: AppColors.searchBarTextColor,
+                  borderRadius: 16.0,
+                  textColor: Colors.black,
                   validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your password';
-                    }
-                    return null;
+                    return Validators.confirmPassword(
+                        confirmPasswordController.text,
+                        passwordController.text);
                   },
                   obscureText: isObscureConfirm,
                   suffixIcon: InkWell(
@@ -162,9 +156,9 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     },
                     child: isObscureConfirm
                         ? const Icon(Icons.visibility_off_outlined,
-                            color: AppColors.white)
+                            color: AppColors.black)
                         : const Icon(Icons.visibility_outlined,
-                            color: AppColors.white),
+                            color: AppColors.black),
                   ),
                 ),
                 h4,

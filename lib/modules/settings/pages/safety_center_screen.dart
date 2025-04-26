@@ -22,6 +22,7 @@ class SafetyCenterScreen extends StatelessWidget {
             NotificationSection(
               children: [
                 CustomTileWidget(
+                  isBorder: false,
                   title:
                       'Learn about Tenn safety, Reporting, Privacy and Security',
                   onChanged: (value) {},

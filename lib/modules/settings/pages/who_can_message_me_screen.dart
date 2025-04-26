@@ -38,6 +38,7 @@ class _WhoCanMessageMeScreenState extends State<WhoCanMessageMeScreen> {
             NotificationSection(
               children: [
                 CustomTileWidget(
+                  isBorder: false,
                   title: 'Everyone',
                   value: selectedOption == 'Everyone',
                   onChanged: (_) => _onToggle('Everyone'),
@@ -48,6 +49,7 @@ class _WhoCanMessageMeScreenState extends State<WhoCanMessageMeScreen> {
             NotificationSection(
               children: [
                 CustomTileWidget(
+                  isBorder: false,
                   title: 'Friends',
                   value: selectedOption == 'Friends',
                   onChanged: (_) => _onToggle('Friends'),
@@ -58,6 +60,7 @@ class _WhoCanMessageMeScreenState extends State<WhoCanMessageMeScreen> {
             NotificationSection(
               children: [
                 CustomTileWidget(
+                  isBorder: false,
                   title: 'No one',
                   value: selectedOption == 'No one',
                   onChanged: (_) => _onToggle('No one'),
@@ -74,7 +77,7 @@ class _WhoCanMessageMeScreenState extends State<WhoCanMessageMeScreen> {
                 print('Saved: $selectedOption');
               },
               title: 'Save changes',
-              backgroundColor: AppColors.black,
+              backgroundColor: AppColors.primaryColor,
               titleColor: AppColors.white,
               borderRadius: 17,
               shadowColor: AppColors.transparent,

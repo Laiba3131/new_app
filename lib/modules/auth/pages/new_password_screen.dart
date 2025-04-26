@@ -25,23 +25,21 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
   bool isObscureConfirm = true;
   bool areAllFieldsFilled = false;
 
-@override
+  @override
   void initState() {
     super.initState();
     passwordController.addListener(_onFieldChanged);
     confirmPasswordController.addListener(_onFieldChanged);
   }
 
-void _onFieldChanged() {
+  void _onFieldChanged() {
     setState(() {
-      areAllFieldsFilled = 
-         
-          passwordController.text.isNotEmpty &&
+      areAllFieldsFilled = passwordController.text.isNotEmpty &&
           confirmPasswordController.text.isNotEmpty;
     });
   }
 
-    @override
+  @override
   void dispose() {
     passwordController.removeListener(_onFieldChanged);
     confirmPasswordController.removeListener(_onFieldChanged);
@@ -49,6 +47,7 @@ void _onFieldChanged() {
     confirmPasswordController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,32 +101,31 @@ void _onFieldChanged() {
                 // ),
               ),
               h0P5,
-               InputField(
-                            controller: passwordController,
-                            label: "Password",
-                            boxConstraints: 18.0,
-                           borderColor: AppColors.searchBarColor,
-                            hintColor: AppColors.searchBarTextColor,
-                            borderRadius: 16.0,
-                            textColor: Colors.black,
-                            validator: (value) {
-                            return  Validators.password(value);
-                              
-                            },
-                            obscureText: isObscure,
-                            suffixIcon: InkWell(
-                              onTap: () {
-                                setState(() {
-                                  isObscure = !isObscure;
-                                });
-                              },
-                              child: isObscure
-                                  ? const Icon(Icons.visibility_off_outlined,
-                                      color: AppColors.black)
-                                  : const Icon(Icons.visibility_outlined,
-                                      color: AppColors.black),
-                            ),
-                          ),
+              InputField(
+                controller: passwordController,
+                label: "Password",
+                boxConstraints: 18.0,
+                borderColor: AppColors.searchBarColor,
+                hintColor: AppColors.searchBarTextColor,
+                borderRadius: 16.0,
+                textColor: Colors.black,
+                validator: (value) {
+                  return Validators.password(value);
+                },
+                obscureText: isObscure,
+                suffixIcon: InkWell(
+                  onTap: () {
+                    setState(() {
+                      isObscure = !isObscure;
+                    });
+                  },
+                  child: isObscure
+                      ? const Icon(Icons.visibility_off_outlined,
+                          color: AppColors.black)
+                      : const Icon(Icons.visibility_outlined,
+                          color: AppColors.black),
+                ),
+              ),
               h1,
               Text(
                 'Confirm password',
@@ -143,33 +141,33 @@ void _onFieldChanged() {
                 // ),
               ),
               h0P5,
-            InputField(
-                            controller: confirmPasswordController,
-                            label: "Confirm password",
-                            boxConstraints: 18.0,
-                            borderColor: AppColors.searchBarColor,
-                            hintColor: AppColors.searchBarTextColor,
-                            borderRadius: 16.0,
-                            textColor: Colors.black,
-                            validator: (value) {
-                            return  Validators.confirmPassword(confirmPasswordController.text, passwordController.text);
-                            
-                            },
-                            obscureText: isObscureConfirm,
-                            suffixIcon: InkWell(
-                              onTap: () {
-                                setState(() {
-                                  isObscureConfirm = !isObscureConfirm;
-                                });
-                              },
-                              child: isObscureConfirm
-                                  ? const Icon(Icons.visibility_off_outlined,
-                                      color: AppColors.black)
-                                  : const Icon(Icons.visibility_outlined,
-                                      color: AppColors.black),
-                            ),
-                          ),
-                           h4,
+              InputField(
+                controller: confirmPasswordController,
+                label: "Confirm password",
+                boxConstraints: 18.0,
+                borderColor: AppColors.searchBarColor,
+                hintColor: AppColors.searchBarTextColor,
+                borderRadius: 16.0,
+                textColor: Colors.black,
+                validator: (value) {
+                  return Validators.confirmPassword(
+                      confirmPasswordController.text, passwordController.text);
+                },
+                obscureText: isObscureConfirm,
+                suffixIcon: InkWell(
+                  onTap: () {
+                    setState(() {
+                      isObscureConfirm = !isObscureConfirm;
+                    });
+                  },
+                  child: isObscureConfirm
+                      ? const Icon(Icons.visibility_off_outlined,
+                          color: AppColors.black)
+                      : const Icon(Icons.visibility_outlined,
+                          color: AppColors.black),
+                ),
+              ),
+              h4,
               PrimaryButton(
                   height: 45,
                   vMargin: 0,
@@ -178,8 +176,9 @@ void _onFieldChanged() {
                     NavRouter.push(context, const SignupScreen());
                   },
                   title: 'Change Password',
-                  backgroundColor:areAllFieldsFilled? AppColors.primaryColor:
-                    AppColors.disableColor,
+                  backgroundColor: areAllFieldsFilled
+                      ? AppColors.primaryColor
+                      : AppColors.disableColor,
                   titleColor: AppColors.white,
                   borderRadius: 25,
                   shadowColor: AppColors.transparent),

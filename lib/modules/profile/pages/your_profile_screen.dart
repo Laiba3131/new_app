@@ -172,20 +172,21 @@ class _YourProfileScreenState extends State<YourProfileScreen>
                     Row(
                       children: [
                         Expanded(
-                            child: PrimaryIconOutlineButton(
+                            child: PrimaryButton(
                           height: 43,
                           onPressed: () {
                             NavRouter.pushFromRoot(
                                 context, const EditProfileScreen());
                           },
                           title: 'Edit profile',
-                          iconSvgPath: '',
-                          borderColor: AppColors.black,
-                          titleColor: AppColors.black,
+                          shadowColor: AppColors.transparent,
+                          backgroundColor: AppColors.primaryColor,
+                          titleColor: AppColors.white,
+                          hMargin: 0,
                         )),
                         w1,
                         Expanded(
-                            child: PrimaryIconOutlineButton(
+                            child: PrimaryButton(
                           height: 43,
                           onPressed: () {
                             // Navigator.push(
@@ -196,9 +197,10 @@ class _YourProfileScreenState extends State<YourProfileScreen>
                             // );
                           },
                           title: 'Share profile',
-                          iconSvgPath: '',
-                          borderColor: AppColors.black,
-                          titleColor: AppColors.black,
+                          shadowColor: AppColors.transparent,
+                          backgroundColor: AppColors.primaryColor,
+                          titleColor: AppColors.white,
+                          hMargin: 0,
                         )),
                       ],
                     ),

@@ -108,7 +108,7 @@ class PushNotificationsScreen extends StatelessWidget {
                         });
                       },
                       title: 'Save changes',
-                      backgroundColor: AppColors.black,
+                      backgroundColor: AppColors.primaryColor,
                       titleColor: AppColors.white,
                       borderRadius: 17,
                       shadowColor: AppColors.transparent),

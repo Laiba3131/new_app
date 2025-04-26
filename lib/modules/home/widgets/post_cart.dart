@@ -73,17 +73,17 @@ class _PostCardState extends State<PostCard> {
                 ),
                 Row(
                   children: [
-                   PrimaryButton(
-                                          title: 'Follow',
-                                          onPressed: () {},
-                                          backgroundColor:
-                                              AppColors.primaryColor,
-                                          titleColor: AppColors.white,
-                                          borderRadius: 6,
-                                          width: 75,
-                                          height: 25,
-                                          hMargin: 0,
-                                        ),
+                    PrimaryButton(
+                      title: 'Follow',
+                      onPressed: () {},
+                      backgroundColor: AppColors.primaryColor,
+                      titleColor: AppColors.white,
+                      borderRadius: 6,
+                      width: 75,
+                      height: 25,
+                      shadowColor: AppColors.transparent,
+                      hMargin: 0,
+                    ),
                     const SizedBox(width: 8),
                     const Icon(Icons.more_horiz, color: Colors.black),
                   ],

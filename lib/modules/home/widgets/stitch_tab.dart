@@ -35,7 +35,11 @@ class StitchTab extends StatelessWidget {
             ),
           ),
           h1,
-          const Divider(height: 1, thickness: 0.5),
+          const Divider(
+            height: 1,
+            thickness: 0.5,
+            color: AppColors.lightGreyColor,
+          ),
           h2,
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -50,7 +54,7 @@ class StitchTab extends StatelessWidget {
           ),
           h2,
           SizedBox(
-            height: 185,
+            height: 190,
             child: ListView.separated(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               scrollDirection: Axis.horizontal,
@@ -62,7 +66,11 @@ class StitchTab extends StatelessWidget {
             ),
           ),
           h2,
-          const Divider(height: 1, thickness: 0.5),
+          const Divider(
+            height: 1,
+            thickness: 0.5,
+            color: AppColors.lightGreyColor,
+          ),
           ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),

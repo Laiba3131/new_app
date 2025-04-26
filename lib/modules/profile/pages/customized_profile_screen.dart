@@ -67,9 +67,8 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      
-      appBar:  CustomAppbar(
-        onBack: () => NavRouter.push(context,LoginScreen()),
+      appBar: CustomAppbar(
+        onBack: () => NavRouter.push(context, LoginScreen()),
         title: 'Back',
         showBack: true,
         centerTitle: false,

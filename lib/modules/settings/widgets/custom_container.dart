@@ -13,7 +13,8 @@ class NotificationSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.borderColor,
+        color: AppColors.white,
+        border: Border.all(color: AppColors.searchBarColor, width: 1),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(

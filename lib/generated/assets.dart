@@ -45,7 +45,7 @@ class Assets {
   static const String gridPicsImage = 'assets/images/grid_pics/image.png';
 
 //PnGs
-  // static const String pngSplashLogo1 = 'assets/png/Group 1.png';
+  static const String pngSplashLogo1 = 'assets/png/Group 1.png';
   static const String pngInsta = 'assets/png/mdi_instagram.png';
   static const String pngTiktok = 'assets/png/ic_outline-tiktok.png';
   static const String pngTwitter = 'assets/png/prime_twitter.png';

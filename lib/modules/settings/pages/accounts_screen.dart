@@ -31,6 +31,7 @@ class AccountsScreen extends StatelessWidget {
                     //     const AccountsScreen(),
                     //   );
                   },
+                  isBorder: false,
                 ),
               ],
             ),

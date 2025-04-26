@@ -114,7 +114,7 @@ class SwitchTabItem extends StatelessWidget {
                           .map((hashtag) => Text('#$hashtag',
                               style: context.textTheme.bodySmall?.copyWith(
                                   fontSize: 14,
-                                  fontWeight: FontWeight.w400,
+                                  fontWeight: FontWeight.w600,
                                   color: AppColors.primaryColor)))
                           .toList(),
                     ),

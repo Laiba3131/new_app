@@ -66,7 +66,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   children: [
                     CustomTileWidget(
                       title: 'Light mode',
-                      // value: state.likesNotifications,
+                      value: true,
                       onChanged: (value) {},
                       isBorder: false,
                       // icon: Icons.favorite_border,

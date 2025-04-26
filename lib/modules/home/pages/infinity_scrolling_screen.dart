@@ -330,7 +330,7 @@ class _InfinityScrollingScreenState extends State<InfinityScrollingScreen>
                                               fontWeight: FontWeight.w700,
                                             )),
                                         const SizedBox(width: 8),
-                                       PrimaryButton(
+                                        PrimaryButton(
                                           title: 'Follow',
                                           onPressed: () {},
                                           backgroundColor:
@@ -340,6 +340,7 @@ class _InfinityScrollingScreenState extends State<InfinityScrollingScreen>
                                           width: 75,
                                           height: 25,
                                           hMargin: 0,
+                                          shadowColor: AppColors.transparent,
                                         ),
                                       ],
                                     ),

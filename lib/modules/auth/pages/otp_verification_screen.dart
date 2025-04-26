@@ -11,7 +11,6 @@ import 'package:kulture/utils/extensions/extended_context.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
 
 class OtpVerificationScreen extends StatefulWidget {
-
   OtpVerificationScreen({super.key});
 
   @override
@@ -32,7 +31,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
 
   @override
   Widget build(BuildContext context) {
-        bool isOtpComplete = _enteredOtp.length == 6;
+    bool isOtpComplete = _enteredOtp.length == 6;
 
     return Scaffold(
       backgroundColor: AppColors.white,
@@ -73,10 +72,10 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 fieldWidth: 45,
                 filled: true,
                 // fillColor: Colors.black,
-                
-                borderColor:AppColors.searchBarColor,
-                focusedBorderColor:AppColors.searchBarColor,
-                enabledBorderColor:AppColors.searchBarColor,
+
+                borderColor: AppColors.searchBarColor,
+                focusedBorderColor: AppColors.searchBarColor,
+                enabledBorderColor: AppColors.searchBarColor,
                 showFieldAsBox: true,
                 contentPadding: const EdgeInsets.symmetric(vertical: 15),
                 onSubmit: _onOtpCompleted,
@@ -113,7 +112,9 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                     );
                   },
                   title: 'Send code',
-                  backgroundColor:isOtpComplete? AppColors.primaryColor:AppColors.disableColor,
+                  backgroundColor: isOtpComplete
+                      ? AppColors.primaryColor
+                      : AppColors.disableColor,
                   titleColor: AppColors.white,
                   borderRadius: 25,
                   shadowColor: AppColors.transparent),

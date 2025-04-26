@@ -265,6 +265,17 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
             ],
           ),
+          const Spacer(),
+          PrimaryButton(
+            onPressed: () {},
+            title: 'Block',
+            width: 85,
+            height: 36,
+            borderRadius: 11,
+            backgroundColor: AppColors.red,
+            hMargin: 0,
+            shadowColor: AppColors.transparent,
+          ),
         ],
       ),
     );

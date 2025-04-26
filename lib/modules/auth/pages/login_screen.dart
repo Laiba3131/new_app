@@ -11,8 +11,8 @@ import 'package:kulture/ui/input/input_field.dart';
 import 'package:kulture/utils/extensions/extended_context.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
 import 'package:kulture/modules/onBoarding/pages/pre_profile_edit.dart';
-class LoginScreen extends StatefulWidget {
 
+class LoginScreen extends StatefulWidget {
   LoginScreen({super.key});
 
   @override
@@ -29,25 +29,23 @@ class _LoginScreenState extends State<LoginScreen> {
   bool isPasswordTrue = true;
 
   final _formKey = GlobalKey<FormState>();
-bool areAllFieldsFilled = false;
+  bool areAllFieldsFilled = false;
 
-@override
+  @override
   void initState() {
     super.initState();
     passwordController.addListener(_onFieldChanged);
     emailController.addListener(_onFieldChanged);
   }
 
-void _onFieldChanged() {
+  void _onFieldChanged() {
     setState(() {
-      areAllFieldsFilled = 
-         
-          passwordController.text.isNotEmpty &&
-          emailController.text.isNotEmpty;
+      areAllFieldsFilled =
+          passwordController.text.isNotEmpty && emailController.text.isNotEmpty;
     });
   }
 
-    @override
+  @override
   void dispose() {
     passwordController.removeListener(_onFieldChanged);
     emailController.removeListener(_onFieldChanged);
@@ -55,6 +53,7 @@ void _onFieldChanged() {
     emailController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -128,22 +127,23 @@ void _onFieldChanged() {
                           ),
                           h2,
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 20.0),
                             child: Row(
                               children: <Widget>[
                                 Expanded(
-                                  child: _buildSocialButton(
-                                      Assets.pngTwitter, AppColors.searchBarColor),
+                                  child: _buildSocialButton(Assets.pngTwitter,
+                                      AppColors.searchBarColor),
                                 ),
                                 w1,
                                 Expanded(
-                                  child: _buildSocialButton(
-                                      Assets.pngInsta, AppColors.searchBarColor),
+                                  child: _buildSocialButton(Assets.pngInsta,
+                                      AppColors.searchBarColor),
                                 ),
                                 w1,
                                 Expanded(
-                                  child: _buildSocialButton(
-                                      Assets.pngTiktok, AppColors.searchBarColor),
+                                  child: _buildSocialButton(Assets.pngTiktok,
+                                      AppColors.searchBarColor),
                                 )
                               ],
                             ),
@@ -181,7 +181,7 @@ void _onFieldChanged() {
                             obscureText: isPasswordTrue,
                             suffixIcon: GestureDetector(
                               onTap: () {
-                               setState(() {
+                                setState(() {
                                   isPasswordTrue = !isPasswordTrue;
                                 });
                               },
@@ -205,7 +205,8 @@ void _onFieldChanged() {
                             children: [
                               InkWell(
                                 onTap: () {
-                                  NavRouter.push(context, ForgotPasswordScreen());
+                                  NavRouter.push(
+                                      context, ForgotPasswordScreen());
                                 },
                                 child: Text(
                                   'Forgotten password?',
@@ -226,14 +227,14 @@ void _onFieldChanged() {
                               onPressed: () {
                                 // Perform login action here
                                 String email = emailController.text.trim();
-                                String password = passwordController.text.trim();
-        
+                                String password =
+                                    passwordController.text.trim();
+
                                 if (email.isEmpty && password.isEmpty) {
                                   _showErrorDialog(context);
-                                 
-                                }else if(_formKey.currentState?.validate() == true) {
-                                  
-  Navigator.pushReplacement(
+                                } else if (_formKey.currentState?.validate() ==
+                                    true) {
+                                  Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
@@ -243,8 +244,9 @@ void _onFieldChanged() {
                                 }
                               },
                               title: 'Log in',
-                              backgroundColor:areAllFieldsFilled? AppColors.primaryColor:
-                    AppColors.disableColor,
+                              backgroundColor: areAllFieldsFilled
+                                  ? AppColors.primaryColor
+                                  : AppColors.disableColor,
                               titleColor: AppColors.white,
                               borderRadius: 25,
                               shadowColor: AppColors.transparent),
@@ -263,10 +265,11 @@ void _onFieldChanged() {
                                   NavRouter.push(context, const SignupScreen());
                                 },
                                 child: Text("account?",
-                                    style: context.textTheme.bodySmall?.copyWith(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w400,
-                                        color: AppColors.primaryColor)),
+                                    style: context.textTheme.bodySmall
+                                        ?.copyWith(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w400,
+                                            color: AppColors.primaryColor)),
                               ),
                             ],
                           ),

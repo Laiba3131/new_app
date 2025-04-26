@@ -150,7 +150,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
         ),
       );
 
-     NavRouter.push(context, const CustomizedProfileScreen());
+      NavRouter.push(context, const CustomizedProfileScreen());
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(

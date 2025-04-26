@@ -11,7 +11,6 @@ import 'package:kulture/utils/heights_and_widths.dart';
 import 'package:kulture/utils/validators/validators.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
-
   ForgotPasswordScreen({super.key});
 
   @override
@@ -22,8 +21,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   TextEditingController emailController = TextEditingController();
 
   TextEditingController passwordController = TextEditingController();
-   bool isEmailFilled = false;
- @override
+  bool isEmailFilled = false;
+  @override
   void initState() {
     super.initState();
     emailController.addListener(_onEmailChanged);
@@ -41,6 +40,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     emailController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,18 +94,20 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 // ),
               ),
               h0P5,
-               InputField(
-                            controller: emailController,
-                            label: "Email address",
-                            boxConstraints: 18.0,
-                            borderColor: AppColors.primaryColor,
-                            hintColor: AppColors.searchBarTextColor,
-                            borderRadius: 16.0,
-                            textColor: Colors.black,
-                             validator: (value) {
-                            return  Validators.email(emailController.text, );
-                            },
-                          ),
+              InputField(
+                controller: emailController,
+                label: "Email address",
+                boxConstraints: 18.0,
+                borderColor: AppColors.primaryColor,
+                hintColor: AppColors.searchBarTextColor,
+                borderRadius: 16.0,
+                textColor: Colors.black,
+                validator: (value) {
+                  return Validators.email(
+                    emailController.text,
+                  );
+                },
+              ),
               h4,
               PrimaryButton(
                   height: 45,
@@ -120,9 +122,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     );
                   },
                   title: 'Send code',
-                  backgroundColor:isEmailFilled
-                    ? AppColors.primaryColor
-                    : AppColors.disableColor,
+                  backgroundColor: isEmailFilled
+                      ? AppColors.primaryColor
+                      : AppColors.disableColor,
                   titleColor: AppColors.white,
                   borderRadius: 25,
                   shadowColor: AppColors.transparent),

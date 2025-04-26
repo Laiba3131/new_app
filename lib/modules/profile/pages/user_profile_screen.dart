@@ -98,7 +98,7 @@ class _UserProfileScreenState extends State<UserProfileScreen>
                             onPressed: () {},
                             title: 'Follow/Unfollow',
                             titleColor: AppColors.white,
-                            backgroundColor: AppColors.blue,
+                            backgroundColor: AppColors.primaryColor,
                             fontSize: 14,
                             shadowColor: AppColors.transparent,
                           ),
@@ -113,7 +113,7 @@ class _UserProfileScreenState extends State<UserProfileScreen>
                             onPressed: () {},
                             title: 'Notes',
                             backgroundColor: AppColors.white,
-                            bborderColor: AppColors.black,
+                            bborderColor: AppColors.searchBarColor,
                             titleColor: AppColors.black,
                             shadowColor: AppColors.transparent,
                           ),
@@ -127,8 +127,8 @@ class _UserProfileScreenState extends State<UserProfileScreen>
                             decoration: BoxDecoration(
                               color: AppColors.white,
                               borderRadius: BorderRadius.circular(10),
-                              border:
-                                  Border.all(color: AppColors.black, width: 1),
+                              border: Border.all(
+                                  color: AppColors.searchBarColor, width: 1),
                             ),
                             child: SvgPicture.asset(
                               Assets.person,
@@ -143,7 +143,7 @@ class _UserProfileScreenState extends State<UserProfileScreen>
               ),
               h2,
               SizedBox(
-                height: 185,
+                height: 190,
                 child: ListView.separated(
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   scrollDirection: Axis.horizontal,
@@ -162,9 +162,9 @@ class _UserProfileScreenState extends State<UserProfileScreen>
                   children: [
                     TabBar(
                       controller: _tabController,
-                      labelColor: Colors.black,
+                      labelColor: AppColors.primaryColor,
                       unselectedLabelColor: Colors.grey,
-                      indicatorColor: Colors.black,
+                      indicatorColor: AppColors.primaryColor,
                       tabs: const [
                         Tab(text: "PicVids"),
                         Tab(text: "Stitch"),

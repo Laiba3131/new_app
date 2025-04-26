@@ -16,8 +16,9 @@ class SuggestedUserCard extends StatelessWidget {
       width: 150,
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
       decoration: BoxDecoration(
-        color: Colors.grey.shade200,
-        borderRadius: BorderRadius.circular(16),
+        // color: Colors.grey.shade200,
+        border: Border.all(color: AppColors.searchBarColor, width: 1),
+        borderRadius: BorderRadius.circular(15),
       ),
       child: Column(
         children: [

@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kulture/config/config.dart';
+import 'package:kulture/constants/app_colors.dart';
+import 'package:kulture/modules/auth/pages/login_screen.dart';
 import 'package:kulture/modules/dashboard/pages/dashboard_persistent_bottom_bar.dart';
+import 'package:kulture/modules/onBoarding/pages/pre_suggested_accounts.dart';
+import 'package:kulture/modules/profile/pages/bio_bottom_sheet.dart';
+import 'package:kulture/modules/profile/pages/interest_bottom_sheet.dart';
+import 'package:kulture/modules/profile/widgets/custom_input_field.dart';
+import 'package:kulture/modules/profile/widgets/custom_switch_tile.dart';
+import 'package:kulture/ui/button/primary_button.dart';
+import 'package:kulture/ui/widgets/custom_appbar.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
 import '../../../generated/assets.dart';
 import 'package:image_picker/image_picker.dart';
@@ -19,7 +28,15 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _bioController = TextEditingController();
   final TextEditingController _linkController = TextEditingController();
+  final TextEditingController _interestController = TextEditingController();
+  final TextEditingController _dobController = TextEditingController();
+  final TextEditingController _countryController = TextEditingController();
+  final TextEditingController _languageController = TextEditingController();
+  final TextEditingController _genderController = TextEditingController();
+  final TextEditingController _phoneNumberController = TextEditingController();
+
   bool _isPrivateProfile = false;
+  bool _isPrivatInfo = false;
   File? _selectedImage;
 
   @override
@@ -50,314 +67,271 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: Colors.white,
-          statusBarIconBrightness: Brightness.dark,
-        ),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            GestureDetector(
-              onTap: () => Navigator.pop(context),
-              child: const Text(
-                'Cancel',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                h1,
+                Text(
+                  "Edit profile",
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        fontSize: 28,
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.textblackColor,
+                      ),
                 ),
-              ),
-            ),
-            const Text(
-              'Edit profile',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                NavRouter.push(context, const DashboardPersistentBottomBar());
-              },
-              child: const Text(
-                'Done',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-          ],
-        ),
-        centerTitle: false,
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              h6,
+                h1,
 
-              // Container wrapping all sections
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-                decoration: BoxDecoration(
-                  // color: const Color(0xFFF5F5F5),
-                  borderRadius: BorderRadius.circular(23),
-                  border: Border.all(
-                    color: const Color(0xFFD4D4D4),
-                    width: 1,
+                // Container wrapping all sections
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+                  decoration: BoxDecoration(
+                    // color: const Color(0xFFF5F5F5),
+                    borderRadius: BorderRadius.circular(23),
+                    border: Border.all(
+                      color: const Color(0xFFD4D4D4),
+                      width: 1,
+                    ),
                   ),
-                ),
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  children: [
-                    // Name section
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Name',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomInputField(
+                              fun: () {},
+                              title: 'Name',
+                              iconPath: Assets.addIcon,
+                              hintText: 'Jade Smith',
+                              controller: _nameController,
+                              minLines: 1,
+                              maxLines: 3,
+                            ),
                           ),
-                        ),
-                        h0P8,
-                        Row(
-                          children: [
-                            Container(
-                              width: 20,
-                              height: 20,
-                              // decoration: BoxDecoration(
-                              //   color: const Color(0xFFF5F5F5),
-                              //   shape: BoxShape.circle,
-                              // ),
-                              child: Center(
-                                child: Image.asset(
-                                  Assets.encryptIcon,
-                                  height: 24,
-                                  width: 24,
-                                ),
-                              ),
-                            ),
-                            w1,
-                            Expanded(
-                              child: TextField(
-                                controller: _nameController,
-                                decoration: const InputDecoration(
-                                  hintText: '@usernamehere',
-                                  hintStyle: TextStyle(
-                                    color: Color.fromARGB(238, 0, 0, 0),
-                                    fontSize: 14,
-                                  ),
-                                  border: InputBorder.none,
-                                  contentPadding: EdgeInsets.zero,
-                                  isDense: true,
-                                  filled: true,
-                                  fillColor: Colors.white,
-                                ),
-                                onChanged: (value) {
-                                  if (value.isNotEmpty &&
-                                      !value.startsWith('@')) {
-                                    _nameController.text = '@' + value;
-                                    _nameController.selection =
-                                        TextSelection.fromPosition(
-                                      TextPosition(
-                                          offset: _nameController.text.length),
-                                    );
-                                  }
-                                },
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: _pickImage,
-                              child: Container(
-                                height: 40,
-                                width: 40,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: _selectedImage != null
-                                      ? DecorationImage(
-                                          image: FileImage(_selectedImage!),
-                                          fit: BoxFit.cover,
-                                        )
-                                      : null,
-                                ),
-                                child: _selectedImage == null
-                                    ? Image.asset(Assets.addUserIcon,
-                                        height: 40, width: 40)
+                          w1,
+                          GestureDetector(
+                            onTap: _pickImage,
+                            child: Container(
+                              height: 45,
+                              width: 45,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: _selectedImage != null
+                                    ? DecorationImage(
+                                        image: FileImage(_selectedImage!),
+                                        fit: BoxFit.cover,
+                                      )
                                     : null,
                               ),
+                              child: _selectedImage == null
+                                  ? Image.asset(Assets.addUserIcon,
+                                      height: 40, width: 40)
+                                  : null,
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
-
-                    const Divider(height: 24, thickness: 1),
-
-                    // Bio section
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Bio',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
                           ),
-                        ),
-                        h0P8,
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Image.asset(Assets.addIcon, height: 20, width: 20),
-                            w0P5,
-                            Expanded(
-                              child: TextField(
-                                controller: _bioController,
-                                decoration: const InputDecoration(
-                                  hintText: 'Write your bio...',
-                                  hintStyle: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 14,
-                                  ),
-                                  border: InputBorder.none,
-                                  contentPadding: EdgeInsets.zero,
-                                  filled: true,
-                                  fillColor: Colors.white,
-                                ),
-                                style: const TextStyle(height: 1.5),
-                                minLines: 1,
-                                maxLines: 3,
-                              ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomInputField(
+                              fun: () {},
+                              title: 'Username',
+                              iconPath: Assets.addIcon,
+                              hintText: '@jadesmith',
+                              controller: _usernameController,
+                              minLines: 1,
+                              maxLines: 3,
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
-
-                    const Divider(height: 32),
-
-                    // Link section
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Link',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
                           ),
-                        ),
-                        h0P8,
-                        Row(
-                          children: [
-                            Image.asset(Assets.addIcon, height: 20, width: 20),
-                            w1,
-                            Expanded(
-                              child: TextField(
-                                  controller: _linkController,
-                                  keyboardType: TextInputType.url,
-                                  decoration: const InputDecoration(
-                                    hintText: 'Add a link here...',
-                                    hintStyle: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 14,
-                                    ),
-                                    border: InputBorder.none,
-                                    contentPadding: EdgeInsets.zero,
-                                    filled: true,
-                                    fillColor: Colors.white,
-                                  ),
-                                  style: const TextStyle(
-                                    height: 1.5,
-                                    color: Color(0xFF1AA5C8),
-                                    fontSize: 14,
-                                  ),
-                                  onChanged: (value) {
-                                    if (value.isNotEmpty &&
-                                        !value.startsWith('http')) {
-                                      final fullUrl = 'https://$value';
-                                      final uri = Uri.tryParse(fullUrl);
-                                      final domain = uri?.host ?? value;
-
-                                      _linkController.text = domain;
-                                      _linkController.selection =
-                                          TextSelection.fromPosition(
-                                        TextPosition(
-                                            offset:
-                                                _linkController.text.length),
-                                      );
-                                    }
-                                  }),
+                          w1,
+                          Expanded(
+                            child: CustomInputField(
+                              fun: () {},
+                              title: 'Date of Birth',
+                              iconPath: Assets.addIcon,
+                              hintText: '12/25/1998',
+                              controller: _dobController,
+                              minLines: 1,
+                              maxLines: 3,
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
-
-                    const Divider(height: 32),
-
-                    // Private profile section
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text(
-                              'Private profile',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              ),
+                          ),
+                        ],
+                      ),
+                      CustomInputField(
+                        fun: () async {
+                          final result = await showModalBottomSheet<String>(
+                            context: context,
+                            isScrollControlled: true,
+                            backgroundColor: Colors.white,
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(20)),
                             ),
-                            Switch(
-                              value: _isPrivateProfile,
-                              onChanged: (value) {
-                                setState(() {
-                                  _isPrivateProfile = value;
-                                });
-                              },
-                              activeColor: Colors.white,
-                              activeTrackColor: Colors.black,
-                              inactiveThumbColor: Colors.white,
-                              inactiveTrackColor: const Color(0xFFE0E0E0),
-                              materialTapTargetSize:
-                                  MaterialTapTargetSize.shrinkWrap,
+                            builder: (context) => BioBottomSheet(),
+                          );
+
+                          _bioController.text = result ??
+                              ''; // If result is null, assign empty string
+                        },
+                        title: 'Bio',
+                        iconPath: Assets.addIcon,
+                        hintText: 'Add a link here (optional)',
+                        controller: _bioController,
+                        minLines: 1,
+                        maxLines: 3,
+                      ),
+                      CustomInputField(
+                        fun: () async {
+                          final List<String>? selectedInterests =
+                              await showModalBottomSheet<List<String>>(
+                            context: context,
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            builder: (context) => const InterestsBottomSheet(),
+                          );
+
+                          if (selectedInterests != null) {
+                            _interestController.text =
+                                selectedInterests.join(', ');
+                          }
+                        },
+                        title: 'Interests',
+                        iconPath: Assets.addIcon,
+                        hintText: 'Add your interest here',
+                        controller: _interestController,
+                        minLines: 1,
+                        maxLines: 3,
+                      ),
+                      CustomInputField(
+                        fun: () {},
+                        title: 'Link',
+                        hintText: 'Add a link here...',
+                        controller: _linkController,
+                        inputType: TextInputType.url,
+                        iconPath: Assets.addIcon,
+                        textColor: AppColors.primaryColor,
+                        onChanged: (value) {
+                          if (value.isNotEmpty && !value.startsWith('http')) {
+                            final fullUrl = 'https://$value';
+                            final uri = Uri.tryParse(fullUrl);
+                            final domain = uri?.host ?? value;
+
+                            _linkController.text = domain;
+                            _linkController.selection =
+                                TextSelection.fromPosition(
+                              TextPosition(offset: _linkController.text.length),
+                            );
+                          }
+                        },
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomInputField(
+                              fun: () {},
+                              title: 'Country',
+                              iconPath: Assets.addIcon,
+                              hintText: 'United States',
+                              controller: _countryController,
+                              minLines: 1,
+                              maxLines: 3,
                             ),
-                          ],
-                        ),
-                        _isPrivateProfile
-                            ? const Text(
-                                'Only your approved friends can \nsee and interact with your \ncontent. ',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Color(0xFF9E9E9E),
-                                ),
-                              )
-                            : const Text(
-                                'Anyone on Kultureapp can see,\nshare, and interact with your\ncontent.',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Color(0xFF9E9E9E),
-                                ),
-                              )
-                      ],
-                    ),
-                  ],
+                          ),
+                          w1,
+                          Expanded(
+                            child: CustomInputField(
+                              fun: () {},
+                              title: 'English',
+                              iconPath: Assets.addIcon,
+                              hintText: 'United States',
+                              controller: _languageController,
+                              minLines: 1,
+                              maxLines: 3,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomInputField(
+                              fun: () {},
+                              title: 'Gender',
+                              iconPath: Assets.addIcon,
+                              hintText: 'Female',
+                              controller: _genderController,
+                              minLines: 1,
+                              maxLines: 3,
+                            ),
+                          ),
+                          w1,
+                          Expanded(
+                            child: CustomInputField(
+                              fun: () {},
+                              title: 'Phone number',
+                              iconPath: Assets.addIcon,
+                              hintText: 'Number',
+                              controller: _phoneNumberController,
+                              minLines: 1,
+                              maxLines: 3,
+                            ),
+                          ),
+                        ],
+                      ),
+                      h5,
+                      CustomSwitchTile(
+                        title: 'Private info',
+                        value: _isPrivatInfo,
+                        onChanged: (value) {
+                          setState(() {
+                            _isPrivatInfo = value;
+                          });
+                        },
+                        descriptionOn: 'Hide phone number & DOB',
+                        descriptionOff: 'Hide phone number & DOB',
+                      ),
+                      h1,
+                      const Divider(
+                        color: AppColors.lightGreyColor,
+                      ),
+                      h1,
+                      CustomSwitchTile(
+                        title: 'Private profile',
+                        value: _isPrivateProfile,
+                        onChanged: (value) {
+                          setState(() {
+                            _isPrivateProfile = value;
+                          });
+                        },
+                        descriptionOn: 'Your content is public.',
+                        descriptionOff: 'Your content is public.',
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+                h1,
+                PrimaryButton(
+                  onPressed: () {
+                    NavRouter.push(
+                        context, const DashboardPersistentBottomBar());
+                  },
+                  title: 'Next',
+                  height: 60,
+                  backgroundColor: AppColors.primaryColor,
+                  borderRadius: 50,
+                  width: double.infinity,
+                  shadowColor: AppColors.transparent,
+                  hMargin: 0,
+                  titleColor: AppColors.white,
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -33,7 +33,7 @@ class _SignupScreenState extends State<SignupScreen> {
   bool isObscureConfirm = true;
 
   final _formKey = GlobalKey<FormState>();
-@override
+  @override
   void initState() {
     super.initState();
     userNameController.addListener(_onFieldChanged);
@@ -42,15 +42,15 @@ class _SignupScreenState extends State<SignupScreen> {
     confirmPasswordController.addListener(_onFieldChanged);
   }
 
-void _onFieldChanged() {
+  void _onFieldChanged() {
     setState(() {
-      areAllFieldsFilled = 
-          userNameController.text.isNotEmpty &&
+      areAllFieldsFilled = userNameController.text.isNotEmpty &&
           emailController.text.isNotEmpty &&
           passwordController.text.isNotEmpty &&
           confirmPasswordController.text.isNotEmpty;
     });
   }
+
   @override
   void dispose() {
     userNameController.removeListener(_onFieldChanged);
@@ -138,22 +138,23 @@ void _onFieldChanged() {
                           ),
                           h2,
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 20.0),
                             child: Row(
                               children: <Widget>[
-                               Expanded(
-                                  child: _buildSocialButton(
-                                      Assets.pngTwitter, AppColors.searchBarColor),
+                                Expanded(
+                                  child: _buildSocialButton(Assets.pngTwitter,
+                                      AppColors.searchBarColor),
                                 ),
                                 w1,
                                 Expanded(
-                                  child: _buildSocialButton(
-                                      Assets.pngInsta, AppColors.searchBarColor),
+                                  child: _buildSocialButton(Assets.pngInsta,
+                                      AppColors.searchBarColor),
                                 ),
                                 w1,
                                 Expanded(
-                                  child: _buildSocialButton(
-                                      Assets.pngTiktok, AppColors.searchBarColor),
+                                  child: _buildSocialButton(Assets.pngTiktok,
+                                      AppColors.searchBarColor),
                                 )
                               ],
                             ),
@@ -163,13 +164,13 @@ void _onFieldChanged() {
                             controller: userNameController,
                             label: "Username",
                             boxConstraints: 18.0,
-                           borderColor: AppColors.searchBarColor,
+                            borderColor: AppColors.searchBarColor,
                             hintColor: AppColors.searchBarTextColor,
                             borderRadius: 16.0,
                             textColor: Colors.black,
-                             validator: (value) {
-                            return  Validators.required(userNameController.text);
-                            
+                            validator: (value) {
+                              return Validators.required(
+                                  userNameController.text);
                             },
                           ),
                           h1,
@@ -181,8 +182,10 @@ void _onFieldChanged() {
                             hintColor: AppColors.searchBarTextColor,
                             borderRadius: 16.0,
                             textColor: Colors.black,
-                             validator: (value) {
-                            return  Validators.email(emailController.text, );
+                            validator: (value) {
+                              return Validators.email(
+                                emailController.text,
+                              );
                             },
                           ),
                           h1,
@@ -190,13 +193,12 @@ void _onFieldChanged() {
                             controller: passwordController,
                             label: "Password",
                             boxConstraints: 18.0,
-                           borderColor: AppColors.searchBarColor,
+                            borderColor: AppColors.searchBarColor,
                             hintColor: AppColors.searchBarTextColor,
                             borderRadius: 16.0,
                             textColor: Colors.black,
                             validator: (value) {
-                            return  Validators.password(value);
-                              
+                              return Validators.password(value);
                             },
                             obscureText: isObscure,
                             suffixIcon: InkWell(
@@ -222,8 +224,9 @@ void _onFieldChanged() {
                             borderRadius: 16.0,
                             textColor: Colors.black,
                             validator: (value) {
-                            return  Validators.confirmPassword(confirmPasswordController.text, passwordController.text);
-                            
+                              return Validators.confirmPassword(
+                                  confirmPasswordController.text,
+                                  passwordController.text);
                             },
                             obscureText: isObscureConfirm,
                             suffixIcon: InkWell(
@@ -247,12 +250,13 @@ void _onFieldChanged() {
                               onPressed: () {
                                 // Perform login action here
                                 String email = emailController.text.trim();
-                                String password = passwordController.text.trim();
-        
+                                String password =
+                                    passwordController.text.trim();
+
                                 // if (email.isEmpty || password.isEmpty) {
                                 //   _showErrorDialog(context);
                                 // } else
-                                 if(_formKey.currentState?.validate() == true) {
+                                if (_formKey.currentState?.validate() == true) {
                                   Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
@@ -265,8 +269,9 @@ void _onFieldChanged() {
                                 }
                               },
                               title: 'Sign up',
-                              backgroundColor:areAllFieldsFilled? AppColors.primaryColor:
-                                AppColors.disableColor,
+                              backgroundColor: areAllFieldsFilled
+                                  ? AppColors.primaryColor
+                                  : AppColors.disableColor,
                               titleColor: AppColors.white,
                               borderRadius: 25,
                               shadowColor: AppColors.transparent),
@@ -285,10 +290,11 @@ void _onFieldChanged() {
                                   NavRouter.push(context, LoginScreen());
                                 },
                                 child: Text("account?",
-                                    style: context.textTheme.bodySmall?.copyWith(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w400,
-                                        color: AppColors.primaryColor)),
+                                    style: context.textTheme.bodySmall
+                                        ?.copyWith(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w400,
+                                            color: AppColors.primaryColor)),
                               ),
                             ],
                           ),

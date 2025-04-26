@@ -63,9 +63,11 @@ class CustomTileWidget extends StatelessWidget {
               Switch(
                 value: value,
                 onChanged: onChanged!,
-                activeColor: Colors.black,
-                activeTrackColor: AppColors.white,
-                inactiveThumbColor: AppColors.black,
+                activeColor: Colors.white,
+                activeTrackColor: AppColors.black,
+                inactiveThumbColor: AppColors.white,
+                inactiveTrackColor: const Color(0xFFE0E0E0),
+                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
               )
             else if (!isSwitch)
               const Icon(Icons.chevron_right, color: AppColors.black),

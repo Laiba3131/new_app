@@ -40,6 +40,7 @@ class AboutAppScreen extends StatelessWidget {
                   fun: () {},
                 ),
                 CustomTileWidget(
+                  isBorder: false,
                   title: 'Intellectual Property Policy',
                   onChanged: (value) {},
                   isSwitch: false,

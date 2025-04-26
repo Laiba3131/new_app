@@ -94,10 +94,11 @@ class _FriendsTabWidgetState extends State<FriendsTabWidget> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
           child: InputField(
-            controller: TextEditingController(),
+            controller: widget.searchController,
             label: 'Search...',
             borderRadius: 17,
-            fillColor: AppColors.searchBarColor,
+            borderColor: AppColors.searchBarColor,
+            // fillColor: AppColors.searchBarColor,
             prefixIcon: const Icon(
               Icons.search,
               color: AppColors.textGrey,

@@ -38,6 +38,7 @@ class _EnableAuthScreenState extends State<EnableAuthScreen> {
             NotificationSection(
               children: [
                 CustomTileWidget(
+                  isBorder: false,
                   title: '2 step auth',
                   value: isEnabled,
                   onChanged: _onToggle,
@@ -51,7 +52,7 @@ class _EnableAuthScreenState extends State<EnableAuthScreen> {
               hMargin: 0,
               onPressed: () {},
               title: 'Save changes',
-              backgroundColor: AppColors.black,
+              backgroundColor: AppColors.primaryColor,
               titleColor: AppColors.white,
               borderRadius: 17,
               shadowColor: AppColors.transparent,
