@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/generated/assets.dart';
 
 class CustomInputField extends StatelessWidget {
@@ -77,7 +78,10 @@ class CustomInputField extends StatelessWidget {
             ),
           ],
         ),
-        const Divider(height: 32),
+        const Divider(
+          height: 32,
+          color: AppColors.lightGreyColor,
+        ),
       ],
     );
   }

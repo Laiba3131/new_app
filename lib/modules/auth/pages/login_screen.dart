@@ -15,6 +15,7 @@ import 'package:sizer/sizer.dart';
 class LoginScreen extends StatelessWidget {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  bool isAuthenticated = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,28 +92,29 @@ class LoginScreen extends StatelessWidget {
                             children: <Widget>[
                               Expanded(
                                 child: _buildSocialButton(
-                                    Assets.pngTwitter, Colors.black),
+                                    Assets.pngTwitter, AppColors.searchBarColor),
                               ),
                               w1,
                               Expanded(
                                 child: _buildSocialButton(
-                                    Assets.pngInsta, Colors.black),
+                                    Assets.pngInsta, AppColors.searchBarColor),
                               ),
                               w1,
                               Expanded(
                                 child: _buildSocialButton(
-                                    Assets.pngTiktok, Colors.black),
+                                    Assets.pngTiktok, AppColors.searchBarColor),
                               )
                             ],
                           ),
                         ),
                         h4,
                         InputField(
-                          fillColor: AppColors.black,
+                          // fillColor: AppColors.black,
                           controller: emailController,
                           label: "Email address",
                           boxConstraints: 18.0,
-                          hintColor: Colors.white,
+                          borderColor: AppColors.searchBarColor,
+                          hintColor: AppColors.searchBarTextColor,
                           borderRadius: 16.0,
                           textColor: Colors.white,
                           validator: (value) {
@@ -127,11 +129,12 @@ class LoginScreen extends StatelessWidget {
                         ),
                         h1,
                         InputField(
-                          fillColor: AppColors.black,
+                          // fillColor: AppColors.black,
                           controller: passwordController,
                           label: "Password",
                           boxConstraints: 18.0,
-                          hintColor: Colors.white,
+                          borderColor: AppColors.searchBarColor,
+                          hintColor: AppColors.searchBarTextColor,
                           borderRadius: 16.0,
                           textColor: Colors.white,
                           validator: (value) {
@@ -172,7 +175,9 @@ class LoginScreen extends StatelessWidget {
 
                               if (email.isEmpty || password.isEmpty) {
                                 _showErrorDialog(context);
+                               
                               } else {
+                                 isAuthenticated = true;
                                 Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
@@ -185,7 +190,7 @@ class LoginScreen extends StatelessWidget {
                               }
                             },
                             title: 'Log in',
-                            backgroundColor: AppColors.primaryColor,
+                            backgroundColor: (emailController.text.isEmpty && passwordController.text.isNotEmpty) ? AppColors.primaryColor:AppColors.disableColor,
                             titleColor: AppColors.white,
                             borderRadius: 25,
                             shadowColor: AppColors.transparent),
@@ -230,12 +235,14 @@ class LoginScreen extends StatelessWidget {
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: AppColors.searchBarColor, width: 1),
       ),
       child: Center(
         child: Image.asset(
           icon,
           width: 35,
           height: 35,
+          color: AppColors.black,
         ),
       ),
     );

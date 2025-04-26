@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:kulture/config/config.dart';
 import 'package:kulture/constants/app_colors.dart';
-import 'package:kulture/modules/dashboard/pages/dashboard_persistent_bottom_bar.dart';
-import 'package:kulture/modules/profile/pages/bio_page.dart';
+import 'package:kulture/modules/profile/pages/bio_bottom_sheet.dart';
+import 'package:kulture/modules/profile/pages/interest_bottom_sheet.dart';
 import 'package:kulture/modules/profile/widgets/custom_input_field.dart';
 import 'package:kulture/modules/profile/widgets/custom_switch_tile.dart';
 import 'package:kulture/ui/button/primary_button.dart';
@@ -26,7 +25,15 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _bioController = TextEditingController();
   final TextEditingController _linkController = TextEditingController();
+  final TextEditingController _interestController = TextEditingController();
+  final TextEditingController _dobController = TextEditingController();
+  final TextEditingController _countryController = TextEditingController();
+  final TextEditingController _languageController = TextEditingController();
+  final TextEditingController _genderController = TextEditingController();
+  final TextEditingController _phoneNumberController = TextEditingController();
+
   bool _isPrivateProfile = false;
+  bool _isPrivatInfo = false;
   File? _selectedImage;
 
   @override
@@ -72,7 +79,7 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
               Text(
                 "Customize Your Profile",
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      fontSize: 32,
+                      fontSize: 28,
                       fontWeight: FontWeight.w700,
                       color: AppColors.textblackColor,
                     ),
@@ -93,16 +100,42 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                 padding: const EdgeInsets.all(20),
                 child: Column(
                   children: [
-                    CustomInputField(
-                      fun: () {},
-                      title: 'Name',
-                      iconPath: Assets.addIcon,
-                      hintText: 'Jade Smith',
-                      controller: _bioController,
-                      minLines: 1,
-                      maxLines: 3,
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CustomInputField(
+                            fun: () {},
+                            title: 'Name',
+                            iconPath: Assets.addIcon,
+                            hintText: 'Jade Smith',
+                            controller: _nameController,
+                            minLines: 1,
+                            maxLines: 3,
+                          ),
+                        ),
+                        w1,
+                        GestureDetector(
+                          onTap: _pickImage,
+                          child: Container(
+                            height: 45,
+                            width: 45,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: _selectedImage != null
+                                  ? DecorationImage(
+                                      image: FileImage(_selectedImage!),
+                                      fit: BoxFit.cover,
+                                    )
+                                  : null,
+                            ),
+                            child: _selectedImage == null
+                                ? Image.asset(Assets.addUserIcon,
+                                    height: 40, width: 40)
+                                : null,
+                          ),
+                        ),
+                      ],
                     ),
-
                     Row(
                       children: [
                         Expanded(
@@ -111,7 +144,7 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                             title: 'Username',
                             iconPath: Assets.addIcon,
                             hintText: '@jadesmith',
-                            controller: _bioController,
+                            controller: _usernameController,
                             minLines: 1,
                             maxLines: 3,
                           ),
@@ -123,18 +156,28 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                             title: 'Date of Birth',
                             iconPath: Assets.addIcon,
                             hintText: '12/25/1998',
-                            controller: _bioController,
+                            controller: _dobController,
                             minLines: 1,
                             maxLines: 3,
                           ),
                         ),
                       ],
                     ),
-
-                    // Bio section
                     CustomInputField(
-                      fun: () {
-                        NavRouter.push(context, BioPage());
+                      fun: () async {
+                        final result = await showModalBottomSheet<String>(
+                          context: context,
+                          isScrollControlled: true,
+                          backgroundColor: Colors.white,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.vertical(top: Radius.circular(20)),
+                          ),
+                          builder: (context) => BioBottomSheet(),
+                        );
+
+                        _bioController.text = result ??
+                            ''; // If result is null, assign empty string
                       },
                       title: 'Bio',
                       iconPath: Assets.addIcon,
@@ -143,17 +186,28 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                       minLines: 1,
                       maxLines: 3,
                     ),
-
                     CustomInputField(
-                      fun: () {},
+                      fun: () async {
+                        final List<String>? selectedInterests =
+                            await showModalBottomSheet<List<String>>(
+                          context: context,
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          builder: (context) => const InterestsBottomSheet(),
+                        );
+
+                        if (selectedInterests != null) {
+                          _interestController.text =
+                              selectedInterests.join(', ');
+                        }
+                      },
                       title: 'Interests',
                       iconPath: Assets.addIcon,
                       hintText: 'Add your interest here',
-                      controller: _bioController,
+                      controller: _interestController,
                       minLines: 1,
                       maxLines: 3,
                     ),
-
                     CustomInputField(
                       fun: () {},
                       title: 'Link',
@@ -161,7 +215,7 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                       controller: _linkController,
                       inputType: TextInputType.url,
                       iconPath: Assets.addIcon,
-                      textColor: const Color.fromARGB(255, 43, 26, 200),
+                      textColor: AppColors.primaryColor,
                       onChanged: (value) {
                         if (value.isNotEmpty && !value.startsWith('http')) {
                           final fullUrl = 'https://$value';
@@ -176,7 +230,6 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                         }
                       },
                     ),
-
                     Row(
                       children: [
                         Expanded(
@@ -185,7 +238,7 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                             title: 'Country',
                             iconPath: Assets.addIcon,
                             hintText: 'United States',
-                            controller: _bioController,
+                            controller: _countryController,
                             minLines: 1,
                             maxLines: 3,
                           ),
@@ -197,14 +250,13 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                             title: 'English',
                             iconPath: Assets.addIcon,
                             hintText: 'United States',
-                            controller: _bioController,
+                            controller: _languageController,
                             minLines: 1,
                             maxLines: 3,
                           ),
                         ),
                       ],
                     ),
-
                     Row(
                       children: [
                         Expanded(
@@ -213,7 +265,7 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                             title: 'Gender',
                             iconPath: Assets.addIcon,
                             hintText: 'Female',
-                            controller: _bioController,
+                            controller: _genderController,
                             minLines: 1,
                             maxLines: 3,
                           ),
@@ -225,7 +277,7 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                             title: 'Phone number',
                             iconPath: Assets.addIcon,
                             hintText: 'Number',
-                            controller: _bioController,
+                            controller: _phoneNumberController,
                             minLines: 1,
                             maxLines: 3,
                           ),
@@ -235,18 +287,19 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                     h5,
                     CustomSwitchTile(
                       title: 'Private info',
-                      value: _isPrivateProfile,
+                      value: _isPrivatInfo,
                       onChanged: (value) {
                         setState(() {
-                          _isPrivateProfile = value;
+                          _isPrivatInfo = value;
                         });
                       },
                       descriptionOn: 'Hide phone number & DOB',
                       descriptionOff: 'Hide phone number & DOB',
                     ),
-
                     h1,
-                    Divider(),
+                    const Divider(
+                      color: AppColors.lightGreyColor,
+                    ),
                     h1,
                     CustomSwitchTile(
                       title: 'Private profile',
