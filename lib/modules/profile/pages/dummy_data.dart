@@ -165,6 +165,15 @@ class DummyData {
           timeAgo: '1h',
           userImage: Assets.pngImage1,
           likes: 5,
+          replies: [
+            Comment(
+              username: 'Tierra Tierra',
+              text: 'Monica Avila Me too!! I reall love it ',
+              timeAgo: '1h',
+              userImage: Assets.pngImage1,
+              likes: 5,
+            ),
+          ]
         ),
         Comment(
           username: 'jane_smith',

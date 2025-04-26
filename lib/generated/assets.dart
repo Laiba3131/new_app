@@ -15,6 +15,11 @@ class Assets {
   static const String person = 'assets/svg/mdi_person-plus-outline.svg';
   static const String svgFvtFilled = 'assets/svg/Vector (10).svg';
 
+  static const String gallery = 'assets/svg/gallery.svg';
+  static const String camers = 'assets/svg/camera.svg';
+  static const String thum = 'assets/svg/thum.svg';
+
+
   //settingsicon
   static const String account = 'assets/svg/Vector (5).svg';
   static const String changePassword = 'assets/svg/Vector (6).svg';
@@ -43,6 +48,15 @@ class Assets {
   //Images
   static const String pngSplashLogo = 'assets/images/logo.png';
   static const String gridPicsImage = 'assets/images/grid_pics/image.png';
+
+  //
+  static const String burder = 'assets/images/burger.png';
+  static const String aroplane = 'assets/images/aroplane.png';
+  static const String books = 'assets/images/books.png';
+  static const String emoji = 'assets/images/emoji.png';
+  static const String dress = 'assets/images/dress.png';
+  static const String lips = 'assets/images/lips.png';
+
 
 //PnGs
   static const String pngSplashLogo1 = 'assets/png/Group 1.png';

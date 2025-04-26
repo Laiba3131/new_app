@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/modules/activity/pages/activity_screen.dart';
 import 'package:kulture/modules/home/pages/infinity_scrolling_screen.dart';
+import 'package:kulture/modules/home/widgets/psoting_sheet.dart';
 import 'package:kulture/modules/profile/pages/your_profile_screen.dart';
 import 'package:kulture/modules/search/pages/search_screen.dart';
 import 'package:kulture/ui/bottom_bar_visibility_provider.dart';
@@ -103,7 +104,9 @@ class _DashboardPersistentBottomBarState
                 ),
                 child: FloatingActionButton(
                   backgroundColor: Colors.white,
-                  onPressed: () {},
+                  onPressed: () {
+                    PostingSheet.show(context, h2: const SizedBox());
+                  },
                   elevation: 0,
                   child: const Icon(
                     Icons.add,
