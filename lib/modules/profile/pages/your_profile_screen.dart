@@ -77,15 +77,14 @@ class _YourProfileScreenState extends State<YourProfileScreen>
               child: Stack(
                 alignment: Alignment.center,
                 children: [
-                  const Icon(Icons.message,
-                      color: Color.fromARGB(255, 28, 24, 24)),
+                 Image.asset(Assets.mesgIcon, height: 20, width: 20),
                   Positioned(
                     right: 0,
                     top: 10,
                     child: Container(
                       padding: const EdgeInsets.all(2),
-                      decoration: const BoxDecoration(
-                        color: AppColors.red,
+                      decoration:  BoxDecoration(
+                        color: AppColors.primaryColor,
                         shape: BoxShape.circle,
                       ),
                       constraints: const BoxConstraints(

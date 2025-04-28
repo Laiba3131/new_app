@@ -89,6 +89,7 @@ class Assets {
   static const String suggestCancel = 'assets/png/suggestCancel.png';
   static const String emojiIcon = 'assets/png/emojiIcon.png';
   static const String sendMsg = 'assets/png/sendMsg.png';
+  static const String mesgIcon = 'assets/png/mesgIcon.png';
 
 //hight quality images
   static const String img1 = 'assets/png/img1.jpg';
