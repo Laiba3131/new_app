@@ -32,8 +32,8 @@ class _NotesScreenState extends State<NotesScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildStorySection(),
-                    h2,
+                    // _buildStorySection(),
+                    // h2,
                     _buildNotesFromFriends(),
                     h2,
                     _buildSuggestedAccounts(),

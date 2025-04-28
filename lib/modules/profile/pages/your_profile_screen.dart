@@ -77,11 +77,7 @@ class _YourProfileScreenState extends State<YourProfileScreen>
               child: Stack(
                 alignment: Alignment.center,
                 children: [
-<<<<<<< Updated upstream
                  Image.asset(Assets.mesgIcon, height: 20, width: 20),
-=======
-                 Image.asset(Assets.sendMsg),
->>>>>>> Stashed changes
                   Positioned(
                     right: 0,
                     top: 10,

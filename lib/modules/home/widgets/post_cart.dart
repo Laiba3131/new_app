@@ -86,7 +86,12 @@ class _PostCardState extends State<PostCard> {
                       hMargin: 0,
                     ),
                     const SizedBox(width: 8),
-                    const Icon(Icons.more_horiz, color: Colors.black),
+                    InkWell(
+                      onTap: () async {
+                                        BottomSheetService.showSaveSheet(
+                                            context);
+                                      },
+                      child: const Icon(Icons.more_horiz, color: Colors.black)),
                   ],
                 ),
               ],

@@ -221,7 +221,7 @@ class PrefixIconButton extends StatelessWidget {
         ),
         child: Row(
           mainAxisAlignment: mainAxisAlignment,
-          mainAxisSize: MainAxisSize.min,
+           mainAxisSize: width != null ? MainAxisSize.min : MainAxisSize.max,
           children: [
             SvgPicture.asset(
               height: prefixIconSize,

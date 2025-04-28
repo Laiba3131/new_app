@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:kulture/generated/assets.dart';
 import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/modules/home/model/post_model.dart';
+import 'package:kulture/modules/home/pages/home_screen.dart';
 import 'package:kulture/modules/home/widgets/post_cart.dart';
+import 'package:kulture/modules/profile/pages/your_profile_screen.dart';
 
 class InfinityScrollingPhotos extends StatefulWidget {
   const InfinityScrollingPhotos({super.key});
@@ -115,24 +117,45 @@ class _InfinityScrollingPhotosState extends State<InfinityScrollingPhotos> {
           onPressed: () => Navigator.pop(context),
         ),
       ),
-      body: ListView.builder(
-        controller: _scrollController,
-        itemCount: _posts.length + 1,
-        itemBuilder: (context, index) {
-          // if (index == _posts.length) {
-          //   return _isLoading
-          //       ? const Center(
-          //           child: Padding(
-          //             padding: EdgeInsets.all(16.0),
-          //             child: CircularProgressIndicator(color: Colors.black),
-          //           ),
-          //         )
-          //       : const SizedBox();
-          // }
-
-          final post = _posts[index];
-          return PostCard(post: post);
-        },
+      body: GestureDetector(
+         onHorizontalDragEnd: (details) {
+              // If swiped right (positive velocity)
+              if (details.primaryVelocity! > 0) {
+                // Navigate to the HomeScreen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                );
+              }
+              // If swiped left (negative velocity)
+              else if (details.primaryVelocity! < 0) {
+                // Navigate to the YourProfileScreen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const YourProfileScreen()),
+                );
+              }
+            },
+        child: ListView.builder(
+          controller: _scrollController,
+          itemCount: _posts.length + 1,
+          itemBuilder: (context, index) {
+            // if (index == _posts.length) {
+            //   return _isLoading
+            //       ? const Center(
+            //           child: Padding(
+            //             padding: EdgeInsets.all(16.0),
+            //             child: CircularProgressIndicator(color: Colors.black),
+            //           ),
+            //         )
+            //       : const SizedBox();
+            // }
+        
+            final post = _posts[index];
+            return PostCard(post: post);
+          },
+        ),
       ),
     );
   }
