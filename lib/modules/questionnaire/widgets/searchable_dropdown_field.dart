@@ -59,7 +59,7 @@ class _SearchableDropdownFieldState extends State<SearchableDropdownField> {
                 InputField(
                   controller: widget.controller,
                   label: '',
-                  readOnly: true,
+                  // readOnly: true,
                   focusNode: widget.focusNode,
                   prefixIcon: const Icon(
                     Icons.search,

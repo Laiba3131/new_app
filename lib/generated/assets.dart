@@ -36,6 +36,7 @@ class Assets {
   static const String LogOut = 'assets/svg/grommet-icons_logout.svg';
 
   static const String like1 = 'assets/svg/Vector.svg';
+  static const String shareIcon = 'assets/svg/shareIcon.svg';
   static const String like2 = 'assets/svg/arcticons_messages-2.svg';
   static const String like3 = 'assets/svg/famicons_people-outline.svg';
   static const String like4 = 'assets/svg/stash_comments-light.svg';

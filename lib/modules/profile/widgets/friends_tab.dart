@@ -123,14 +123,14 @@ class _FriendsTabWidgetState extends State<FriendsTabWidget> {
               username: friend['username']!,
               avatarUrl: friend['avatarUrl']!,
               onMessageTap: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Messaging ${friend['name']}')),
-                );
+                // ScaffoldMessenger.of(context).showSnackBar(
+                //   SnackBar(content: Text('Messaging ${friend['name']}')),
+                // );
               },
               onMoreTap: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('More options for ${friend['name']}')),
-                );
+                // ScaffoldMessenger.of(context).showSnackBar(
+                //   SnackBar(content: Text('More options for ${friend['name']}')),
+                // );
               },
             )),
 
@@ -195,9 +195,9 @@ class _FriendsTabWidgetState extends State<FriendsTabWidget> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Dismissed ${friend['name']}')),
-                      );
+                      // ScaffoldMessenger.of(context).showSnackBar(
+                      //   SnackBar(content: Text('Dismissed ${friend['name']}')),
+                      // );
                     },
                     child: Image.asset(
                       Assets.suggestCancel,
@@ -256,9 +256,9 @@ class _FriendsTabWidgetState extends State<FriendsTabWidget> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Dismissed ${friend['name']}')),
-                      );
+                      // ScaffoldMessenger.of(context).showSnackBar(
+                      //   SnackBar(content: Text('Dismissed ${friend['name']}')),
+                      // );
                     },
                     child: Image.asset(
                       Assets.suggestCancel,
@@ -331,9 +331,9 @@ class _FriendsTabWidgetState extends State<FriendsTabWidget> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Dismissed ${friend['name']}')),
-                      );
+                      // ScaffoldMessenger.of(context).showSnackBar(
+                      //   SnackBar(content: Text('Dismissed ${friend['name']}')),
+                      // );
                     },
                     child: Image.asset(
                       Assets.suggestCancel,

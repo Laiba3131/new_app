@@ -167,8 +167,8 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                         ),
                       ],
                     ),
-                    CustomInputField(
-                      fun: () async {
+                    InkWell(
+                      onTap: ()async {
                         final result = await showModalBottomSheet<String>(
                           context: context,
                           isScrollControlled: true,
@@ -183,15 +183,19 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                         _bioController.text = result ??
                             ''; // If result is null, assign empty string
                       },
-                      title: 'Bio',
-                      iconPath: Assets.addIcon,
-                      hintText: 'Add a link here (optional)',
-                      controller: _bioController,
-                      minLines: 1,
-                      maxLines: 3,
+                      child: CustomInputField(
+                        fun: () {},
+                        title: 'Bio',
+                        iconPath: Assets.addIcon,
+                        hintText: 'Add a link here (optional)',
+                        controller: _bioController,
+                        minLines: 1,
+                        maxLines: 3,
+                        isReadOnly: true,
+                      ),
                     ),
-                    CustomInputField(
-                      fun: () async {
+                    InkWell(
+                      onTap: ()async {
                         final List<String>? selectedInterests =
                             await showModalBottomSheet<List<String>>(
                           context: context,
@@ -205,12 +209,16 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                               selectedInterests.join(', ');
                         }
                       },
-                      title: 'Interests',
-                      iconPath: Assets.addIcon,
-                      hintText: 'Add your interest here',
-                      controller: _interestController,
-                      minLines: 1,
-                      maxLines: 3,
+                      child: CustomInputField(
+                        fun: () {},
+                        title: 'Interests',
+                        iconPath: Assets.addIcon,
+                        hintText: 'Add your interest here',
+                        controller: _interestController,
+                        minLines: 1,
+                        maxLines: 3,
+                        isReadOnly: true,
+                      ),
                     ),
                     CustomInputField(
                       fun: () {},
@@ -253,7 +261,7 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                             fun: () {},
                             title: 'English',
                             iconPath: Assets.addIcon,
-                            hintText: 'United States',
+                            hintText: 'English',
                             controller: _languageController,
                             minLines: 1,
                             maxLines: 3,

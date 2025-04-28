@@ -221,12 +221,12 @@ class _ProfileCustomizationScreenState
                   child: TextButton(
                     onPressed: () {
                       // Save profile information
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Profile updated successfully!'),
-                          backgroundColor: Colors.green,
-                        ),
-                      );
+                      // ScaffoldMessenger.of(context).showSnackBar(
+                      //   const SnackBar(
+                      //     content: Text('Profile updated successfully!'),
+                      //     backgroundColor: Colors.green,
+                      //   ),
+                      // );
                       Navigator.of(context).pop();
                     },
                     child: const Text(

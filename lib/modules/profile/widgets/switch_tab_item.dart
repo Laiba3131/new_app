@@ -134,6 +134,11 @@ class SwitchTabItem extends StatelessWidget {
                           ],
                         ),
                         w3,
+                          SvgPicture.asset(
+                          Assets.thum,
+                          height: 12,
+                        ),
+                        w3,
                         InkWell(
                           onTap: () {
                             BottomSheetService.showCommentSheet(context);

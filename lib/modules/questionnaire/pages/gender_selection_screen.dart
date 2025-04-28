@@ -143,21 +143,21 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
       cubit.updateGender(selectedGender!);
       cubit.submitGenderInfo();
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Questionnaire completed successfully!"),
-          backgroundColor: Colors.green,
-        ),
-      );
+      // ScaffoldMessenger.of(context).showSnackBar(
+      //   const SnackBar(
+      //     content: Text("Questionnaire completed successfully!"),
+      //     backgroundColor: Colors.green,
+      //   ),
+      // );
 
       NavRouter.push(context, const CustomizedProfileScreen());
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Please select your gender"),
-          backgroundColor: Colors.red,
-        ),
-      );
+      // ScaffoldMessenger.of(context).showSnackBar(
+      //   const SnackBar(
+      //     content: Text("Please select your gender"),
+      //     backgroundColor: Colors.red,
+      //   ),
+      // );
     }
   }
 }

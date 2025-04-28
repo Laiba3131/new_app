@@ -9,6 +9,7 @@ import 'package:kulture/utils/extensions/extended_context.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
 import 'package:kulture/modules/onBoarding/pages/pre_profile_edit.dart';
 import 'package:kulture/utils/validators/validators.dart';
+import 'package:kulture/modules/questionnaire/pages/user_info_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -108,7 +109,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                           Center(
                             child: Text(
-                              'Sign up now',
+                              'Create your account',
                               style: context.textTheme.bodySmall?.copyWith(
                                 fontSize: 24,
                                 fontWeight: FontWeight.w700,
@@ -121,21 +122,16 @@ class _SignupScreenState extends State<SignupScreen> {
                               // ),
                             ),
                           ),
-                          Center(
-                            child: Text(
-                              'Signing up is as easy as counting to 123',
-                              style: context.textTheme.bodySmall?.copyWith(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w300,
-                                color: AppColors.black,
-                              ),
-                              // style: AppTextStyles.interRegular(
-                              //   fontSize: 13,
-                              //   fontWeight: FontWeight.w300,
-                              //   color: AppColors.black,
-                              // ),
-                            ),
-                          ),
+                          // Center(
+                          //   child: Text(
+                          //     'Signing up is as easy as counting to 123',
+                          //     style: context.textTheme.bodySmall?.copyWith(
+                          //       fontSize: 13,
+                          //       fontWeight: FontWeight.w300,
+                          //       color: AppColors.black,
+                          //     ),
+                          //   ),
+                          // ),
                           h2,
                           Padding(
                             padding:
@@ -261,7 +257,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                          const PreProfileEditPage(),
+                                          const UserInfoScreen(),
                                     ),
                                   );
                                   // Call your login function here

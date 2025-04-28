@@ -77,7 +77,11 @@ class _YourProfileScreenState extends State<YourProfileScreen>
               child: Stack(
                 alignment: Alignment.center,
                 children: [
+<<<<<<< Updated upstream
                  Image.asset(Assets.mesgIcon, height: 20, width: 20),
+=======
+                 Image.asset(Assets.sendMsg),
+>>>>>>> Stashed changes
                   Positioned(
                     right: 0,
                     top: 10,
@@ -106,33 +110,34 @@ class _YourProfileScreenState extends State<YourProfileScreen>
               ),
             ),
             w2,
-            InkWell(
-              onTap: () {
-                // NavRouter.pushFromRoot(context, const StoriesScreen());
-              },
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  SvgPicture.asset(Assets.activeIcon),
-                  // const Icon(Icons.shopping_bag_outlined, color: AppColors.black),
-                  Positioned(
-                    right: 0,
-                    top: 0,
-                    child: Container(
-                      padding: const EdgeInsets.all(2),
-                      decoration: const BoxDecoration(
-                        color: AppColors.red,
-                        shape: BoxShape.circle,
-                      ),
-                      constraints: const BoxConstraints(
-                        minWidth: 8,
-                        minHeight: 8,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            // InkWell(
+            //   onTap: () {
+            //     // NavRouter.pushFromRoot(context, const StoriesScreen());
+            //   },
+            //   child: Stack(
+            //     alignment: Alignment.center,
+            //     children: [
+            //       SvgPicture.asset(Assets.activeIcon),
+            //       // const Icon(Icons.shopping_bag_outlined, color: AppColors.black),
+            //       Positioned(
+            //         right: 0,
+            //         top: 0,
+            //         child: Container(
+            //           padding: const EdgeInsets.all(2),
+            //           decoration: const BoxDecoration(
+            //             color: AppColors.red,
+            //             shape: BoxShape.circle,
+            //           ),
+            //           constraints: const BoxConstraints(
+            //             minWidth: 8,
+            //             minHeight: 8,
+            //           ),
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+          
             IconButton(
               icon: SvgPicture.asset(Assets.svgHamburger),
               onPressed: () {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/generated/assets.dart';
 import 'package:kulture/modules/home/model/post_model.dart';
@@ -143,6 +144,11 @@ class _PostCardState extends State<PostCard> {
                         ],
                       ),
                     ),
+                    w3,
+                      SvgPicture.asset(
+                          Assets.thum,
+                          height: 12,
+                        ),
                     w3,
                     InkWell(
                       onTap: () {

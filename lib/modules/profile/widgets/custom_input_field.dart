@@ -13,6 +13,7 @@ class CustomInputField extends StatelessWidget {
   final String? iconPath;
   final Color? textColor;
   final VoidCallback fun;
+  final bool isReadOnly;
 
   const CustomInputField({
     super.key,
@@ -26,6 +27,7 @@ class CustomInputField extends StatelessWidget {
     this.iconPath,
     required this.fun,
     this.textColor,
+    this.isReadOnly = false,
   });
 
   @override
@@ -53,6 +55,7 @@ class CustomInputField extends StatelessWidget {
             const SizedBox(width: 8),
             Expanded(
               child: TextField(
+                readOnly: isReadOnly,
                 controller: controller,
                 keyboardType: inputType,
                 minLines: minLines,

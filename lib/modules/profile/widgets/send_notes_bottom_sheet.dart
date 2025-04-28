@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/generated/assets.dart';
 import 'package:kulture/ui/bottom_bar_visibility_provider.dart';
@@ -160,11 +161,10 @@ class _SendNotesBottomSheetState extends State<SendNotesBottomSheet> {
               shape: BoxShape.circle,
               color: AppColors.textGrey,
             ),
-            child: const Icon(
-              Icons.link,
-              color: AppColors.white,
-              size: 30,
-            ),
+            child:  SvgPicture.asset(
+                          Assets.shareIcon,
+                          height: 12,
+                        ),
           ),
           h1,
         ],

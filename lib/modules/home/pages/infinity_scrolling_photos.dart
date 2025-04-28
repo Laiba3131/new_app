@@ -119,16 +119,16 @@ class _InfinityScrollingPhotosState extends State<InfinityScrollingPhotos> {
         controller: _scrollController,
         itemCount: _posts.length + 1,
         itemBuilder: (context, index) {
-          if (index == _posts.length) {
-            return _isLoading
-                ? const Center(
-                    child: Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: CircularProgressIndicator(color: Colors.black),
-                    ),
-                  )
-                : const SizedBox();
-          }
+          // if (index == _posts.length) {
+          //   return _isLoading
+          //       ? const Center(
+          //           child: Padding(
+          //             padding: EdgeInsets.all(16.0),
+          //             child: CircularProgressIndicator(color: Colors.black),
+          //           ),
+          //         )
+          //       : const SizedBox();
+          // }
 
           final post = _posts[index];
           return PostCard(post: post);

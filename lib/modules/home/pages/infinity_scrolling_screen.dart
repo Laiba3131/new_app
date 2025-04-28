@@ -205,6 +205,30 @@ class _InfinityScrollingScreenState extends State<InfinityScrollingScreen>
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
+                                      CustomFavoriteIcon(
+                                      outlineAssetPath: Assets.svgFvt,
+                                      filledAssetPath: Assets.svgFvtFilled,
+                                      size: 25,
+                                      initiallyFavorited: false,
+                                      onToggle: (isFav) {},
+                                    ),
+                                    Text(
+                                      item['likes'],
+                                      style: context.textTheme.bodyMedium
+                                          ?.copyWith(
+                                        color: AppColors.white,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                    h2,
+                                     SvgPicture.asset(
+                          Assets.thum,
+                          height: 25,
+                           color: AppColors.white
+
+                        ),
+                                    h2,
                                     InkWell(
                                       onTap: () async {
                                         BottomSheetService.showCommentSheet(
@@ -223,23 +247,7 @@ class _InfinityScrollingScreenState extends State<InfinityScrollingScreen>
                                       ),
                                     ),
                                     h2,
-                                    CustomFavoriteIcon(
-                                      outlineAssetPath: Assets.svgFvt,
-                                      filledAssetPath: Assets.svgFvtFilled,
-                                      size: 25,
-                                      initiallyFavorited: false,
-                                      onToggle: (isFav) {},
-                                    ),
-                                    Text(
-                                      item['likes'],
-                                      style: context.textTheme.bodyMedium
-                                          ?.copyWith(
-                                        color: AppColors.white,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                    h2,
+                                  
                                     InkWell(
                                       onTap: () async {
                                         BottomSheetService.showSendNoteSheet(

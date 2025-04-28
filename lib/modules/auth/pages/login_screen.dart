@@ -4,13 +4,11 @@ import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/generated/assets.dart';
 import 'package:kulture/modules/auth/pages/forgot_password_screen.dart';
 import 'package:kulture/modules/auth/pages/signup_screen.dart';
-import 'package:kulture/modules/profile/pages/customized_profile_screen.dart';
 import 'package:kulture/modules/questionnaire/pages/user_info_screen.dart';
 import 'package:kulture/ui/button/primary_button.dart';
 import 'package:kulture/ui/input/input_field.dart';
 import 'package:kulture/utils/extensions/extended_context.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
-import 'package:kulture/modules/onBoarding/pages/pre_profile_edit.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({super.key});
