@@ -81,12 +81,20 @@ class SwitchTabItem extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        Text(
-                          post.username,
-                          style: context.textTheme.bodySmall?.copyWith(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.black),
+                        InkWell(
+                           onTap: () {
+                                            NavRouter.push(
+                                              context,
+                                              const UserProfileScreen(),
+                                            );
+                                          },
+                          child: Text(
+                            post.username,
+                            style: context.textTheme.bodySmall?.copyWith(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.black),
+                          ),
                         ),
                         w0P5,
                         Text(

@@ -135,14 +135,22 @@ class VideoGridWidget extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 6),
-                        Expanded(
-                          child: Text(
-                            isEven ? 'TinyBossHQ' : 'Denny 💕',
-                            style: context.textTheme.bodyMedium?.copyWith(
-                                color: AppColors.textGrey,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w300),
-                            overflow: TextOverflow.ellipsis,
+                        InkWell(
+                           onTap: () {
+                                            NavRouter.push(
+                                              context,
+                                              const UserProfileScreen(),
+                                            );
+                                          },
+                          child: Expanded(
+                            child: Text(
+                              isEven ? 'TinyBossHQ' : 'Denny 💕',
+                              style: context.textTheme.bodyMedium?.copyWith(
+                                  color: AppColors.textGrey,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w300),
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           ),
                         ),
                         const Icon(Icons.favorite_border,

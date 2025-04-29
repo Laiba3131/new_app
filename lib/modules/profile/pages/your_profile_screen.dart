@@ -58,13 +58,14 @@ class _YourProfileScreenState extends State<YourProfileScreen>
           backgroundColor: AppColors.white,
           elevation: 0,
           centerTitle: false,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back_ios, color: AppColors.black),
-            onPressed: () {
-              NavRouter.pushFromRoot(
+          leading:  InkWell(
+            onTap: () {
+               NavRouter.pushFromRoot(
                   context, const DashboardPersistentBottomBar());
             },
-          ),
+            child: const Icon(Icons.arrow_back_ios, color: AppColors.black)),
+            
+          
           title: const Text("Back",
               style: TextStyle(
                   color: AppColors.black, fontWeight: FontWeight.w400)),

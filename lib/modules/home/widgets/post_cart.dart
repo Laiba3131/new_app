@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:kulture/config/routes/nav_router.dart';
 import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/generated/assets.dart';
 import 'package:kulture/modules/home/model/post_model.dart';
+import 'package:kulture/modules/profile/pages/user_profile_screen.dart';
 import 'package:kulture/ui/button/primary_button.dart';
 import 'package:kulture/utils/extensions/extended_context.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
@@ -38,36 +40,51 @@ class _PostCardState extends State<PostCard> {
               children: [
                 Row(
                   children: [
-                    Stack(
-                      children: [
-                        const CircleAvatar(
-                          radius: 20,
-                          backgroundImage: AssetImage(
-                            Assets.pngImage6,
-                          ),
-                        ),
-                        Positioned(
-                          bottom: -2,
-                          right: -2,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              shape: BoxShape.circle,
-                              border: Border.all(color: Colors.white, width: 2),
+                    InkWell( onTap: () {
+                                            NavRouter.push(
+                                              context,
+                                              const UserProfileScreen(),
+                                            );
+                                          },
+                      child: Stack(
+                        children: [
+                          const CircleAvatar(
+                            radius: 20,
+                            backgroundImage: AssetImage(
+                              Assets.pngImage6,
                             ),
-                            child: const Icon(Icons.add_circle,
-                                color: Colors.black, size: 16),
                           ),
-                        ),
-                      ],
+                          Positioned(
+                            bottom: -2,
+                            right: -2,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                                border: Border.all(color: Colors.white, width: 2),
+                              ),
+                              child: const Icon(Icons.add_circle,
+                                  color: Colors.black, size: 16),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     const SizedBox(width: 12),
-                    const Text(
-                      'Balaiytoreal',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16,
+                    InkWell(
+                       onTap: () {
+                                            NavRouter.push(
+                                              context,
+                                              const UserProfileScreen(),
+                                            );
+                                          },
+                      child: const Text(
+                        'Balaiytoreal',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                        ),
                       ),
                     ),
                   ],

@@ -29,6 +29,8 @@ class Assets {
       'assets/svg/material-symbols-light_health-and-safety.svg';
   static const String block =
       'assets/svg/fluent_presence-blocked-10-regular.svg';
+       static const String trash =
+      'assets/svg/trash.svg';
   static const String twoFactorAuth =
       'assets/svg/solar_shield-check-outline.svg';
   static const String notificationSetting = 'assets/svg/mdi_bell-outline.svg';

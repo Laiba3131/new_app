@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/ui/button/primary_button.dart';
 import 'package:kulture/utils/extensions/extended_context.dart';
@@ -292,9 +293,14 @@ bool isBlocked = true;
       padding: const EdgeInsets.all(24.0),
       child: Column(
         children: [
-          CircleAvatar(
-            radius: 40,
-            backgroundImage: AssetImage(widget.profileImage),
+          GestureDetector(
+             onLongPress: () {
+    _showDeleteBlockDialog(context);
+  },
+            child: CircleAvatar(
+              radius: 40,
+              backgroundImage: AssetImage(widget.profileImage),
+            ),
           ),
           const SizedBox(height: 12),
           Text(
@@ -329,4 +335,77 @@ bool isBlocked = true;
       ),
     );
   }
+void _showDeleteBlockDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return Dialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+          InkWell(
+           onTap: () => Navigator.pop(context),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 14,left: 8,right: 8),
+              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                        'Block',
+                        style: TextStyle(
+                          color: Colors.black,
+                           fontWeight: FontWeight.w400,
+                          fontSize: 17
+                        ),
+                      ),
+                     SvgPicture.asset(
+                        Assets.block,
+                        width: 24,
+                        color: AppColors.black,
+                        height: 24,
+                      ),
+                ],
+              ),
+            ),
+          ),
+          h1,
+          const Divider(
+            color: AppColors.searchBarColor,
+            thickness: 1,
+          ),
+          h1,
+            InkWell(
+               onTap: () => Navigator.pop(context),
+              child: Padding(
+              padding: const EdgeInsets.only(bottom: 14,left: 8,right: 8),
+              
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                        'Delete',
+                        style: TextStyle(
+                          color: Colors.red,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 17
+                        ),
+                      ),
+                       SvgPicture.asset(
+                        Assets.trash,
+                        width: 28,
+                        height: 28,
+                         color: AppColors.red,
+                      ),
+                ],
+                          ),
+              ),
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
+
+
 }

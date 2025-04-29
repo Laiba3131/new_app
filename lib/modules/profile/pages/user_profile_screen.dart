@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:kulture/config/routes/nav_router.dart';
 import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/generated/assets.dart';
 import 'package:kulture/modules/profile/model/suggested_user_model.dart';
@@ -53,13 +54,25 @@ class _UserProfileScreenState extends State<UserProfileScreen>
       bottom: false,
       child: Scaffold(
         backgroundColor: AppColors.white,
-        appBar: const CustomAppbar(
-          title: 'Back',
-          showBack: true,
-          actions: [
+        appBar: AppBar(
+          backgroundColor: AppColors.white,
+          elevation: 0,
+          centerTitle: false,
+          leading:  InkWell(
+            onTap: () {
+               NavRouter.pop(context);
+            },
+            child: const Icon(Icons.arrow_back_ios, color: AppColors.black,size: 17,)),
+            
+          
+          title: const Text("Back",
+              style: TextStyle(fontSize: 19,
+                  color: AppColors.black, fontWeight: FontWeight.w400)),
+          titleSpacing: 0,
+        actions: const [
             Padding(
-              padding: EdgeInsets.only(right: 10.0),
-              child: Icon(Icons.more_horiz, color: AppColors.black),
+              padding: EdgeInsets.only(right: 20.0),
+              child: Icon(Icons.more_horiz, color: AppColors.black,weight: 16,),
             ),
           ],
         ),

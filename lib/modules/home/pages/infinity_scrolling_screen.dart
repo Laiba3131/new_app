@@ -330,13 +330,21 @@ class _InfinityScrollingScreenState extends State<InfinityScrollingScreen>
                                           ),
                                         ),
                                         const SizedBox(width: 8),
-                                        Text(item['username'],
-                                            style: context.textTheme.bodyMedium
-                                                ?.copyWith(
-                                              color: AppColors.white,
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w700,
-                                            )),
+                                        InkWell(
+                                           onTap: () {
+                                            NavRouter.push(
+                                              context,
+                                              const UserProfileScreen(),
+                                            );
+                                          },
+                                          child: Text(item['username'],
+                                              style: context.textTheme.bodyMedium
+                                                  ?.copyWith(
+                                                color: AppColors.white,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w700,
+                                              )),
+                                        ),
                                         const SizedBox(width: 8),
                                         PrimaryButton(
                                           title: 'Follow',
