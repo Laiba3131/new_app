@@ -157,13 +157,14 @@ class _SendNotesBottomSheetState extends State<SendNotesBottomSheet> {
           Container(
             width: 64,
             height: 64,
+            padding: const EdgeInsets.all(15),
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
               color: AppColors.textGrey,
             ),
             child:  SvgPicture.asset(
                           Assets.shareIcon,
-                          height: 12,
+                          // height: 12,
                         ),
           ),
           h1,

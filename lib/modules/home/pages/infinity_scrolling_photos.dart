@@ -15,17 +15,13 @@ class InfinityScrollingPhotos extends StatefulWidget {
 }
 
 class _InfinityScrollingPhotosState extends State<InfinityScrollingPhotos> {
-  final ScrollController _scrollController = ScrollController();
   final List<PhotoPost> _posts = [];
-  bool _isLoading = false;
-  int _page = 1;
   int _selectedIndex = 0;
 
   @override
   void initState() {
     super.initState();
-    _loadMorePosts();
-    _scrollController.addListener(_scrollListener);
+    _loadAllPosts();
   }
 
   void _onItemTapped(int index) {
@@ -34,52 +30,7 @@ class _InfinityScrollingPhotosState extends State<InfinityScrollingPhotos> {
     });
   }
 
-  Widget _buildTabItem({required IconData icon, required int index}) {
-    final isSelected = _selectedIndex == index;
-    return InkWell(
-      onTap: () {
-        setState(() {
-          _selectedIndex = index;
-          _onItemTapped(index);
-        });
-      },
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            icon,
-            color: isSelected ? Colors.black : AppColors.textGrey,
-          ),
-          if (isSelected)
-            Container(
-              margin: const EdgeInsets.only(top: 4),
-              width: 6,
-              height: 6,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.black,
-              ),
-            ),
-        ],
-      ),
-    );
-  }
-
-  void _scrollListener() {
-    if (_scrollController.position.pixels ==
-        _scrollController.position.maxScrollExtent) {
-      _loadMorePosts();
-    }
-  }
-
-  Future<void> _loadMorePosts() async {
-    if (_isLoading) return;
-
-    setState(() {
-      _isLoading = true;
-    });
-
+  void _loadAllPosts() {
     final List<String> assetImages = [
       Assets.pngImage1,
       Assets.pngImage2,
@@ -87,23 +38,16 @@ class _InfinityScrollingPhotosState extends State<InfinityScrollingPhotos> {
       Assets.pngImage4,
       // Add more as needed
     ];
-    // Simulate API call with dummy data
-    await Future.delayed(const Duration(seconds: 2));
-    final newPosts = List.generate(
-      10,
+
+    _posts.addAll(List.generate(
+      40, // Load as many as you want
       (index) => PhotoPost(
-        username: 'user${_page * index}',
+        username: 'user$index',
         imageUrl: assetImages[index % assetImages.length],
-        likes: (100 + index * 24),
+        likes: 100 + index * 24,
         caption: 'Taking life one step at a time, embracing every moment...',
       ),
-    );
-
-    setState(() {
-      _posts.addAll(newPosts);
-      _page++;
-      _isLoading = false;
-    });
+    ));
   }
 
   @override
@@ -118,51 +62,28 @@ class _InfinityScrollingPhotosState extends State<InfinityScrollingPhotos> {
         ),
       ),
       body: GestureDetector(
-         onHorizontalDragEnd: (details) {
-              // If swiped right (positive velocity)
-              if (details.primaryVelocity! > 0) {
-                // Navigate to the HomeScreen
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()),
-                );
-              }
-              // If swiped left (negative velocity)
-              else if (details.primaryVelocity! < 0) {
-                // Navigate to the YourProfileScreen
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const YourProfileScreen()),
-                );
-              }
-            },
+        onHorizontalDragEnd: (details) {
+          if (details.primaryVelocity! > 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomeScreen()),
+            );
+          } else if (details.primaryVelocity! < 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const YourProfileScreen()),
+            );
+          }
+        },
         child: ListView.builder(
-          controller: _scrollController,
-          itemCount: _posts.length + 1,
+          itemCount: _posts.length,
           itemBuilder: (context, index) {
-            // if (index == _posts.length) {
-            //   return _isLoading
-            //       ? const Center(
-            //           child: Padding(
-            //             padding: EdgeInsets.all(16.0),
-            //             child: CircularProgressIndicator(color: Colors.black),
-            //           ),
-            //         )
-            //       : const SizedBox();
-            // }
-        
             final post = _posts[index];
             return PostCard(post: post);
           },
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
   }
 }

@@ -47,7 +47,7 @@ class _ChatScreenState extends State<ChatScreen> {
     _messageController.dispose();
     super.dispose();
   }
-
+bool isBlocked = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -267,13 +267,19 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
           const Spacer(),
           PrimaryButton(
-            onPressed: () {},
-            title: 'Block',
+            onPressed: () {
+              setState(() {
+                isBlocked = !isBlocked;
+              });
+            },
+            title: isBlocked ? 'Blocked' : 'Block',
             width: 85,
             height: 36,
             borderRadius: 11,
-            backgroundColor: AppColors.red,
+            backgroundColor:isBlocked?AppColors.white: AppColors.red,
+            titleColor: isBlocked ? AppColors.black : AppColors.white,
             hMargin: 0,
+            bborderColor: isBlocked ? AppColors.red : AppColors.red,
             shadowColor: AppColors.transparent,
           ),
         ],

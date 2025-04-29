@@ -74,37 +74,42 @@ class _YourProfileScreenState extends State<YourProfileScreen>
               onTap: () {
                 NavRouter.pushFromRoot(context, const NotesScreen());
               },
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                 Image.asset(Assets.mesgIcon, height: 20, width: 20),
-                  Positioned(
-                    right: 0,
-                    top: 10,
-                    child: Container(
-                      padding: const EdgeInsets.all(2),
-                      decoration:  BoxDecoration(
-                        color: AppColors.primaryColor,
-                        shape: BoxShape.circle,
-                      ),
-                      constraints: const BoxConstraints(
-                        minWidth: 12,
-                        minHeight: 12,
-                      ),
-                      child: const Text(
-                        '5',
-                        style: TextStyle(
-                          color: AppColors.white,
-                          fontSize: 8,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              child: SizedBox(
+  width: 24, // slightly larger than the icon to give space
+  height: 24,
+  child: Stack(
+    clipBehavior: Clip.none, // allows Positioned to overflow
+    alignment: Alignment.center,
+    children: [
+      Image.asset(Assets.mesgIcon, height: 20, width: 20),
+      Positioned(
+        top: -4,
+        right: -4,
+        child: Container(
+          padding: const EdgeInsets.all(2),
+          decoration: const BoxDecoration(
+            color: AppColors.primaryColor,
+            shape: BoxShape.circle,
+          ),
+          constraints: const BoxConstraints(
+            minWidth: 12,
+            minHeight: 12,
+          ),
+          child: const Text(
+            '5',
+            style: TextStyle(
+              color: AppColors.white,
+              fontSize: 8,
+              fontWeight: FontWeight.bold,
             ),
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ),
+    ],
+  ),
+),
+  ),
             w2,
             // InkWell(
             //   onTap: () {

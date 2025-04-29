@@ -152,7 +152,9 @@ class _PostCardState extends State<PostCard> {
                     w3,
                       SvgPicture.asset(
                           Assets.thum,
-                          height: 12,
+                          height: 25,
+                          color: AppColors.black,
+                          width: 25,
                         ),
                     w3,
                     InkWell(

@@ -33,8 +33,7 @@ class CustomInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final iconWidget = iconPath != null
-        ? InkWell(
-            onTap: fun, child: Image.asset(iconPath!, height: 20, width: 20))
+        ? Image.asset(iconPath!, height: 20, width: 20)
         : const SizedBox.shrink();
 
     return Column(
