@@ -106,15 +106,13 @@ class PhotoTab extends StatelessWidget {
                                               const UserProfileScreen(),
                                             );
                                           },
-                          child: Expanded(
-                            child: Text(
-                              isEven ? 'TinyBossHQ' : 'Denny 💕',
-                              style: context.textTheme.bodyMedium?.copyWith(
-                                  color: AppColors.textGrey,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w300),
-                              overflow: TextOverflow.ellipsis,
-                            ),
+                          child: Text(
+                            isEven ? 'TinyBossHQ' : 'Denny 💕',
+                            style: context.textTheme.bodyMedium?.copyWith(
+                                color: AppColors.textGrey,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w300),
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                         const Spacer(),

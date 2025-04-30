@@ -259,7 +259,7 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                         Expanded(
                           child: CustomInputField(
                             fun: () {},
-                            title: 'English',
+                            title: 'Language',
                             iconPath: Assets.addIcon,
                             hintText: 'English',
                             controller: _languageController,
