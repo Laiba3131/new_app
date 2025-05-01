@@ -328,7 +328,7 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                           _isPrivateProfile = value;
                         });
                       },
-                      descriptionOn: 'Your content is public.',
+                      descriptionOn: 'Make your content private.',
                       descriptionOff: 'Your content is public.',
                     ),
                   ],

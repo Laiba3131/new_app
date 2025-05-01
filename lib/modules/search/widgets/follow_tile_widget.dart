@@ -19,7 +19,7 @@ class UserProfileTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 8.0, bottom: 8, left: 8),
+      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -31,7 +31,7 @@ class UserProfileTile extends StatelessWidget {
               );
             },
             child: CircleAvatar(
-              radius: 25,
+              radius: 20,
               backgroundColor: Colors.grey[300],
               backgroundImage: AssetImage(user['imageUrl']),
               onBackgroundImageError: (_, __) {},
@@ -42,86 +42,107 @@ class UserProfileTile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  user['name'],
-                  style: context.textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 17,
-                    color: AppColors.black,
+                // Top row with name, username and follow button
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            user['name'],
+                            style: context.textTheme.titleMedium?.copyWith(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 17,
+                              color: AppColors.black,
+                            ),
+                          ),
+                          Text(
+                            user['username'],
+                            style: context.textTheme.bodyMedium?.copyWith(
+                              color: AppColors.textGrey,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ]),
+                    ),
+                    const SizedBox(width: 8),
+                    PrimaryButton(
+                      onPressed: () async {
+                        if (user['isFollowing']) {
+                          BottomBarVisibilityProvider().hide();
+                          await showModalBottomSheet(
+                            context: context,
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(20)),
+                            ),
+                            isScrollControlled: true,
+                            builder: (_) => UnfollowConfirmationSheet(
+                              username: user['name'],
+                              userImage: user['imageUrl'],
+                              onConfirm: () {
+                                context
+                                    .read<SearchCubit>()
+                                    .toggleFollowStatus(user['id']);
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          );
+                          BottomBarVisibilityProvider().show();
+                        } else {
+                          context
+                              .read<SearchCubit>()
+                              .toggleFollowStatus(user['id']);
+                        }
+                      },
+                      title: user['isFollowing'] ? 'Following' : 'Follow',
+                      width: 120,
+                      height: 36,
+                      backgroundColor: user['isFollowing']
+                          ? Colors.white
+                          : AppColors.primaryColor,
+                      shadowColor: AppColors.transparent,
+                      titleColor:
+                          user['isFollowing'] ? Colors.black : AppColors.white,
+                      borderRadius: 11,
+                      bborderColor: user['isFollowing']
+                          ? AppColors.black
+                          : AppColors.transparent,
+                    ),
+                  ],
+                ),
+                // Bio text immediately below, with minimal spacing
+                Padding(
+                  padding: const EdgeInsets.only(top: 2.0),
+                  child: Text(
+                    user['bio'],
+                    style: context.textTheme.bodyMedium?.copyWith(
+                      color: AppColors.black,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 15,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                Text(
-                  user['username'],
-                  style: context.textTheme.bodyMedium?.copyWith(
-                    color: AppColors.textGrey,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 15,
-                  ),
-                ),
-                Text(
-                  user['bio'],
-                  style: context.textTheme.bodyMedium?.copyWith(
-                    color: AppColors.black,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 15,
-                  ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                Text(
-                  user['followers'],
-                  style: context.textTheme.bodySmall?.copyWith(
-                    color: AppColors.textGrey,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14,
+                // Followers count with minimal spacing
+                Padding(
+                  padding: const EdgeInsets.only(top: 2.0),
+                  child: Text(
+                    user['followers'],
+                    style: context.textTheme.bodySmall?.copyWith(
+                      color: AppColors.textGrey,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14,
+                    ),
                   ),
                 ),
               ],
             ),
           ),
-          PrimaryButton(
-              onPressed: () async {
-                if (user['isFollowing']) {
-                  // Hide the bottom bar before showing the sheet
-                  BottomBarVisibilityProvider().hide();
-
-                  // Show the bottom sheet and await its closure
-                  await showModalBottomSheet(
-                    context: context,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.vertical(top: Radius.circular(20)),
-                    ),
-                    isScrollControlled: true,
-                    builder: (_) => UnfollowConfirmationSheet(
-                      username: user['name'],
-                      userImage: user['imageUrl'],
-                      onConfirm: () {
-                        context
-                            .read<SearchCubit>()
-                            .toggleFollowStatus(user['id']);
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  );
-
-                  // Show the bottom bar again after the sheet is closed
-                  BottomBarVisibilityProvider().show();
-                } else {
-                  context.read<SearchCubit>().toggleFollowStatus(user['id']);
-                }
-              },
-              title: user['isFollowing'] ? 'Following' : 'Follow',
-              width: 120,
-              height: 36,
-              backgroundColor:
-                  user['isFollowing'] ? Colors.white : AppColors.primaryColor,
-              shadowColor: AppColors.transparent,
-              titleColor: user['isFollowing'] ? Colors.black : AppColors.white,
-              borderRadius: 11,
-              bborderColor: user['isFollowing']
-                  ? AppColors.black
-                  : AppColors.transparent),
         ],
       ),
     );

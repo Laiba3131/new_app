@@ -65,13 +65,24 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
     'China',
     'India'
   ];
-  final List<String> _allLanguages = [
-    'English',
-    'Spanish',
-    'French',
-    'German',
-    'Hindi'
-  ];
+ final List<String> _allLanguages = [
+  'English',
+  'Spanish',
+  'French',
+  'German',
+  'Hindi',
+  'Mandarin',
+  'Arabic',
+  'Portuguese',
+  'Russian',
+  'Bengali',
+  'Japanese',
+  'Korean',
+  'Italian',
+  'Turkish',
+  'Urdu'
+];
+
   bool isCountryDropdownOpen = false;
   bool get isFormFilled {
     return _nameController.text.isNotEmpty &&
