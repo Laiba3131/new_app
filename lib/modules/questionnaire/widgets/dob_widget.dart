@@ -32,21 +32,21 @@ class DropdownField extends StatelessWidget {
           Text(
             hint,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  fontSize: 14, // Reduced font size for hint
+                  fontSize: 14, 
                   fontWeight: FontWeight.w400,
                   color: AppColors.searchBarTextColor,
                 ),
           ),
           const SizedBox(
-              height: 2), // Reduced spacing between hint and dropdown
+              height: 2), 
           DropdownButtonHideUnderline(
             child: DropdownButton<String>(
               value: value,
-              isDense: true, // Makes the dropdown more compact
+              isDense: true,
               hint: const Text(''),
               icon: const Icon(Icons.keyboard_arrow_down,
                   color: AppColors.searchBarTextColor,
-                  size: 20), // Smaller icon
+                  size: 20),
               isExpanded: true,
               items: items.map((String item) {
                 return DropdownMenuItem<String>(
@@ -54,7 +54,7 @@ class DropdownField extends StatelessWidget {
                   child: Text(
                     item,
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          fontSize: 14, // Slightly reduced font size
+                          fontSize: 14, 
                           fontWeight: FontWeight.w400,
                           color: AppColors.textblackColor,
                         ),
@@ -62,6 +62,7 @@ class DropdownField extends StatelessWidget {
                 );
               }).toList(),
               onChanged: onChanged,
+              menuMaxHeight:300, 
             ),
           ),
         ],

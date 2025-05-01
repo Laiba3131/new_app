@@ -148,6 +148,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           h4,
                           InputField(
+                            horizontalPadding: 0,
+                            focusBorderColor:AppColors.primaryColor,
                             // fillColor: AppColors.black,
                             controller: emailController,
                             label: "Email address",
@@ -168,6 +170,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           h1,
                           InputField(
+                            horizontalPadding: 0,
+                            focusBorderColor:AppColors.primaryColor,
                             // fillColor: AppColors.black,
                             controller: passwordController,
                             label: "Password",
@@ -289,7 +293,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Container(
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: color,
+        // color: color,
         borderRadius: BorderRadius.circular(8),
         border: Border.all(color: AppColors.searchBarColor, width: 1),
       ),

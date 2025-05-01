@@ -156,21 +156,23 @@ class _SignupScreenState extends State<SignupScreen> {
                             ),
                           ),
                           h4,
+                          // InputField(
+                          //   controller: userNameController,
+                          //   label: "Username",
+                          //   boxConstraints: 18.0,
+                          //   borderColor: AppColors.searchBarColor,
+                          //   hintColor: AppColors.searchBarTextColor,
+                          //   borderRadius: 16.0,
+                          //   textColor: Colors.black,
+                          //   validator: (value) {
+                          //     return Validators.required(
+                          //         userNameController.text);
+                          //   },
+                          // ),
+                          // h1,
                           InputField(
-                            controller: userNameController,
-                            label: "Username",
-                            boxConstraints: 18.0,
-                            borderColor: AppColors.searchBarColor,
-                            hintColor: AppColors.searchBarTextColor,
-                            borderRadius: 16.0,
-                            textColor: Colors.black,
-                            validator: (value) {
-                              return Validators.required(
-                                  userNameController.text);
-                            },
-                          ),
-                          h1,
-                          InputField(
+                            horizontalPadding: 0,
+                            focusBorderColor:AppColors.primaryColor,
                             controller: emailController,
                             label: "Email address",
                             boxConstraints: 18.0,
@@ -186,6 +188,8 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                           h1,
                           InputField(
+                            horizontalPadding: 0,
+                            focusBorderColor:AppColors.primaryColor,
                             controller: passwordController,
                             label: "Password",
                             boxConstraints: 18.0,
@@ -212,6 +216,8 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                           h1,
                           InputField(
+                            horizontalPadding: 0,
+                            focusBorderColor:AppColors.primaryColor,
                             controller: confirmPasswordController,
                             label: "Confirm password",
                             boxConstraints: 18.0,
@@ -312,8 +318,9 @@ class _SignupScreenState extends State<SignupScreen> {
     return Container(
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: color,
+        // color: color,
         borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: color),
       ),
       child: Center(
         child: Image.asset(

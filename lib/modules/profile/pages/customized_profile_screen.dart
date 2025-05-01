@@ -228,19 +228,26 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                       inputType: TextInputType.url,
                       iconPath: Assets.addIcon,
                       textColor: AppColors.primaryColor,
-                      onChanged: (value) {
-                        if (value.isNotEmpty && !value.startsWith('http')) {
-                          final fullUrl = 'https://$value';
-                          final uri = Uri.tryParse(fullUrl);
-                          final domain = uri?.host ?? value;
+                     onChanged: (value) {
+  if (value.isNotEmpty) {
+    // Remove protocols and 'www.' prefix if they exist
+    String cleanedValue = value
+        .replaceFirst(RegExp(r'^https?:\/\/'), '')
+        .replaceFirst(RegExp(r'^www\.'), '');
 
-                          _linkController.text = domain;
-                          _linkController.selection =
-                              TextSelection.fromPosition(
-                            TextPosition(offset: _linkController.text.length),
-                          );
-                        }
-                      },
+    final uri = Uri.tryParse('https://$cleanedValue');
+    final domain = uri?.host ?? cleanedValue;
+
+    // Prevent infinite loop caused by re-setting the text
+    if (domain != _linkController.text) {
+      _linkController.text = domain;
+      _linkController.selection = TextSelection.fromPosition(
+        TextPosition(offset: domain.length),
+      );
+    }
+  }
+}
+
                     ),
                     Row(
                       children: [

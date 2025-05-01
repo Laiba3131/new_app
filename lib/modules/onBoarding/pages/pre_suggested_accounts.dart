@@ -85,7 +85,7 @@ class _SuggestedCreatorScreenState extends State<SuggestedCreatorScreen> {
               child: Row(
                 children: [
                   const Text(
-                    'Skip',
+                    'Next',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 14,

@@ -19,6 +19,7 @@ class InputField extends StatefulWidget {
     this.obscureText = false,
     this.suffixIcon,
     this.suffix,
+    this.focusBorderColor,
     this.prefixIcon,
     this.maxLines = 1,
     this.fillColor = Colors.white,
@@ -67,6 +68,7 @@ class InputField extends StatefulWidget {
   final bool autoFocus;
   final Function(String)? onChange;
   final Color? borderColor;
+  final Color? focusBorderColor;
   final Color? textColor;
   final double borderRadius;
   final double? titleSize;
@@ -162,8 +164,11 @@ class _InputFieldState extends State<InputField> {
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(widget.borderRadius),
                   borderSide: BorderSide(
-                    color: widget.borderColor ?? Colors.transparent,
+                    color: widget.focusBorderColor ?? Colors.transparent,
                   ),
+                ),
+                errorStyle: const TextStyle(
+                  color: AppColors.red,
                 ),
                 errorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(widget.borderRadius),

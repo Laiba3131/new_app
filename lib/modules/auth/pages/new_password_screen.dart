@@ -102,6 +102,8 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
               ),
               h0P5,
               InputField(
+                horizontalPadding: 0,
+                focusBorderColor:AppColors.primaryColor,
                 controller: passwordController,
                 label: "Password",
                 boxConstraints: 18.0,
@@ -142,6 +144,8 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
               ),
               h0P5,
               InputField(
+                horizontalPadding: 0,
+                focusBorderColor:AppColors.primaryColor,
                 controller: confirmPasswordController,
                 label: "Confirm password",
                 boxConstraints: 18.0,
