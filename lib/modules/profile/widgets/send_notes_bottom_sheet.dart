@@ -162,10 +162,10 @@ class _SendNotesBottomSheetState extends State<SendNotesBottomSheet> {
               shape: BoxShape.circle,
               color: AppColors.textGrey,
             ),
-            child:  SvgPicture.asset(
-                          Assets.shareIcon,
-                          // height: 12,
-                        ),
+            child: SvgPicture.asset(
+              Assets.shareIcon,
+              // height: 12,
+            ),
           ),
           h1,
         ],

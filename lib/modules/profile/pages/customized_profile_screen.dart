@@ -168,7 +168,7 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                       ],
                     ),
                     InkWell(
-                      onTap: ()async {
+                      onTap: () async {
                         final result = await showModalBottomSheet<String>(
                           context: context,
                           isScrollControlled: true,
@@ -195,7 +195,7 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                       ),
                     ),
                     InkWell(
-                      onTap: ()async {
+                      onTap: () async {
                         final List<String>? selectedInterests =
                             await showModalBottomSheet<List<String>>(
                           context: context,
@@ -221,34 +221,33 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                       ),
                     ),
                     CustomInputField(
-                      fun: () {},
-                      title: 'Link',
-                      hintText: 'Add a link here...',
-                      controller: _linkController,
-                      inputType: TextInputType.url,
-                      iconPath: Assets.addIcon,
-                      textColor: AppColors.primaryColor,
-                     onChanged: (value) {
-  if (value.isNotEmpty) {
-    // Remove protocols and 'www.' prefix if they exist
-    String cleanedValue = value
-        .replaceFirst(RegExp(r'^https?:\/\/'), '')
-        .replaceFirst(RegExp(r'^www\.'), '');
+                        fun: () {},
+                        title: 'Link',
+                        hintText: 'Add a link here...',
+                        controller: _linkController,
+                        inputType: TextInputType.url,
+                        iconPath: Assets.addIcon,
+                        textColor: AppColors.primaryColor,
+                        onChanged: (value) {
+                          if (value.isNotEmpty) {
+                            // Remove protocols and 'www.' prefix if they exist
+                            String cleanedValue = value
+                                .replaceFirst(RegExp(r'^https?:\/\/'), '')
+                                .replaceFirst(RegExp(r'^www\.'), '');
 
-    final uri = Uri.tryParse('https://$cleanedValue');
-    final domain = uri?.host ?? cleanedValue;
+                            final uri = Uri.tryParse('https://$cleanedValue');
+                            final domain = uri?.host ?? cleanedValue;
 
-    // Prevent infinite loop caused by re-setting the text
-    if (domain != _linkController.text) {
-      _linkController.text = domain;
-      _linkController.selection = TextSelection.fromPosition(
-        TextPosition(offset: domain.length),
-      );
-    }
-  }
-}
-
-                    ),
+                            // Prevent infinite loop caused by re-setting the text
+                            if (domain != _linkController.text) {
+                              _linkController.text = domain;
+                              _linkController.selection =
+                                  TextSelection.fromPosition(
+                                TextPosition(offset: domain.length),
+                              );
+                            }
+                          }
+                        }),
                     Row(
                       children: [
                         Expanded(

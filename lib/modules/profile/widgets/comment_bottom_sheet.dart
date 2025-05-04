@@ -33,7 +33,7 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
       });
     }
   }
-  
+
   void _clearSelectedMedia() {
     setState(() {
       _selectedMedia = null;
@@ -53,28 +53,32 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
 
   void _addComment() {
     if (_commentController.text.isEmpty && _selectedMedia == null) return;
-    
+
     // This is a simplified implementation - in a real app, you would
     // upload the image to a server and get a URL back
     String? imagePath = _selectedMedia?.path;
-    
+
     setState(() {
       if (replyingTo != null) {
         // Add a reply to an existing comment
         final replyComment = Comment(
-          username: "Current User", // In a real app, use the current user's name
+          username:
+              "Current User", // In a real app, use the current user's name
           text: _commentController.text,
           timeAgo: "Just now",
           userImage: Assets.pngImage1, // Use current user's image
           likes: 0,
           imagePath: imagePath,
         );
-        
+
         // Find the comment to add the reply to
         for (int i = 0; i < comments.length; i++) {
           if (comments[i] == replyingTo) {
             // Add reply directly to the comment
-            List<Comment> updatedReplies = [...comments[i].replies, replyComment];
+            List<Comment> updatedReplies = [
+              ...comments[i].replies,
+              replyComment
+            ];
             comments[i] = Comment(
               username: comments[i].username,
               text: comments[i].text,
@@ -86,12 +90,15 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
             );
             break;
           }
-          
+
           // Check if the replyingTo comment is in the replies of the current comment
           for (int j = 0; j < comments[i].replies.length; j++) {
             if (comments[i].replies[j] == replyingTo) {
               // Add reply to the reply (as a new reply to the parent comment)
-              List<Comment> updatedReplies = [...comments[i].replies, replyComment];
+              List<Comment> updatedReplies = [
+                ...comments[i].replies,
+                replyComment
+              ];
               comments[i] = Comment(
                 username: comments[i].username,
                 text: comments[i].text,
@@ -108,7 +115,8 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
       } else {
         // Add a new top-level comment
         comments.add(Comment(
-          username: "Current User", // In a real app, use the current user's name
+          username:
+              "Current User", // In a real app, use the current user's name
           text: _commentController.text,
           timeAgo: "Just now",
           userImage: Assets.pngImage1, // Use current user's image
@@ -116,7 +124,7 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
           imagePath: imagePath,
         ));
       }
-      
+
       _commentController.clear();
       _selectedMedia = null;
       replyingTo = null;
@@ -301,7 +309,9 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
                     child: InputField(
                       controller: _commentController,
                       focusNode: _focusNode,
-                      label: replyingTo != null ? 'Write a reply...' : 'Comment something',
+                      label: replyingTo != null
+                          ? 'Write a reply...'
+                          : 'Comment something',
                       textColor: AppColors.black,
                       borderColor: AppColors.searchBarColor,
                       boxConstraints: 10,

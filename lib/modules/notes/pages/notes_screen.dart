@@ -282,9 +282,9 @@ class _NotesScreenState extends State<NotesScreen> {
     bool hasUnread = false,
   }) {
     return GestureDetector(
-       onLongPress: () {
-    _showDeleteBlockDialog(context);
-  },
+      onLongPress: () {
+        _showDeleteBlockDialog(context);
+      },
       onTap: () {
         Navigator.push(
           context,
@@ -437,76 +437,75 @@ class _NotesScreenState extends State<NotesScreen> {
     );
   }
 
-void _showDeleteBlockDialog(BuildContext context) {
-  showDialog(
-    context: context,
-    builder: (context) {
-      return Dialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-          InkWell(
-           onTap: () => Navigator.pop(context),
-            child: Padding(
-              padding: const EdgeInsets.only(top: 14,left: 8,right: 8),
-              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
+  void _showDeleteBlockDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Dialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              InkWell(
+                onTap: () => Navigator.pop(context),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 14, left: 8, right: 8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
                         'Block',
                         style: TextStyle(
-                          color: Colors.black,
-                           fontWeight: FontWeight.w400,
-                          fontSize: 17
-                        ),
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 17),
                       ),
-                     SvgPicture.asset(
+                      SvgPicture.asset(
                         Assets.block,
                         width: 24,
                         color: AppColors.black,
                         height: 24,
                       ),
-                ],
+                    ],
+                  ),
+                ),
               ),
-            ),
-          ),
-          h1,
-          const Divider(
-            color: AppColors.searchBarColor,
-            thickness: 1,
-          ),
-          h1,
-            InkWell(
-               onTap: () => Navigator.pop(context),
-              child: Padding(
-              padding: const EdgeInsets.only(bottom: 14,left: 8,right: 8),
-              
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
+              h1,
+              const Divider(
+                color: AppColors.searchBarColor,
+                thickness: 1,
+              ),
+              h1,
+              InkWell(
+                onTap: () => Navigator.pop(context),
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 14, left: 8, right: 8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
                         'Delete',
                         style: TextStyle(
-                          color: Colors.red,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 17
-                        ),
+                            color: Colors.red,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 17),
                       ),
-                       SvgPicture.asset(
+                      SvgPicture.asset(
                         Assets.trash,
                         width: 28,
                         height: 28,
-                         color: AppColors.red,
+                        color: AppColors.red,
                       ),
-                ],
-                          ),
+                    ],
+                  ),
+                ),
               ),
-            ),
-          ],
-        ),
-      );
-    },
-  );
-}
-
+            ],
+          ),
+        );
+      },
+    );
+  }
 }
