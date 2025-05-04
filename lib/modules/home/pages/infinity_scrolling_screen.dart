@@ -205,7 +205,7 @@ class _InfinityScrollingScreenState extends State<InfinityScrollingScreen>
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                      CustomFavoriteIcon(
+                                    CustomFavoriteIcon(
                                       outlineAssetPath: Assets.svgFvt,
                                       filledAssetPath: Assets.svgFvtFilled,
                                       size: 25,
@@ -222,12 +222,8 @@ class _InfinityScrollingScreenState extends State<InfinityScrollingScreen>
                                       ),
                                     ),
                                     h2,
-                                     SvgPicture.asset(
-                          Assets.thum,
-                          height: 25,
-                           color: AppColors.white
-
-                        ),
+                                    SvgPicture.asset(Assets.thum,
+                                        height: 25, color: AppColors.white),
                                     h2,
                                     InkWell(
                                       onTap: () async {
@@ -247,7 +243,6 @@ class _InfinityScrollingScreenState extends State<InfinityScrollingScreen>
                                       ),
                                     ),
                                     h2,
-                                  
                                     InkWell(
                                       onTap: () async {
                                         BottomSheetService.showSendNoteSheet(
@@ -331,14 +326,15 @@ class _InfinityScrollingScreenState extends State<InfinityScrollingScreen>
                                         ),
                                         const SizedBox(width: 8),
                                         InkWell(
-                                           onTap: () {
+                                          onTap: () {
                                             NavRouter.push(
                                               context,
                                               const UserProfileScreen(),
                                             );
                                           },
                                           child: Text(item['username'],
-                                              style: context.textTheme.bodyMedium
+                                              style: context
+                                                  .textTheme.bodyMedium
                                                   ?.copyWith(
                                                 color: AppColors.white,
                                                 fontSize: 14,
