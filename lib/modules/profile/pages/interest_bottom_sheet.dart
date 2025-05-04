@@ -135,7 +135,6 @@ class _InterestsBottomSheetState extends State<InterestsBottomSheet> {
                             iconPath,
                             height: 16,
                             width: 16,
-                            
                           ),
                           const SizedBox(width: 5),
                           Text(
