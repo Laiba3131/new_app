@@ -258,6 +258,8 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                         ),
                         h4,
                         InputField(
+                          horizontalPadding: 0,
+                          focusBorderColor: AppColors.primaryColor,
                           controller: _nameController,
                           label: 'Name',
                           borderColor: AppColors.textFieldBorderColor,
@@ -265,6 +267,8 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                         ),
                         h1,
                         InputField(
+                          horizontalPadding: 0,
+                          focusBorderColor: AppColors.primaryColor,
                           controller: _usernameController,
                           label: 'Username',
                           borderColor: AppColors.textFieldBorderColor,

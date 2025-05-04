@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/generated/assets.dart';
+import 'package:kulture/utils/heights_and_widths.dart';
+import 'package:kulture/utils/validators/validators.dart';
 
 class CustomInputField extends StatelessWidget {
   final String title;
@@ -13,7 +15,9 @@ class CustomInputField extends StatelessWidget {
   final String? iconPath;
   final Color? textColor;
   final VoidCallback fun;
+  final FormFieldValidator<String>? validator;
   final bool isReadOnly;
+  final TextInputType keyboardType;
 
   const CustomInputField({
     super.key,
@@ -24,10 +28,12 @@ class CustomInputField extends StatelessWidget {
     this.maxLines = 1,
     this.inputType = TextInputType.text,
     this.onChanged,
+    this.validator,
     this.iconPath,
     required this.fun,
     this.textColor,
     this.isReadOnly = false,
+    this.keyboardType = TextInputType.text,
   });
 
   @override
@@ -35,7 +41,8 @@ class CustomInputField extends StatelessWidget {
     final iconWidget = iconPath != null
         ? Image.asset(iconPath!, height: 20, width: 20)
         : const SizedBox.shrink();
-
+//  final validator =
+//         validator ?? Validators.getValidator(keyboardType);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -46,44 +53,67 @@ class CustomInputField extends StatelessWidget {
             fontWeight: FontWeight.w500,
           ),
         ),
-        const SizedBox(height: 8),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            iconWidget,
-            const SizedBox(width: 8),
-            Expanded(
-              child: TextField(
-                readOnly: isReadOnly,
-                controller: controller,
-                keyboardType: inputType,
-                minLines: minLines,
-                maxLines: maxLines,
-                decoration: InputDecoration(
-                  hintText: hintText,
-                  hintStyle: const TextStyle(
-                    color: Colors.grey,
-                    fontSize: 14,
-                  ),
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.zero,
-                  filled: true,
-                  fillColor: Colors.white,
-                ),
-                style: TextStyle(
-                  height: 1.5,
-                  fontSize: 14,
-                  color: textColor ?? Colors.black,
-                ),
-                onChanged: onChanged,
-              ),
+        TextFormField(
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          validator: validator,
+          readOnly: isReadOnly,
+          controller: controller,
+          keyboardType: inputType,
+          minLines: minLines,
+          maxLines: maxLines,
+          decoration: InputDecoration(
+            errorStyle: const TextStyle(
+              color: AppColors.red,
             ),
-          ],
+            hintText: hintText,
+            hintStyle: const TextStyle(
+              color: Colors.grey,
+              fontSize: 14,
+            ),
+            prefixIcon: Padding(
+              padding: const EdgeInsets.only(right: 7.0),
+              child: iconWidget,
+            ),
+            prefixIconConstraints: const BoxConstraints(
+              minWidth: 0,
+              minHeight: 0,
+            ),
+            isDense: true,
+            contentPadding:
+                const EdgeInsets.only(top: 14, bottom: 14, right: 5),
+            filled: true,
+            fillColor: Colors.white,
+            border: const UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.transparent),
+            ),
+            enabledBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(color: AppColors.searchBarColor),
+            ),
+            focusedBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(color: AppColors.searchBarColor, width: 2),
+            ),
+            focusedErrorBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(color: AppColors.searchBarColor),
+            ),
+            errorBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(color: AppColors.searchBarColor),
+            ),
+            disabledBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(color: AppColors.searchBarColor),
+            ),
+          ),
+          style: TextStyle(
+            height: 1.5,
+            fontSize: 14,
+            color: textColor ?? Colors.black,
+          ),
+          onChanged: onChanged,
         ),
-        const Divider(
-          height: 32,
-          color: AppColors.lightGreyColor,
-        ),
+        h2,
+        // const Divider(
+        //   height: 32,
+        //   color: AppColors.lightGreyColor,
+        // ),
       ],
     );
   }

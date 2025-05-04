@@ -31,7 +31,7 @@ class UserProfileTile extends StatelessWidget {
               );
             },
             child: CircleAvatar(
-              radius: 25,
+              radius: 20,
               backgroundColor: Colors.grey[300],
               backgroundImage: AssetImage(user['imageUrl']),
               onBackgroundImageError: (_, __) {},
