@@ -40,7 +40,7 @@ class _CommentItemState extends State<CommentItem> {
       });
     }
   }
-  
+
   void _clearSelectedReplyMedia() {
     setState(() {
       _selectedReplyMedia = null;
@@ -107,7 +107,7 @@ class _CommentItemState extends State<CommentItem> {
                       ),
                     ),
                     const SizedBox(height: 6),
-                    
+
                     // Display image if available
                     if (widget.comment.imagePath != null) ...[
                       h1,
@@ -124,7 +124,7 @@ class _CommentItemState extends State<CommentItem> {
                       ),
                       h1,
                     ],
-                     
+
                     Row(
                       children: [
                         Text(
@@ -139,7 +139,7 @@ class _CommentItemState extends State<CommentItem> {
                           Assets.svgFvt,
                           height: 12,
                         ),
-                         w2,
+                        w2,
                         SvgPicture.asset(
                           Assets.thum,
                           height: 12,
@@ -147,15 +147,14 @@ class _CommentItemState extends State<CommentItem> {
                         w2,
                         InkWell(
                           onTap: () {
-  setState(() {
-    showReplyField = true;
-  });
-  
-  if (widget.onReply != null) {
-    widget.onReply!(widget.comment);
-  }
-},
+                            setState(() {
+                              showReplyField = true;
+                            });
 
+                            if (widget.onReply != null) {
+                              widget.onReply!(widget.comment);
+                            }
+                          },
                           child: Text(
                             "Reply",
                             style: context.textTheme.bodySmall?.copyWith(
@@ -221,7 +220,7 @@ class _CommentItemState extends State<CommentItem> {
                 ),
               ),
             ],
-          
+
             Padding(
               padding: const EdgeInsets.only(left: 50),
               child: Row(
@@ -255,7 +254,7 @@ class _CommentItemState extends State<CommentItem> {
                   //   onPressed: () {
                   //     // Add reply logic here - in a real app, this would add the reply to the database
                   //     // and update the UI accordingly
-                      
+
                   //     // For demo, just clear the input and hide the reply field
                   //     setState(() {
                   //       showReplyField = false;
@@ -265,7 +264,6 @@ class _CommentItemState extends State<CommentItem> {
                   //   },
                   //   icon: const Icon(Icons.send, size: 20, color: AppColors.primaryColor),
                   // ),
-                
                 ],
               ),
             ),
@@ -274,16 +272,16 @@ class _CommentItemState extends State<CommentItem> {
       ),
     );
   }
-  
+
   ImageProvider _getImageProvider(String path) {
     // Check if the path is a local file path (starts with /)
     if (path.startsWith('/')) {
       return FileImage(File(path));
-    } 
+    }
     // Check if it's an asset path (starts with 'assets/')
     else if (path.startsWith('assets/')) {
       return AssetImage(path);
-    } 
+    }
     // Otherwise, try to treat it as a network image (in production this would be a URL)
     else {
       try {
