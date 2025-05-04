@@ -40,12 +40,13 @@ class _PostCardState extends State<PostCard> {
               children: [
                 Row(
                   children: [
-                    InkWell( onTap: () {
-                                            NavRouter.push(
-                                              context,
-                                              const UserProfileScreen(),
-                                            );
-                                          },
+                    InkWell(
+                      onTap: () {
+                        NavRouter.push(
+                          context,
+                          const UserProfileScreen(),
+                        );
+                      },
                       child: Stack(
                         children: [
                           const CircleAvatar(
@@ -61,7 +62,8 @@ class _PostCardState extends State<PostCard> {
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 shape: BoxShape.circle,
-                                border: Border.all(color: Colors.white, width: 2),
+                                border:
+                                    Border.all(color: Colors.white, width: 2),
                               ),
                               child: const Icon(Icons.add_circle,
                                   color: Colors.black, size: 16),
@@ -72,12 +74,12 @@ class _PostCardState extends State<PostCard> {
                     ),
                     const SizedBox(width: 12),
                     InkWell(
-                       onTap: () {
-                                            NavRouter.push(
-                                              context,
-                                              const UserProfileScreen(),
-                                            );
-                                          },
+                      onTap: () {
+                        NavRouter.push(
+                          context,
+                          const UserProfileScreen(),
+                        );
+                      },
                       child: const Text(
                         'Balaiytoreal',
                         style: TextStyle(
@@ -104,11 +106,11 @@ class _PostCardState extends State<PostCard> {
                     ),
                     const SizedBox(width: 8),
                     InkWell(
-                      onTap: () async {
-                                        BottomSheetService.showSaveSheet(
-                                            context);
-                                      },
-                      child: const Icon(Icons.more_horiz, color: Colors.black)),
+                        onTap: () async {
+                          BottomSheetService.showSaveSheet(context);
+                        },
+                        child:
+                            const Icon(Icons.more_horiz, color: Colors.black)),
                   ],
                 ),
               ],
@@ -167,12 +169,12 @@ class _PostCardState extends State<PostCard> {
                       ),
                     ),
                     w3,
-                      SvgPicture.asset(
-                          Assets.thum,
-                          height: 25,
-                          color: AppColors.black,
-                          width: 25,
-                        ),
+                    SvgPicture.asset(
+                      Assets.thum,
+                      height: 25,
+                      color: AppColors.black,
+                      width: 25,
+                    ),
                     w3,
                     InkWell(
                       onTap: () {

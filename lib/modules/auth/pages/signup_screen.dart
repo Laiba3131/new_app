@@ -19,7 +19,6 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-
   TextEditingController emailController = TextEditingController();
 
   TextEditingController confirmPasswordController = TextEditingController();
@@ -44,7 +43,7 @@ class _SignupScreenState extends State<SignupScreen> {
   void _onFieldChanged() {
     setState(() {
       // areAllFieldsFilled = userNameController.text.isNotEmpty &&
-        areAllFieldsFilled=  emailController.text.isNotEmpty &&
+      areAllFieldsFilled = emailController.text.isNotEmpty &&
           passwordController.text.isNotEmpty &&
           confirmPasswordController.text.isNotEmpty;
     });
@@ -55,7 +54,6 @@ class _SignupScreenState extends State<SignupScreen> {
     emailController.removeListener(_onFieldChanged);
     passwordController.removeListener(_onFieldChanged);
     confirmPasswordController.removeListener(_onFieldChanged);
-
 
     emailController.dispose();
     passwordController.dispose();
@@ -169,7 +167,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           // h1,
                           InputField(
                             horizontalPadding: 0,
-                            focusBorderColor:AppColors.primaryColor,
+                            focusBorderColor: AppColors.primaryColor,
                             controller: emailController,
                             label: "Email address",
                             boxConstraints: 18.0,
@@ -186,7 +184,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           h1,
                           InputField(
                             horizontalPadding: 0,
-                            focusBorderColor:AppColors.primaryColor,
+                            focusBorderColor: AppColors.primaryColor,
                             controller: passwordController,
                             label: "Password",
                             boxConstraints: 18.0,
@@ -214,7 +212,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           h1,
                           InputField(
                             horizontalPadding: 0,
-                            focusBorderColor:AppColors.primaryColor,
+                            focusBorderColor: AppColors.primaryColor,
                             controller: confirmPasswordController,
                             label: "Confirm password",
                             boxConstraints: 18.0,

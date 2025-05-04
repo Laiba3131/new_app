@@ -96,7 +96,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               h0P5,
               InputField(
                 horizontalPadding: 0,
-                focusBorderColor:AppColors.primaryColor,
+                focusBorderColor: AppColors.primaryColor,
                 controller: emailController,
                 label: "Email address",
                 boxConstraints: 18.0,

@@ -51,13 +51,13 @@ class UserProfileTile extends StatelessWidget {
                   ),
                 ),
                 Text(
-  user['username'].toString().toLowerCase().replaceAll(' ', ''),
-  style: context.textTheme.bodyMedium?.copyWith(
-    color: AppColors.textGrey,
-    fontWeight: FontWeight.w400,
-    fontSize: 15,
-  ),
-),
+                  user['username'].toString().toLowerCase().replaceAll(' ', ''),
+                  style: context.textTheme.bodyMedium?.copyWith(
+                    color: AppColors.textGrey,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 15,
+                  ),
+                ),
                 Text(
                   user['bio'],
                   style: context.textTheme.bodyMedium?.copyWith(

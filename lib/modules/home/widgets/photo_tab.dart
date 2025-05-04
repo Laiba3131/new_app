@@ -100,12 +100,12 @@ class PhotoTab extends StatelessWidget {
                         ),
                         const SizedBox(width: 6),
                         InkWell(
-                           onTap: () {
-                                            NavRouter.push(
-                                              context,
-                                              const UserProfileScreen(),
-                                            );
-                                          },
+                          onTap: () {
+                            NavRouter.push(
+                              context,
+                              const UserProfileScreen(),
+                            );
+                          },
                           child: Text(
                             isEven ? 'TinyBossHQ' : 'Denny 💕',
                             style: context.textTheme.bodyMedium?.copyWith(

@@ -13,17 +13,19 @@ class BioBottomSheet extends StatefulWidget {
 
 class _BioBottomSheetState extends State<BioBottomSheet> {
   bool isButtonEnabled = false;
-    @override
+  @override
   void initState() {
     super.initState();
     _bioController.addListener(_handleTextChange);
   }
-    void _handleTextChange() {
+
+  void _handleTextChange() {
     final text = _bioController.text.trim();
     setState(() {
       isButtonEnabled = text.isNotEmpty;
     });
   }
+
   final TextEditingController _bioController = TextEditingController();
 
   @override
@@ -59,10 +61,11 @@ class _BioBottomSheetState extends State<BioBottomSheet> {
                 onTap: () {
                   Navigator.pop(context, _bioController.text.trim());
                 },
-                child:  Text(
+                child: Text(
                   'Done',
                   style: TextStyle(
-                    color:isButtonEnabled? Colors.black:AppColors.disableColor,
+                    color:
+                        isButtonEnabled ? Colors.black : AppColors.disableColor,
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),
@@ -73,57 +76,56 @@ class _BioBottomSheetState extends State<BioBottomSheet> {
           h3,
           Container(
             // height: 130,
-  padding: const EdgeInsets.all(12),
-  decoration: BoxDecoration(
-    borderRadius: BorderRadius.circular(20),
-    border: Border.all(color: AppColors.searchBarColor),
-  ),
-  child: Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const Text(
-            'Bio',
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w600,
-              color: Colors.black,
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: AppColors.searchBarColor),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Bio',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () => _bioController.clear(),
+                      child: Container(
+                        height: 24,
+                        width: 24,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: AppColors.searchBarColor,
+                        ),
+                        child: const Icon(
+                          Icons.close,
+                          size: 16,
+                          color: AppColors.black,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                InputField(
+                  controller: _bioController,
+                  label: '',
+                  borderColor: AppColors.transparent,
+                  maxLines: 3,
+                  borderRadius: 20,
+                  labelColor: AppColors.transparent,
+                  boxConstraints: 0,
+                )
+              ],
             ),
           ),
-          GestureDetector(
-            onTap: () => _bioController.clear(),
-            child: Container(
-              height: 24,
-              width: 24,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: AppColors.searchBarColor,
-              ),
-              child: const Icon(
-                Icons.close,
-                size: 16,
-                color: AppColors.black,
-              ),
-            ),
-          ),
-        ],
-      ),
-     
-      InputField(
-            controller: _bioController,
-            label: '',
-            borderColor: AppColors.transparent,
-            maxLines: 3,
-            borderRadius: 20,
-            labelColor: AppColors.transparent,
-            boxConstraints: 0,
-           )
-    ],
-  ),
-),
-  h2,
+          h2,
         ],
       ),
     );

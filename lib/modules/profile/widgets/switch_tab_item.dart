@@ -82,12 +82,12 @@ class SwitchTabItem extends StatelessWidget {
                     Row(
                       children: [
                         InkWell(
-                           onTap: () {
-                                            NavRouter.push(
-                                              context,
-                                              const UserProfileScreen(),
-                                            );
-                                          },
+                          onTap: () {
+                            NavRouter.push(
+                              context,
+                              const UserProfileScreen(),
+                            );
+                          },
                           child: Text(
                             post.username,
                             style: context.textTheme.bodySmall?.copyWith(
@@ -142,7 +142,7 @@ class SwitchTabItem extends StatelessWidget {
                           ],
                         ),
                         w3,
-                          SvgPicture.asset(
+                        SvgPicture.asset(
                           Assets.thum,
                           height: 12,
                         ),

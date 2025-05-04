@@ -57,14 +57,18 @@ class _PostingSheetState extends State<PostingSheet> {
           children: [
             // Top Bar
             Padding(
-              padding: const EdgeInsets.only(left: 15.0,right: 15.0,top: 12,bottom: 15),
+              padding: const EdgeInsets.only(
+                  left: 15.0, right: 15.0, top: 12, bottom: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: const Text('Cancel',
-                        style: TextStyle(fontSize: 17, color: Colors.black,fontWeight: FontWeight.w400)),
+                        style: TextStyle(
+                            fontSize: 17,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400)),
                   ),
                   const Text('New Content',
                       style:
@@ -82,7 +86,6 @@ class _PostingSheetState extends State<PostingSheet> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                  
                   ),
                 ],
               ),
@@ -109,24 +112,24 @@ class _PostingSheetState extends State<PostingSheet> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       Text('What would you like to say?',
                           style: TextStyle(color: Colors.grey)),
-                          h1,
+                      h1,
                       Row(
                         children: [
-                           InkWell(
+                          InkWell(
                             onTap: _pickMedia,
-                             child: SvgPicture.asset(
-                                                       Assets.gallery,
-                                                       height: 20,
-                                                     ),
-                           ),
-                           w2,
-                         InkWell(   onTap: _pickMedia,
-                           child: SvgPicture.asset(
-                            Assets.camers,
-                            height: 20,
-                                                   ),
-                         ),
-                          
+                            child: SvgPicture.asset(
+                              Assets.gallery,
+                              height: 20,
+                            ),
+                          ),
+                          w2,
+                          InkWell(
+                            onTap: _pickMedia,
+                            child: SvgPicture.asset(
+                              Assets.camers,
+                              height: 20,
+                            ),
+                          ),
                         ],
                       ),
                       h2,
