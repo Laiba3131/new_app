@@ -58,21 +58,29 @@ class _UserProfileScreenState extends State<UserProfileScreen>
           backgroundColor: AppColors.white,
           elevation: 0,
           centerTitle: false,
-          leading:  InkWell(
-            onTap: () {
-               NavRouter.pop(context);
-            },
-            child: const Icon(Icons.arrow_back_ios, color: AppColors.black,size: 17,)),
-            
-          
+          leading: InkWell(
+              onTap: () {
+                NavRouter.pop(context);
+              },
+              child: const Icon(
+                Icons.arrow_back_ios,
+                color: AppColors.black,
+                size: 17,
+              )),
           title: const Text("Back",
-              style: TextStyle(fontSize: 19,
-                  color: AppColors.black, fontWeight: FontWeight.w400)),
+              style: TextStyle(
+                  fontSize: 19,
+                  color: AppColors.black,
+                  fontWeight: FontWeight.w400)),
           titleSpacing: 0,
-        actions: const [
+          actions: const [
             Padding(
               padding: EdgeInsets.only(right: 20.0),
-              child: Icon(Icons.more_horiz, color: AppColors.black,weight: 16,),
+              child: Icon(
+                Icons.more_horiz,
+                color: AppColors.black,
+                weight: 16,
+              ),
             ),
           ],
         ),

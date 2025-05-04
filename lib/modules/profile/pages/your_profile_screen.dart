@@ -58,14 +58,12 @@ class _YourProfileScreenState extends State<YourProfileScreen>
           backgroundColor: AppColors.white,
           elevation: 0,
           centerTitle: false,
-          leading:  InkWell(
-            onTap: () {
-               NavRouter.pushFromRoot(
-                  context, const DashboardPersistentBottomBar());
-            },
-            child: const Icon(Icons.arrow_back_ios, color: AppColors.black)),
-            
-          
+          leading: InkWell(
+              onTap: () {
+                NavRouter.pushFromRoot(
+                    context, const DashboardPersistentBottomBar());
+              },
+              child: const Icon(Icons.arrow_back_ios, color: AppColors.black)),
           title: const Text("Back",
               style: TextStyle(
                   color: AppColors.black, fontWeight: FontWeight.w400)),
@@ -76,41 +74,41 @@ class _YourProfileScreenState extends State<YourProfileScreen>
                 NavRouter.pushFromRoot(context, const NotesScreen());
               },
               child: SizedBox(
-  width: 24, // slightly larger than the icon to give space
-  height: 24,
-  child: Stack(
-    clipBehavior: Clip.none, // allows Positioned to overflow
-    alignment: Alignment.center,
-    children: [
-      Image.asset(Assets.mesgIcon, height: 20, width: 20),
-      Positioned(
-        top: -4,
-        right: -4,
-        child: Container(
-          padding: const EdgeInsets.all(2),
-          decoration: const BoxDecoration(
-            color: AppColors.primaryColor,
-            shape: BoxShape.circle,
-          ),
-          constraints: const BoxConstraints(
-            minWidth: 12,
-            minHeight: 12,
-          ),
-          child: const Text(
-            '5',
-            style: TextStyle(
-              color: AppColors.white,
-              fontSize: 8,
-              fontWeight: FontWeight.bold,
+                width: 24, // slightly larger than the icon to give space
+                height: 24,
+                child: Stack(
+                  clipBehavior: Clip.none, // allows Positioned to overflow
+                  alignment: Alignment.center,
+                  children: [
+                    Image.asset(Assets.mesgIcon, height: 20, width: 20),
+                    Positioned(
+                      top: -4,
+                      right: -4,
+                      child: Container(
+                        padding: const EdgeInsets.all(2),
+                        decoration: const BoxDecoration(
+                          color: AppColors.primaryColor,
+                          shape: BoxShape.circle,
+                        ),
+                        constraints: const BoxConstraints(
+                          minWidth: 12,
+                          minHeight: 12,
+                        ),
+                        child: const Text(
+                          '5',
+                          style: TextStyle(
+                            color: AppColors.white,
+                            fontSize: 8,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
-            textAlign: TextAlign.center,
-          ),
-        ),
-      ),
-    ],
-  ),
-),
-  ),
             w2,
             // InkWell(
             //   onTap: () {
@@ -139,7 +137,7 @@ class _YourProfileScreenState extends State<YourProfileScreen>
             //     ],
             //   ),
             // ),
-          
+
             IconButton(
               icon: SvgPicture.asset(Assets.svgHamburger),
               onPressed: () {

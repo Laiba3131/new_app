@@ -166,9 +166,7 @@ class DummyData {
           timeAgo: '1h',
           userImage: Assets.pngImage1,
           likes: 5,
-         
         ),
-     
       ],
     ),
     Comment(
