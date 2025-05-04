@@ -19,7 +19,6 @@ class Assets {
   static const String camers = 'assets/svg/camera.svg';
   static const String thum = 'assets/svg/thum.svg';
 
-
   //settingsicon
   static const String account = 'assets/svg/Vector (5).svg';
   static const String changePassword = 'assets/svg/Vector (6).svg';
@@ -29,8 +28,7 @@ class Assets {
       'assets/svg/material-symbols-light_health-and-safety.svg';
   static const String block =
       'assets/svg/fluent_presence-blocked-10-regular.svg';
-       static const String trash =
-      'assets/svg/trash.svg';
+  static const String trash = 'assets/svg/trash.svg';
   static const String twoFactorAuth =
       'assets/svg/solar_shield-check-outline.svg';
   static const String notificationSetting = 'assets/svg/mdi_bell-outline.svg';
@@ -59,7 +57,6 @@ class Assets {
   static const String emoji = 'assets/png/emoji.png';
   static const String dress = 'assets/png/dress.png';
   static const String lips = 'assets/png/lips.png';
-
 
 //PnGs
   static const String pngSplashLogo1 = 'assets/png/Group 1.png';
