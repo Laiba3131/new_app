@@ -10,6 +10,8 @@ import 'package:kulture/ui/input/input_field.dart';
 import 'package:kulture/utils/extensions/extended_context.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
 
+import '../../dashboard/pages/dashboard_persistent_bottom_bar.dart';
+
 class LoginScreen extends StatefulWidget {
   LoginScreen({super.key});
 
@@ -240,7 +242,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                          const UserInfoScreen(),
+                                          const DashboardPersistentBottomBar(),
                                     ),
                                   );
                                 }

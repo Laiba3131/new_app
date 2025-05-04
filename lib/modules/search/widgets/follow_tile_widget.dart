@@ -15,6 +15,9 @@ class UserProfileTile extends StatelessWidget {
   final Map<String, dynamic> user;
 
   const UserProfileTile({super.key, required this.user});
+String sanitizeUsername(String input) {
+  return input.trim().toLowerCase().replaceAll(' ', '');
+}
 
   @override
   Widget build(BuildContext context) {
@@ -58,14 +61,15 @@ class UserProfileTile extends StatelessWidget {
                               color: AppColors.black,
                             ),
                           ),
-                          Text(
-                            user['username'],
-                            style: context.textTheme.bodyMedium?.copyWith(
-                              color: AppColors.textGrey,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 15,
-                            ),
-                          ),
+Text(
+  user['username'].toString().toLowerCase().replaceAll(' ', ''),
+  style: context.textTheme.bodyMedium?.copyWith(
+    color: AppColors.textGrey,
+    fontWeight: FontWeight.w400,
+    fontSize: 15,
+  ),
+),
+
                         ]),
                     ),
                     const SizedBox(width: 8),

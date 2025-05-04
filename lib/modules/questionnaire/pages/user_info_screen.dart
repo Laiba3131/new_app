@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kulture/constants/constants.dart';
 import 'package:kulture/modules/questionnaire/widgets/custom_progress_bar.dart';
 import 'package:kulture/modules/questionnaire/widgets/dob_widget.dart';
 import 'package:kulture/modules/questionnaire/widgets/searchable_dropdown_field.dart';
 import 'package:kulture/ui/input/input_field.dart';
+import 'package:kulture/utils/input_formattor.dart';
 import '../../../ui/button/primary_button.dart';
 import '../../../utils/heights_and_widths.dart';
 import '../cubit/questionnaire_cubit.dart';
@@ -52,19 +54,59 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
   final List<String> _years =
       List.generate(100, (index) => (DateTime.now().year - index).toString());
 
-  final List<String> _countries = [
-    'United States',
-    'United Kingdom',
-    'Canada',
-    'Australia',
-    'Germany',
-    'France',
-    'Spain',
-    'Italy',
-    'Japan',
-    'China',
-    'India'
-  ];
+final List<String> _countries = [
+  'United States',
+  'United Kingdom',
+  'Canada',
+  'Australia',
+  'Germany',
+  'France',
+  'Spain',
+  'Italy',
+  'Japan',
+  'China',
+  'India',
+  'Brazil',
+  'Mexico',
+  'Russia',
+  'South Korea',
+  'South Africa',
+  'Argentina',
+  'Netherlands',
+  'Sweden',
+  'Norway',
+  'Denmark',
+  'Switzerland',
+  'Belgium',
+  'New Zealand',
+  'Poland',
+  'Turkey',
+  'Indonesia',
+  'Vietnam',
+  'Thailand',
+  'Philippines',
+  'Malaysia',
+  'Singapore',
+  'Pakistan',
+  'Bangladesh',
+  'Nigeria',
+  'Kenya',
+  'Egypt',
+  'Saudi Arabia',
+  'United Arab Emirates',
+  'Israel',
+  'Ukraine',
+  'Portugal',
+  'Greece',
+  'Ireland',
+  'Austria',
+  'Czech Republic',
+  'Hungary',
+  'Finland',
+  'Romania',
+  'Colombia',
+];
+
  final List<String> _allLanguages = [
   'English',
   'Spanish',
@@ -227,6 +269,11 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                           label: 'Username',
                           borderColor: AppColors.textFieldBorderColor,
                           boxConstraints: 20,
+                          inputFormatters: [
+  FilteringTextInputFormatter.deny(RegExp(r'\s')), 
+  LowerCaseTextFormatter(),
+],
+
                         ),
                         h2,
                         Column(

@@ -19,7 +19,6 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  TextEditingController userNameController = TextEditingController();
 
   TextEditingController emailController = TextEditingController();
 
@@ -37,7 +36,6 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   void initState() {
     super.initState();
-    userNameController.addListener(_onFieldChanged);
     emailController.addListener(_onFieldChanged);
     passwordController.addListener(_onFieldChanged);
     confirmPasswordController.addListener(_onFieldChanged);
@@ -45,8 +43,8 @@ class _SignupScreenState extends State<SignupScreen> {
 
   void _onFieldChanged() {
     setState(() {
-      areAllFieldsFilled = userNameController.text.isNotEmpty &&
-          emailController.text.isNotEmpty &&
+      // areAllFieldsFilled = userNameController.text.isNotEmpty &&
+        areAllFieldsFilled=  emailController.text.isNotEmpty &&
           passwordController.text.isNotEmpty &&
           confirmPasswordController.text.isNotEmpty;
     });
@@ -54,12 +52,11 @@ class _SignupScreenState extends State<SignupScreen> {
 
   @override
   void dispose() {
-    userNameController.removeListener(_onFieldChanged);
     emailController.removeListener(_onFieldChanged);
     passwordController.removeListener(_onFieldChanged);
     confirmPasswordController.removeListener(_onFieldChanged);
 
-    userNameController.dispose();
+
     emailController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
