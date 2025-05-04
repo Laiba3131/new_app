@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kulture/config/routes/nav_router.dart';
 import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/generated/assets.dart';
@@ -9,13 +10,18 @@ import 'package:kulture/utils/extensions/extended_context.dart';
 
 import '../../profile/pages/user_profile_screen.dart';
 
-class VideoGridWidget extends StatelessWidget {
+class VideoGridWidget extends StatefulWidget {
   final int itemCount;
   final bool isIconTrue;
 
   const VideoGridWidget(
       {super.key, this.itemCount = 10, this.isIconTrue = false});
 
+  @override
+  State<VideoGridWidget> createState() => _VideoGridWidgetState();
+}
+
+class _VideoGridWidgetState extends State<VideoGridWidget> {
   String _getImageForIndex(int index) {
     final List<String> images = [
       Assets.pngImage3,
@@ -28,14 +34,22 @@ class VideoGridWidget extends StatelessWidget {
     return images[index % images.length];
   }
 
+  late List<bool> likedItems;
+// bool isLiked = false;
+  @override
+  void initState() {
+    likedItems = List<bool>.filled(widget.itemCount, false);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MasonryGridView.count(
       crossAxisCount: 2,
-      mainAxisSpacing: 20,
-      crossAxisSpacing: 12,
+      mainAxisSpacing: 8,
+      crossAxisSpacing: 7,
       padding: const EdgeInsets.symmetric(horizontal: 12),
-      itemCount: itemCount,
+      itemCount: widget.itemCount,
       itemBuilder: (context, index) {
         final isEven = index % 2 == 0;
         final imageAsset = _getImageForIndex(index);
@@ -49,7 +63,7 @@ class VideoGridWidget extends StatelessWidget {
                 onTap: () {
                   NavRouter.push(context, const InfinityScrollingScreen());
                 },
-                child: isIconTrue == true
+                child: widget.isIconTrue == true
                     ? Stack(
                         children: [
                           ClipRRect(
@@ -61,15 +75,10 @@ class VideoGridWidget extends StatelessWidget {
                               fit: BoxFit.cover,
                             ),
                           ),
-                          const Positioned(
-                            top: 8,
-                            right: 8,
-                            child: Icon(
-                              Icons.play_circle_fill,
-                              size: 28,
-                              color: Colors.white,
-                            ),
-                          ),
+                          Positioned(
+                              top: 8,
+                              right: 8,
+                              child: SvgPicture.asset(Assets.vedioPlay)),
                         ],
                       )
                     : ClipRRect(
@@ -112,7 +121,7 @@ class VideoGridWidget extends StatelessWidget {
                           child: Stack(
                             children: [
                               CircleAvatar(
-                                radius: 20,
+                                radius: 15,
                                 backgroundImage: AssetImage(
                                   _getImageForIndex(index + 2),
                                 ),
@@ -143,7 +152,10 @@ class VideoGridWidget extends StatelessWidget {
                             );
                           },
                           child: Text(
-                            isEven ? 'TinyBossHQ' : 'Denny 💕',
+                            (isEven ? 'TinyBossHQ' : 'Denny')
+                                .toString()
+                                .toLowerCase()
+                                .replaceAll(' ', ''),
                             style: context.textTheme.bodyMedium?.copyWith(
                                 color: AppColors.textGrey,
                                 fontSize: 14,
@@ -152,8 +164,22 @@ class VideoGridWidget extends StatelessWidget {
                           ),
                         ),
                         const Spacer(),
-                        const Icon(Icons.favorite_border,
-                            size: 18, color: AppColors.black),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              likedItems[index] = !likedItems[index];
+                            });
+                          },
+                          child: Icon(
+                            likedItems[index]
+                                ? Icons.favorite
+                                : Icons.favorite_border,
+                            size: 18,
+                            color: likedItems[index]
+                                ? Colors.red
+                                : AppColors.black,
+                          ),
+                        ),
                         const SizedBox(width: 2),
                         Text(
                           '${(index + 1) * 100}',

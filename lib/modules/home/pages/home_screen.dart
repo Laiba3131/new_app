@@ -42,8 +42,13 @@ class HomeScreen extends StatelessWidget {
                 child: TabBarView(
                   children: [
                     const TrendingGrid(),
-                    const VideoGridWidget(itemCount: 14),
-                    const PhotoTab(itemCount: 14),
+                    const VideoGridWidget(
+                      itemCount: 14,
+                      isIconTrue: true,
+                    ),
+                    const PhotoTab(
+                      itemCount: 14,
+                    ),
                     StitchTab(),
                   ],
                 ),
