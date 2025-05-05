@@ -52,7 +52,7 @@ class DeleteDialog extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   InkWell(
                     onTap: () => Navigator.of(context).pop(),
@@ -65,6 +65,10 @@ class DeleteDialog extends StatelessWidget {
                           ),
                     ),
                   ),
+                  Container(
+                    height: 10,
+                    width: 2,
+                    decoration: BoxDecoration(color: AppColors.greyColor),),
                   InkWell(
                     onTap: () => Navigator.of(context).pop(),
                     child: Text(

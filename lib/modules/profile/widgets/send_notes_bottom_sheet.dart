@@ -146,7 +146,7 @@ class _SendNotesBottomSheetState extends State<SendNotesBottomSheet> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'Send in Notes',
+            'Copy link',
             style: context.textTheme.bodyMedium?.copyWith(
               color: AppColors.black,
               fontSize: 17,

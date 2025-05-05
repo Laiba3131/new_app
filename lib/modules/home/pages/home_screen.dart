@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/modules/home/widgets/trending_grid.dart';
+import 'package:kulture/utils/extensions/extended_context.dart';
 import '../widgets/photo_tab.dart';
 import '../widgets/stitch_tab.dart';
 import '../widgets/vedio_tab.dart';
@@ -19,10 +21,23 @@ class HomeScreen extends StatelessWidget {
           body: Column(
             children: [
               // Tab Bar
-              const Padding(
+               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 child: TabBar(
-                  indicator: null,
+                  // indicator: null,
+                  indicatorColor: AppColors.primaryColor,
+                  dividerColor: AppColors.transparent,
+                  indicatorPadding: EdgeInsets.symmetric(horizontal: 20),
+                  labelStyle:  context.textTheme.bodySmall?.copyWith(
+                    color: AppColors.black,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14,
+                  ),
+                  unselectedLabelStyle:  context.textTheme.bodySmall?.copyWith(
+                    color: AppColors.textGrey,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14,
+                  ),
                   // labelColor: Colors.black,
                   // // unselectedLabelColor: Colors.grey,
                   // indicatorColor: Colors.blue,

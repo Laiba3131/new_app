@@ -63,7 +63,7 @@ class _InfinityScrollingScreenState extends State<InfinityScrollingScreen>
       'shares': '320'
     }
   ];
-
+bool isFollow=false;
   @override
   void initState() {
     super.initState();
@@ -332,7 +332,7 @@ class _InfinityScrollingScreenState extends State<InfinityScrollingScreen>
                                               const UserProfileScreen(),
                                             );
                                           },
-                                          child: Text(item['username'],
+                                          child: Text(item['username'].toString().toLowerCase().replaceAll(' ', ''),
                                               style: context
                                                   .textTheme.bodyMedium
                                                   ?.copyWith(
@@ -344,10 +344,14 @@ class _InfinityScrollingScreenState extends State<InfinityScrollingScreen>
                                         const SizedBox(width: 8),
                                         PrimaryButton(
                                           title: 'Follow',
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            setState(() {
+                                              isFollow=!isFollow;
+                                            });
+                                          },
                                           backgroundColor:
-                                              AppColors.primaryColor,
-                                          titleColor: AppColors.white,
+                                             isFollow? AppColors.primaryColor:AppColors.white,
+                                          titleColor: isFollow? AppColors.white:AppColors.black,
                                           borderRadius: 6,
                                           width: 75,
                                           height: 25,
