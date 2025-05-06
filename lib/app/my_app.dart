@@ -40,8 +40,8 @@ class kultureApp extends StatelessWidget {
               navigatorObservers: [
                 BotToastNavigatorObserver(),
               ],
-              home: DashboardPersistentBottomBar(),
-              // home: SplashPage(),
+              // home: DashboardPersistentBottomBar(),
+              home: SplashPage(),
               // home: ProfileCustomizationScreen(),
               // home: HomeScreen(),
             );

@@ -72,7 +72,9 @@ class CustomInputField extends StatelessWidget {
             ),
             prefixIcon: Padding(
               padding: const EdgeInsets.only(right: 7.0),
-              child: iconWidget,
+              child: InkWell(
+                onTap: fun,
+                child: iconWidget),
             ),
             prefixIconConstraints: const BoxConstraints(
               minWidth: 0,

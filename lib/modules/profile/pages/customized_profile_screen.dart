@@ -186,10 +186,24 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                           );
 
                           _bioController.text = result ??
-                              ''; // If result is null, assign empty string
+                              ''; 
                         },
                         child: CustomInputField(
-                          fun: () {},
+                          fun: () async {
+                            final result = await showModalBottomSheet<String>(
+                            context: context,
+                            isScrollControlled: true,
+                            backgroundColor: Colors.white,
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(20)),
+                            ),
+                            builder: (context) => BioBottomSheet(),
+                          );
+
+                          _bioController.text = result ??
+                              ''; 
+                          },
                           title: 'Bio',
                           iconPath: Assets.addIcon,
                           hintText: 'Add a link here (optional)',
@@ -215,7 +229,20 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                           }
                         },
                         child: CustomInputField(
-                          fun: () {},
+                          fun: () async {
+                             selectedInterests =
+                              await showModalBottomSheet<List<String>>(
+                            context: context,
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            builder: (context) => const InterestsBottomSheet(),
+                          );
+
+                          if (selectedInterests != null) {
+                            _interestController.text =
+                                selectedInterests!.join(', ');
+                          }
+                          },
                           title: 'Interests',
                           iconPath: Assets.addIcon,
                           hintText: 'Add your interest here',
