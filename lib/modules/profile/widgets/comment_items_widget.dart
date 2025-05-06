@@ -28,6 +28,7 @@ class CommentItem extends StatefulWidget {
 
 class _CommentItemState extends State<CommentItem> {
   bool showReplyField = false;
+  bool showAllReplies = false;
   final TextEditingController _replyController = TextEditingController();
   File? _selectedReplyMedia;
   final ImagePicker _picker = ImagePicker();
@@ -67,7 +68,7 @@ class _CommentItemState extends State<CommentItem> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CircleAvatar(
-                radius:widget.isReply? 13:18,
+                radius: widget.isReply ? 13 : 18,
                 backgroundImage: AssetImage(widget.comment.userImage),
               ),
               const SizedBox(width: 12),
@@ -178,6 +179,46 @@ class _CommentItemState extends State<CommentItem> {
               ),
             ],
           ),
+          // Show replies section
+          if (widget.comment.replies != null && widget.comment.replies!.isNotEmpty) ...[
+            const SizedBox(height: 8),
+            // Show first reply by default
+            if (widget.comment.replies!.isNotEmpty)
+              CommentItem(
+                comment: widget.comment.replies!.first,
+                isReply: true,
+                onReply: widget.onReply,
+              ),
+            // Show "View X replies" button if there are more replies
+            if (widget.comment.replies!.length > 1 && !showAllReplies)
+              Padding(
+                padding: const EdgeInsets.only(left: 50),
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      showAllReplies = true;
+                    });
+                  },
+                  child: Text(
+                    "View ${widget.comment.replies!.length - 1} more replies",
+                    style: context.textTheme.bodySmall?.copyWith(
+                      color: AppColors.primaryColor,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ),
+            // Show remaining replies when expanded
+            if (showAllReplies)
+              ...widget.comment.replies!.skip(1).map(
+                    (reply) => CommentItem(
+                      comment: reply,
+                      isReply: true,
+                      onReply: widget.onReply,
+                    ),
+                  ),
+          ],
           if (showReplyField) ...[
             const SizedBox(height: 8),
             // Selected reply media preview

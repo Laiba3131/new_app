@@ -166,15 +166,55 @@ class DummyData {
           timeAgo: '1h',
           userImage: Assets.pngImage1,
           likes: 5,
+           replies: [
+        Comment(
+          username: 'Tierra Tierra',
+          text: 'Monica Avila Me too!! I reall love it ',
+          timeAgo: '1h',
+          userImage: Assets.pngImage1,
+          likes: 5,
         ),
+         Comment(
+          username: 'Tierra Tierra',
+          text: 'Monica Avila Me too!! I reall love it ',
+          timeAgo: '1h',
+          userImage: Assets.pngImage1,
+          likes: 5,
+        ),
+      ],
+   
+        ),
+        //  Comment(
+        //   username: 'Tierra Tierra',
+        //   text: 'Monica Avila Me too!! Your are owsoom ',
+        //   timeAgo: '2h',
+        //   userImage: Assets.pngImage2,
+        //   likes: 5,
+        // ),
       ],
     ),
     Comment(
       username: 'sarah.designs',
       text: 'Love your content! Keep it up 👏',
       timeAgo: '5h',
-      userImage: Assets.pngImage1,
+      userImage: Assets.pngImage7,
       likes: 42,
+        replies: [
+        Comment(
+          username: 'Tierra Tierra',
+          text: 'Monica Avila Me too!! Hii ',
+          timeAgo: '1h',
+          userImage: Assets.pngImage1,
+          likes: 5,
+        ),
+         Comment(
+          username: 'Tierra Tierra',
+          text: 'Monica Avila Me too!! Hello ',
+          timeAgo: '2h',
+          userImage: Assets.pngImage2,
+          likes: 5,
+        ),
+      ],
     ),
   ];
 }

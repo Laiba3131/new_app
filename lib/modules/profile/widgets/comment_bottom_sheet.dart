@@ -185,28 +185,28 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
                           });
                         },
                       ),
-                      if (comment.replies.isNotEmpty)
-                        Padding(
-                          padding: const EdgeInsets.only(left: 40),
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: comment.replies.length,
-                            itemBuilder: (context, replyIndex) {
-                              return CommentItem(
-                                comment: comment.replies[replyIndex],
-                                isReply: true,
-                                onReply: (comment) {
-                                  setState(() {
-                                    replyingTo = comment;
-                                    _focusNode.requestFocus();
-                                  });
-                                },
-                              );
-                            },
-                          ),
-                        ),
-                      const SizedBox(height: 10),
+                      // if (comment.replies.isNotEmpty)
+                      //   Padding(
+                      //     padding: const EdgeInsets.only(left: 40),
+                      //     child: ListView.builder(
+                      //       shrinkWrap: true,
+                      //       physics: const NeverScrollableScrollPhysics(),
+                      //       itemCount: comment.replies.length,
+                      //       itemBuilder: (context, replyIndex) {
+                      //         return CommentItem(
+                      //           comment: comment.replies[replyIndex],
+                      //           isReply: true,
+                      //           onReply: (comment) {
+                      //             setState(() {
+                      //               replyingTo = comment;
+                      //               _focusNode.requestFocus();
+                      //             });
+                      //           },
+                      //         );
+                      //       },
+                      //     ),
+                      //   ),
+                      // const SizedBox(height: 10),
                     ],
                   );
                 },
