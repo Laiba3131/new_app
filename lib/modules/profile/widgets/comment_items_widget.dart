@@ -88,7 +88,7 @@ class _CommentItemState extends State<CommentItem> {
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: widget.comment.username + " ",
+                              text: '${widget.comment.username.toString().toLowerCase().replaceAll(' ', '')} ',
                               style: context.textTheme.bodyMedium?.copyWith(
                                 color: AppColors.primaryColor,
                                 fontWeight: FontWeight.bold,
