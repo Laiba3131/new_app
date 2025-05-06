@@ -36,6 +36,7 @@ class _SaveBottomSheetState extends State<SaveBottomSheet> {
     _focusNode.dispose();
     super.dispose();
   }
+bool isBlock=false;
 
   void showErrorDialog(BuildContext context, {String? title, String? message}) {
     showDialog(
@@ -55,7 +56,7 @@ class _SaveBottomSheetState extends State<SaveBottomSheet> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(12),
-      height: MediaQuery.of(context).size.height * 0.4,
+      height: MediaQuery.of(context).size.height * 0.3,
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
@@ -75,46 +76,49 @@ class _SaveBottomSheetState extends State<SaveBottomSheet> {
               ),
             ),
           ),
-          Container(
-            width: double.infinity,
-            height: 70,
-            decoration: BoxDecoration(
-                // color: AppColors.textGrey,
-                border:
-                    Border.all(color: AppColors.searchBarTextColor, width: 0.5),
-                borderRadius: const BorderRadius.all(Radius.circular(15))),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SvgPicture.asset(
-                  Assets.saveIcon,
-                  height: 25,
-                  color: AppColors.searchBarTextColor,
-                ),
-                Text(
-                  'Save',
-                  style: context.textTheme.bodyMedium?.copyWith(
-                    color: AppColors.black,
-                    fontSize: 17,
-                    fontWeight: FontWeight.w600,
-                  ),
-                )
-              ],
-            ),
-          ),
+          // Container(
+          //   width: double.infinity,
+          //   height: 70,
+          //   decoration: BoxDecoration(
+          //       // color: AppColors.textGrey,
+          //       border:
+          //           Border.all(color: AppColors.searchBarTextColor, width: 0.5),
+          //       borderRadius: const BorderRadius.all(Radius.circular(15))),
+          //   child: Column(
+          //     mainAxisAlignment: MainAxisAlignment.center,
+          //     children: [
+          //       SvgPicture.asset(
+          //         Assets.saveIcon,
+          //         height: 25,
+          //         color: AppColors.searchBarTextColor,
+          //       ),
+          //       Text(
+          //         'Save',
+          //         style: context.textTheme.bodyMedium?.copyWith(
+          //           color: AppColors.black,
+          //           fontSize: 17,
+          //           fontWeight: FontWeight.w600,
+          //         ),
+          //       )
+          //     ],
+          //   ),
+          // ),
           h1,
           PrefixIconButton(
             mainAxisAlignment: MainAxisAlignment.start,
             borderColor: AppColors.searchBarTextColor,
             height: 45,
             onPressed: () async {
-              Navigator.pop(context);
-              await Future.delayed(const Duration(milliseconds: 200));
-              BottomSheetService.showReportSheet(context);
+setState(() {
+  isBlock=!isBlock;
+});
+              // Navigator.pop(context);
+              // await Future.delayed(const Duration(milliseconds: 200));
+              // BottomSheetService.showReportSheet(context);
             },
             prefixIconPath: Assets.block,
             prefixIconSize: 20,
-            title: 'Block',
+            title:!isBlock? 'Block':'Blocked',
             backgroundColor: AppColors.white,
             titleColor: AppColors.black,
             borderRadius: 15,

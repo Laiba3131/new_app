@@ -63,6 +63,7 @@ class _InfinityScrollingScreenState extends State<InfinityScrollingScreen>
       'shares': '320'
     }
   ];
+  bool isDislike=false;
 bool isFollow=false;
   @override
   void initState() {
@@ -222,8 +223,22 @@ bool isFollow=false;
                                       ),
                                     ),
                                     h2,
-                                    SvgPicture.asset(Assets.thum,
-                                        height: 25, color: AppColors.white),
+                                    InkWell(
+                                      onTap: (){
+                                        isDislike=!isDislike;
+                                      },
+                                      child: SvgPicture.asset(Assets.thum,
+                                          height: 25, color: AppColors.white),
+                                    ),
+                                     Text(
+                                     'Dislike',
+                                      style: context.textTheme.bodyMedium
+                                          ?.copyWith(
+                                        color: AppColors.white,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
                                     h2,
                                     InkWell(
                                       onTap: () async {
@@ -280,7 +295,7 @@ bool isFollow=false;
                               alignment: Alignment.bottomLeft,
                               child: Padding(
                                 padding: const EdgeInsets.only(
-                                    left: 16.0, bottom: 80.0, right: 80.0),
+                                    left: 16.0, bottom: 80.0, right: 16.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -343,7 +358,7 @@ bool isFollow=false;
                                         ),
                                         const SizedBox(width: 8),
                                         PrimaryButton(
-                                          title: 'Follow',
+                                          title:isFollow? 'Follow':'Unfollow',
                                           onPressed: () {
                                             setState(() {
                                               isFollow=!isFollow;
@@ -354,6 +369,7 @@ bool isFollow=false;
                                           titleColor: isFollow? AppColors.white:AppColors.black,
                                           borderRadius: 6,
                                           width: 75,
+                                          fontSize: 12,
                                           height: 25,
                                           hMargin: 0,
                                           shadowColor: AppColors.transparent,

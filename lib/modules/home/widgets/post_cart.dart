@@ -8,6 +8,7 @@ import 'package:kulture/modules/profile/pages/user_profile_screen.dart';
 import 'package:kulture/ui/button/primary_button.dart';
 import 'package:kulture/utils/extensions/extended_context.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
+import 'package:photo_view/photo_view.dart';
 import '../../../core/service/bottm_sheet_service.dart';
 import '../../../ui/widgets/custom_favt_button.dart';
 
@@ -116,26 +117,23 @@ class _PostCardState extends State<PostCard> {
               ],
             ),
           ),
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(12.0),
-              child: AspectRatio(
-                aspectRatio: 1.0,
-                child: Image.asset(
-                  widget.post.imageUrl,
-                  fit: BoxFit.cover,
-                  // loadingBuilder: (context, child, loadingProgress) {
-                  //   if (loadingProgress == null) return child;
-                  //   return const Center(
-                  //     child: CircularProgressIndicator(color: Colors.black),
-                  //   );
-                  // },
-                ),
-              ),
-            ),
-          ),
+         Padding(
+  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+  child: GestureDetector(
+    onTap: () => _openFullScreen(context, widget.post.imageUrl),
+    child: ClipRRect(
+      borderRadius: BorderRadius.circular(12.0),
+      child: AspectRatio(
+        aspectRatio: 1.0,
+        child: Image.asset(
+          widget.post.imageUrl,
+          fit: BoxFit.fitHeight,
+        ),
+      ),
+    ),
+  ),
+),
+
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(
@@ -261,4 +259,49 @@ class _PostCardState extends State<PostCard> {
       ),
     );
   }
+  void _openFullScreen(BuildContext context, String imageUrl) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.black),
+            onPressed: () => Navigator.pop(context),
+          ),
+        ),
+        body: Container(
+          color: Colors.white,
+          constraints: const BoxConstraints.expand(),
+          child: PhotoView(
+            imageProvider: AssetImage(imageUrl),
+            initialScale: PhotoViewComputedScale.contained,
+            minScale: PhotoViewComputedScale.contained,
+            maxScale: PhotoViewComputedScale.covered * 3,
+            heroAttributes: PhotoViewHeroAttributes(tag: imageUrl),
+            enableRotation: true,
+            backgroundDecoration: const BoxDecoration(color: Colors.white),
+            loadingBuilder: (context, event) => Center(
+              child: SizedBox(
+                width: 20.0,
+                height: 20.0,
+                child: CircularProgressIndicator(
+                  value: event == null 
+                      ? 0 
+                      : event.cumulativeBytesLoaded / event.expectedTotalBytes!,
+                ),
+              ),
+            ),
+            errorBuilder: (context, error, stackTrace) => const Center(
+              child: Icon(Icons.error, color: Colors.white),
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+}
 }

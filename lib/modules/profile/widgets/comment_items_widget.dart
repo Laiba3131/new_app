@@ -67,7 +67,7 @@ class _CommentItemState extends State<CommentItem> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CircleAvatar(
-                radius: 18,
+                radius:widget.isReply? 13:18,
                 backgroundImage: AssetImage(widget.comment.userImage),
               ),
               const SizedBox(width: 12),
@@ -226,7 +226,7 @@ class _CommentItemState extends State<CommentItem> {
               child: Row(
                 children: [
                   CircleAvatar(
-                    radius: 18,
+                    radius: 13,
                     backgroundImage: AssetImage(widget.comment.userImage),
                   ),
                   w1,

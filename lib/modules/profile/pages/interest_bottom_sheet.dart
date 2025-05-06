@@ -131,12 +131,12 @@ class _InterestsBottomSheetState extends State<InterestsBottomSheet> {
                       label: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Image.asset(
-                            iconPath,
-                            height: 16,
-                            width: 16,
-                          ),
-                          const SizedBox(width: 5),
+                          // Image.asset(
+                          //   iconPath,
+                          //   height: 16,
+                          //   width: 16,
+                          // ),
+                          // const SizedBox(width: 5),
                           Text(
                             interest,
                             style:

@@ -22,50 +22,54 @@ class HomeScreen extends StatelessWidget {
             children: [
               // Tab Bar
                Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                child: TabBar(
-                  // indicator: null,
-                  indicatorColor: AppColors.primaryColor,
-                  dividerColor: AppColors.transparent,
-                  indicatorPadding: EdgeInsets.symmetric(horizontal: 20),
-                  labelStyle:  context.textTheme.bodySmall?.copyWith(
-                    color: AppColors.black,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14,
-                  ),
-                  unselectedLabelStyle:  context.textTheme.bodySmall?.copyWith(
-                    color: AppColors.textGrey,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14,
-                  ),
-                  // labelColor: Colors.black,
-                  // // unselectedLabelColor: Colors.grey,
-                  // indicatorColor: Colors.blue,
-                  // indicatorWeight: 3,
-                  // indicatorSize: TabBarIndicatorSize.label,
-                  tabs: [
-                    Tab(text: 'Trending'),
-                    Tab(text: 'Videos'),
-                    Tab(text: 'Photos'),
-                    Tab(text: 'Stitch'),
-                  ],
-                ),
-              ),
+                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                 child: TabBar(
+                   padding: const EdgeInsets.only(bottom: 2),
+                   indicatorColor: AppColors.primaryColor,
+                   dividerColor: AppColors.transparent,
+                   indicatorWeight: 2,
+                   indicatorPadding: const EdgeInsets.symmetric(horizontal: 5,vertical: 0),
+                   labelStyle:  context.textTheme.bodySmall?.copyWith(
+                     color: AppColors.black,
+                     fontWeight: FontWeight.w400,
+                     fontSize: 14,
+                   ),
+                   unselectedLabelStyle:  context.textTheme.bodySmall?.copyWith(
+                     color: AppColors.textGrey,
+                     fontWeight: FontWeight.w400,
+                     fontSize: 14,
+                   ),
+                   // labelColor: Colors.black,
+                   // // unselectedLabelColor: Colors.grey,
+                   // indicatorColor: Colors.blue,
+                   // indicatorWeight: 3,
+                   // indicatorSize: TabBarIndicatorSize.label,
+                   tabs: const [
+                     Tab(text: 'Trending'),
+                     Tab(text: 'Videos'),
+                     Tab(text: 'Photos'),
+                     Tab(text: 'Stitch'),
+                   ],
+                 ),
+               ),
 
               // Tab Bar View
               Expanded(
-                child: TabBarView(
-                  children: [
-                    const TrendingGrid(),
-                    const VideoGridWidget(
-                      itemCount: 14,
-                      isIconTrue: true,
-                    ),
-                    const PhotoTab(
-                      itemCount: 14,
-                    ),
-                    StitchTab(),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: TabBarView(
+                    children: [
+                      const TrendingGrid(),
+                      const VideoGridWidget(
+                        itemCount: 14,
+                        isIconTrue: true,
+                      ),
+                      const PhotoTab(
+                        itemCount: 14,
+                      ),
+                      StitchTab(),
+                    ],
+                  ),
                 ),
               ),
             ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:kulture/generated/assets.dart';
 
 class TrendingGrid extends StatefulWidget {
@@ -78,6 +79,7 @@ class _TrendingGridState extends State<TrendingGrid> {
           likes: (100 + totalIndex * 127), // More varied like counts
           aspectRatio: aspectRatio,
           isVideo: totalIndex % 3 == 0, // Every third item will be a video
+          isImage: totalIndex % 2 == 0,
         );
       }));
       _isLoading = false;
@@ -133,6 +135,7 @@ class TrendingItem {
   final int likes;
   final double aspectRatio;
   final bool isVideo;
+  final bool isImage;
 
   TrendingItem({
     required this.imageUrl,
@@ -140,6 +143,7 @@ class TrendingItem {
     required this.likes,
     required this.aspectRatio,
     required this.isVideo,
+    required this.isImage,
   });
 }
 
@@ -200,18 +204,20 @@ class TrendingTile extends StatelessWidget {
           ),
 
           // Video play icon
-          if (item.isVideo)
-            Positioned(
-              top: 8,
-              right: 8,
-              child: Image.asset(
-                Assets.videoPlaymini,
-                width: 24,
-                height: 24,
-              ),
-            ),
-
-          // User info at bottom
+          (item.isVideo)
+              ? Positioned(
+                  top: 12, right: 12, child: SvgPicture.asset(Assets.vedioPlay))
+              : (item.isImage)
+                  ? Positioned(
+                      top: 12,
+                      right: 12,
+                      child: Image.asset(
+                        Assets.emoji,
+                        width: 24,
+                        height: 24,
+                      ),
+                    )
+                  : const SizedBox(),
         ],
       ),
     );

@@ -19,7 +19,7 @@ class DeleteDialog extends StatelessWidget {
       backgroundColor: AppColors.lightGreyColor,
       child: Container(
         constraints: const BoxConstraints(maxWidth: 300),
-        padding: const EdgeInsets.symmetric(vertical: 23.0),
+        padding: const EdgeInsets.only(top: 23.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -48,14 +48,15 @@ class DeleteDialog extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             const Divider(color: AppColors.greyColor),
-            const SizedBox(height: 8),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    onTap: () => Navigator.of(context).pop(),
+            // const SizedBox(height: 8),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                InkWell(
+                  onTap: () => Navigator.of(context).pop(),
+                  child: Padding(
+                   padding: const EdgeInsets.only(bottom: 10,top: 3),
                     child: Text(
                       'Delete',
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
@@ -65,12 +66,15 @@ class DeleteDialog extends StatelessWidget {
                           ),
                     ),
                   ),
-                  Container(
-                    height: 10,
-                    width: 2,
-                    decoration: BoxDecoration(color: AppColors.greyColor),),
-                  InkWell(
-                    onTap: () => Navigator.of(context).pop(),
+                ),
+                Container(
+                  height: 50,
+                  width: 1,
+                  decoration: const BoxDecoration(color: AppColors.greyColor),),
+                InkWell(
+                  onTap: () => Navigator.of(context).pop(),
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 10,top: 3),
                     child: Text(
                       'Cancel',
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
@@ -80,8 +84,8 @@ class DeleteDialog extends StatelessWidget {
                           ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),

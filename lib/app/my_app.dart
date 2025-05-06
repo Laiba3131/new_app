@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kulture/config/themes/dark_theme.dart';
 import 'package:kulture/modules/dashboard/pages/dashboard_screen.dart';
+import 'package:kulture/modules/home/pages/home_screen.dart';
 import 'package:kulture/modules/questionnaire/pages/user_info_screen.dart';
 import 'package:kulture/modules/start_up/splash_screen.dart';
 import 'package:kulture/modules/dashboard/pages/dashboard_persistent_bottom_bar.dart';
@@ -39,10 +40,10 @@ class kultureApp extends StatelessWidget {
               navigatorObservers: [
                 BotToastNavigatorObserver(),
               ],
-              // home: DashboardPersistentBottomBar(),
-              home: SplashPage(),
+              home: DashboardPersistentBottomBar(),
+              // home: SplashPage(),
               // home: ProfileCustomizationScreen(),
-              // home: CustomizedProfileScreen(),
+              // home: HomeScreen(),
             );
           });
         },
