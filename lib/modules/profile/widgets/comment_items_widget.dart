@@ -7,6 +7,7 @@ import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/generated/assets.dart';
 import 'package:kulture/modules/profile/model/comment_model.dart';
 import 'package:kulture/ui/input/input_field.dart';
+import 'package:kulture/ui/widgets/custom_favt_button.dart';
 import 'package:kulture/utils/extensions/extended_context.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
 
@@ -136,15 +137,25 @@ class _CommentItemState extends State<CommentItem> {
                           ),
                         ),
                         w2,
-                        SvgPicture.asset(
-                          Assets.svgFvt,
-                          height: 12,
-                        ),
+                        CustomFavoriteIcon(
+                           unFillColor:AppColors.svgIconColor,
+                                       fillColor:AppColors.red,
+                                      outlineAssetPath: Assets.svgFvt,
+                                      filledAssetPath: Assets.svgFvtFilled,
+                                      size: 12,
+                                      initiallyFavorited: false,
+                                      onToggle: (isFav) {},
+                                    ),
                         w2,
-                        SvgPicture.asset(
-                          Assets.thum,
-                          height: 12,
-                        ),
+                        CustomFavoriteIcon(
+                           unFillColor:AppColors.svgIconColor,
+                                      outlineAssetPath: Assets.thum,
+                                      filledAssetPath: Assets.dislikeIcon,
+                                      size: 12,
+                                      fillColor:AppColors.black,
+                                      initiallyFavorited: false,
+                                      onToggle: (isFav) {},
+                                    ),
                         w2,
                         InkWell(
                           onTap: () {

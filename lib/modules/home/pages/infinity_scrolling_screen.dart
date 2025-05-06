@@ -64,7 +64,7 @@ class _InfinityScrollingScreenState extends State<InfinityScrollingScreen>
     }
   ];
   bool isDislike=false;
-bool isFollow=false;
+bool isFollow=true;
   @override
   void initState() {
     super.initState();
@@ -207,6 +207,8 @@ bool isFollow=false;
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     CustomFavoriteIcon(
+                                      unFillColor:AppColors.white,
+                                       fillColor:AppColors.red,
                                       outlineAssetPath: Assets.svgFvt,
                                       filledAssetPath: Assets.svgFvtFilled,
                                       size: 25,
@@ -223,13 +225,22 @@ bool isFollow=false;
                                       ),
                                     ),
                                     h2,
-                                    InkWell(
-                                      onTap: (){
-                                        isDislike=!isDislike;
-                                      },
-                                      child: SvgPicture.asset(Assets.thum,
-                                          height: 25, color: AppColors.white),
+                                     CustomFavoriteIcon(
+                                       unFillColor:AppColors.white,
+                                      outlineAssetPath: Assets.thum,
+                                      filledAssetPath: Assets.dislikeIcon,
+                                      size: 25,
+                                      fillColor:AppColors.black,
+                                      initiallyFavorited: false,
+                                      onToggle: (isFav) {},
                                     ),
+                                    // InkWell(
+                                    //   onTap: (){
+                                    //     isDislike=!isDislike;
+                                    //   },
+                                    //   child: SvgPicture.asset(Assets.thum,
+                                    //       height: 25, color: AppColors.white),
+                                    // ),
                                      Text(
                                      'Dislike',
                                       style: context.textTheme.bodyMedium

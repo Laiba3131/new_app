@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:kulture/config/routes/nav_router.dart';
 import 'package:kulture/generated/assets.dart';
+import 'package:kulture/modules/home/pages/infinity_scrolling_photos.dart';
+import 'package:kulture/modules/home/pages/infinity_scrolling_screen.dart';
 
 class TrendingGrid extends StatefulWidget {
   const TrendingGrid({super.key});
@@ -157,68 +160,73 @@ class TrendingTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: item.aspectRatio,
-      child: Stack(
-        fit: StackFit.expand,
-        children: [
-          // Image
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Image.asset(
-              item.imageUrl,
-              fit: BoxFit.cover,
-              // loadingBuilder: (context, child, loadingProgress) {
-              //   if (loadingProgress == null) return child;
-              //   return Container(
-              //     color: Colors.grey[300],
-              //     child: const Center(
-              //       child: CircularProgressIndicator(),
-              //     ),
-              //   );
-              // },
-              errorBuilder: (context, error, stackTrace) {
-                return Container(
-                  color: Colors.grey[300],
-                  child: const Icon(Icons.error_outline),
-                );
-              },
+    return InkWell(
+      onTap: (){
+        if(item.isVideo){
+           NavRouter.push(context, const InfinityScrollingScreen());
+        }else{
+           NavRouter.push(context, const InfinityScrollingPhotos());
+        }
+      },
+      child: AspectRatio(
+        aspectRatio: item.aspectRatio,
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            // Image
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset(
+                item.imageUrl,
+                fit: BoxFit.cover,
+                // loadingBuilder: (context, child, loadingProgress) {
+                //   if (loadingProgress == null) return child;
+                //   return Container(
+                //     color: Colors.grey[300],
+                //     child: const Center(
+                //       child: CircularProgressIndicator(),
+                //     ),
+                //   );
+                // },
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    color: Colors.grey[300],
+                    child: const Icon(Icons.error_outline),
+                  );
+                },
+              ),
             ),
-          ),
-
-          // Gradient overlay
-          Positioned.fill(
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.transparent,
-                    Colors.black.withOpacity(0.5),
-                  ],
+      
+            // Gradient overlay
+            Positioned.fill(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.transparent,
+                      Colors.black.withOpacity(0.5),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-
-          // Video play icon
-          (item.isVideo)
-              ? Positioned(
-                  top: 12, right: 12, child: SvgPicture.asset(Assets.vedioPlay))
-              : (item.isImage)
-                  ? Positioned(
-                      top: 12,
-                      right: 12,
-                      child: Image.asset(
-                        Assets.emoji,
-                        width: 24,
-                        height: 24,
-                      ),
-                    )
-                  : const SizedBox(),
-        ],
+      
+            // Video play icon
+            (item.isVideo)
+                ? Positioned(
+                    top: 12, right: 12, child: SvgPicture.asset(Assets.vedioPlay))
+                : (item.isImage)
+                    ? Positioned(
+                        top: 12,
+                        right: 12,
+                        child: SvgPicture.asset(Assets.images)
+                      )
+                    : const SizedBox(),
+          ],
+        ),
       ),
     );
   }

@@ -46,8 +46,8 @@ class _VideoGridWidgetState extends State<VideoGridWidget> {
   Widget build(BuildContext context) {
     return MasonryGridView.count(
       crossAxisCount: 2,
-      mainAxisSpacing: 8,
-      crossAxisSpacing: 7,
+      mainAxisSpacing: 7,
+      crossAxisSpacing: 5,
       padding: const EdgeInsets.symmetric(horizontal: 12),
       itemCount: widget.itemCount,
       itemBuilder: (context, index) {
@@ -137,7 +137,7 @@ class _VideoGridWidgetState extends State<VideoGridWidget> {
                                         color: Colors.white, width: 2),
                                   ),
                                   child: const Icon(Icons.add_circle,
-                                      color: Colors.black, size: 16),
+                                      color: Colors.black, size: 14),
                                 ),
                               ),
                             ],

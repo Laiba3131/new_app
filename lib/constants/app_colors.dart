@@ -17,6 +17,7 @@ class AppColors {
   static const borderColor = Color(0xffd4d4d4);
   static const containerColor = Color(0xffcfcfcf);
   static const searchBarTextColor = Color(0xff677682);
+  static const svgIconColor = Color(0xff7b8892);
   static const disableColor = Color(0xff939393);
 
   static const secondary = Color(0xffFFC034);

@@ -7,12 +7,16 @@ class CustomFavoriteIcon extends StatefulWidget {
   final String filledAssetPath;
   final String outlineAssetPath;
   final bool initiallyFavorited;
+  final Color fillColor;
+  final Color unFillColor;
   final void Function(bool isFavorited)? onToggle;
 
   const CustomFavoriteIcon({
     Key? key,
     required this.filledAssetPath,
     required this.outlineAssetPath,
+    required this.unFillColor,
+    required this.fillColor,
     this.size = 24.0,
     this.initiallyFavorited = false,
     this.onToggle,
@@ -46,7 +50,7 @@ class _CustomFavoriteIconState extends State<CustomFavoriteIcon> {
         isFavorited ? widget.filledAssetPath : widget.outlineAssetPath,
         height: widget.size,
         width: widget.size,
-        color: isFavorited ? AppColors.red : AppColors.white,
+        color: isFavorited ? widget.fillColor : widget.unFillColor,
       ),
     );
   }
