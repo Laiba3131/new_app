@@ -163,19 +163,27 @@ class _UserProfileScreenState extends State<UserProfileScreen>
                 ),
               ),
               h2,
-              SizedBox(
-                height: 190,
-                child: ListView.separated(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: users.length,
-                  itemBuilder: (context, index) {
-                    return SuggestedUserCard(user: users[index]);
-                  },
-                  separatorBuilder: (context, index) =>
-                      const SizedBox(width: 12),
-                ),
-              ),
+              users.isNotEmpty
+                  ? SizedBox(
+                      height: 190,
+                      child: ListView.separated(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        scrollDirection: Axis.horizontal,
+                        itemCount: users.length,
+                        itemBuilder: (context, index) {
+                          return SuggestedUserCard(
+                              user: users[index],
+                              onDismiss: () {
+                                // setState(() {
+                                //   users.removeAt(index);
+                                // });
+                              });
+                        },
+                        separatorBuilder: (context, index) =>
+                            const SizedBox(width: 12),
+                      ),
+                    )
+                  : SizedBox.shrink(),
               h2,
               DefaultTabController(
                 length: 3,

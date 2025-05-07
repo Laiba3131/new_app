@@ -9,10 +9,18 @@ import 'package:kulture/utils/heights_and_widths.dart';
 
 import '../../profile/widgets/suggested_user_card.dart';
 
-class StitchTab extends StatelessWidget {
+class StitchTab extends StatefulWidget {
   StitchTab({super.key});
+
+  @override
+  State<StitchTab> createState() => _StitchTabState();
+}
+
+class _StitchTabState extends State<StitchTab> {
   final posts = DummyData.posts;
+
   List<SuggestedUser> users = DummyData.users;
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -60,7 +68,14 @@ class StitchTab extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: users.length,
               itemBuilder: (context, index) {
-                return SuggestedUserCard(user: users[index]);
+                return SuggestedUserCard(
+                  user: users[index],
+                  onDismiss: () {
+                    setState(() {
+                      users.removeAt(index);
+                    });
+                  },
+                );
               },
               separatorBuilder: (context, index) => const SizedBox(width: 12),
             ),

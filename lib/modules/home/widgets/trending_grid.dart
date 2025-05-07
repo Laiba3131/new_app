@@ -79,9 +79,9 @@ class _TrendingGridState extends State<TrendingGrid> {
         return TrendingItem(
           imageUrl: assetImages[index % assetImages.length],
           username: 'User ${totalIndex + 1}',
-          likes: (100 + totalIndex * 127), // More varied like counts
+          likes: (100 + totalIndex * 127), 
           aspectRatio: aspectRatio,
-          isVideo: totalIndex % 3 == 0, // Every third item will be a video
+          isVideo: totalIndex % 3 == 0, 
           isImage: totalIndex % 2 == 0,
         );
       }));
@@ -89,10 +89,6 @@ class _TrendingGridState extends State<TrendingGrid> {
     });
   }
 
-  int _getImageHeight(double aspectRatio) {
-    final baseHeight = 500;
-    return (baseHeight / aspectRatio).round();
-  }
 
   Future<void> _onRefresh() async {
     setState(() {

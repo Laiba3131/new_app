@@ -61,8 +61,9 @@ class HomeScreen extends StatelessWidget {
                         itemCount: 14,
                         isIconTrue: true,
                       ),
-                      const PhotoTab(
-                        itemCount: 14,
+                       const PhotoTab(
+                        itemCount: 15,
+                        
                       ),
                       StitchTab(),
                     ],

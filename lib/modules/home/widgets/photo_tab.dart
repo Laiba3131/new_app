@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:kulture/config/routes/nav_router.dart';
 import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/generated/assets.dart';
@@ -10,8 +11,8 @@ import '../pages/infinity_scrolling_photos.dart';
 
 class PhotoTab extends StatelessWidget {
   final int itemCount;
-
-  const PhotoTab({super.key, this.itemCount = 10});
+  
+   const PhotoTab({super.key, this.itemCount = 10});
 
   String _getImageForIndex(int index) {
     final List<String> images = [
@@ -29,11 +30,12 @@ class PhotoTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return MasonryGridView.count(
       crossAxisCount: 2,
-      mainAxisSpacing: 20,
-      crossAxisSpacing: 12,
+     mainAxisSpacing: 7,
+      crossAxisSpacing: 5,
       padding: const EdgeInsets.symmetric(horizontal: 12),
       itemCount: itemCount,
       itemBuilder: (context, index) {
+        bool isImages= index%3==0;
         final isEven = index % 2 == 0;
         final imageAsset = _getImageForIndex(index);
         return ClipRRect(
@@ -54,14 +56,22 @@ class PhotoTab extends StatelessWidget {
                   //   ),
                   // );
                 },
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Image.asset(
-                    imageAsset,
-                    height: isEven ? 295 : 200,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
+                child: Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.asset(
+                        imageAsset,
+                        height: isEven ? 295 : 200,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                      (isImages)
+                ? Positioned(
+                    top: 12, right: 12, child: SvgPicture.asset(Assets.images))
+                : SizedBox()
+                  ],
                 ),
               ),
               const SizedBox(height: 8),
@@ -91,11 +101,29 @@ class PhotoTab extends StatelessWidget {
                               const UserProfileScreen(),
                             );
                           },
-                          child: const CircleAvatar(
-                            radius: 10,
-                            backgroundImage: AssetImage(
-                              Assets.pngImage1,
-                            ),
+                          child: Stack(
+                            children: [
+                              const CircleAvatar(
+                                radius: 13,
+                                backgroundImage: AssetImage(
+                                  Assets.pngImage1,
+                                ),
+                              ),
+                               Positioned(
+                                bottom: -2,
+                                right: -2,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                        color: Colors.white, width: 2),
+                                  ),
+                                  child: const Icon(Icons.add_circle,
+                                      color: Colors.black, size: 13),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                         const SizedBox(width: 6),

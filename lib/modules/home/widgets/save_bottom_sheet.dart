@@ -36,7 +36,8 @@ class _SaveBottomSheetState extends State<SaveBottomSheet> {
     _focusNode.dispose();
     super.dispose();
   }
-bool isBlock=false;
+
+  bool isBlock = false;
 
   void showErrorDialog(BuildContext context, {String? title, String? message}) {
     showDialog(
@@ -109,16 +110,16 @@ bool isBlock=false;
             borderColor: AppColors.searchBarTextColor,
             height: 45,
             onPressed: () async {
-setState(() {
-  isBlock=!isBlock;
-});
+              setState(() {
+                isBlock = !isBlock;
+              });
               // Navigator.pop(context);
               // await Future.delayed(const Duration(milliseconds: 200));
               // BottomSheetService.showReportSheet(context);
             },
             prefixIconPath: Assets.block,
             prefixIconSize: 20,
-            title:!isBlock? 'Block':'Blocked',
+            title: !isBlock ? 'Block' : '“Unblock',
             backgroundColor: AppColors.white,
             titleColor: AppColors.black,
             borderRadius: 15,

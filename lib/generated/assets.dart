@@ -48,6 +48,7 @@ class Assets {
   static const String vedioPlay = 'assets/svg/vedio.svg';
   static const String images = 'assets/svg/images.svg';
   static const String dislikeIcon = 'assets/svg/disLike.svg';
+  static const String moreOptions = 'assets/svg/more-options.svg';
 
   //Images
   static const String pngSplashLogo = 'assets/images/logo.png';

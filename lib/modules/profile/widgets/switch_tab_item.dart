@@ -5,6 +5,7 @@ import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/generated/assets.dart';
 import 'package:kulture/modules/profile/model/post_data_model.dart';
 import 'package:kulture/modules/profile/pages/user_profile_screen.dart';
+import 'package:kulture/ui/widgets/custom_favt_button.dart';
 import 'package:kulture/utils/extensions/extended_context.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
 import '../../../core/service/bottm_sheet_service.dart';
@@ -96,7 +97,7 @@ class SwitchTabItem extends StatelessWidget {
                                 color: AppColors.black),
                           ),
                         ),
-                        w0P5,
+                        w2,
                         Text(
                           post.timeAgo,
                           style: context.textTheme.bodySmall?.copyWith(
@@ -130,68 +131,99 @@ class SwitchTabItem extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Row(
-                          children: [
-                            SvgPicture.asset(Assets.svgFvt),
-                            w0P5,
-                            Text(post.likes.toString(),
-                                style: context.textTheme.bodySmall?.copyWith(
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w400,
-                                    color: AppColors.textGrey)),
-                          ],
+                        CustomFavoriteIcon(
+                          unFillColor: AppColors.svgIconColor,
+                          fillColor: AppColors.red,
+                          outlineAssetPath: Assets.svgFvt,
+                          filledAssetPath: Assets.svgFvtFilled,
+                          size: 20,
+                          initiallyFavorited: false,
+                          onToggle: (isFav) {},
                         ),
-                        w3,
-                        SvgPicture.asset(
-                          Assets.thum,
-                          height: 12,
+                        w1,
+                        Text(
+                          '19.7k',
+                          style: context.textTheme.bodyMedium?.copyWith(
+                            color: AppColors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300,
+                          ),
                         ),
-                        w3,
+                        w2,
+                        CustomFavoriteIcon(
+                          unFillColor: AppColors.svgIconColor,
+                          outlineAssetPath: Assets.thum,
+                          filledAssetPath: Assets.dislikeIcon,
+                          size: 20,
+                          fillColor: AppColors.black,
+                          initiallyFavorited: false,
+                          onToggle: (isFav) {},
+                        ),
+                        w2,
                         InkWell(
-                          onTap: () {
+                          onTap: () async {
                             BottomSheetService.showCommentSheet(context);
                           },
-                          child: Row(
-                            children: [
-                              SvgPicture.asset(Assets.svgComment),
-                              w0P5,
-                              Text(post.comments.toString(),
-                                  style: context.textTheme.bodySmall?.copyWith(
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w400,
-                                      color: AppColors.textGrey)),
-                            ],
+                          child: SvgPicture.asset(Assets.svgComment,
+                              color: AppColors.svgIconColor, height: 20),
+                        ),
+                        w1,
+                        Text(
+                          ' 16.9k',
+                          style: context.textTheme.bodyMedium?.copyWith(
+                            color: AppColors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300,
                           ),
                         ),
-                        w3,
+                        w2,
                         InkWell(
-                          onTap: () {
-                            // BottomSheetService.showSaveSheet(context);
+                          onTap: () async {},
+                          child: SvgPicture.asset(Assets.svgReload,
+                              color: AppColors.svgIconColor, height: 17),
+                        ),
+                        w1,
+                        Text(
+                          ' 16.9k',
+                          style: context.textTheme.bodyMedium?.copyWith(
+                            color: AppColors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                        w2,
+                        InkWell(
+                          onTap: () async {
+                            BottomSheetService.showSendNoteSheet(context);
                           },
-                          child: Row(
-                            children: [
-                              SvgPicture.asset(Assets.svgReload),
-                              w0P5,
-                              Text(post.retweets.toString(),
-                                  style: context.textTheme.bodySmall?.copyWith(
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w400,
-                                      color: AppColors.textGrey)),
-                            ],
+                          child: SvgPicture.asset(
+                            Assets.svgSendIcon,
+                            color: AppColors.svgIconColor,
+                            height: 20,
                           ),
                         ),
-                        w4,
-                        InkWell(
-                            onTap: () {
-                              BottomSheetService.showSendNoteSheet(context);
-                            },
-                            child: SvgPicture.asset(Assets.svgSendIcon)),
+                        w1,
+                        Text(
+                          '940',
+                          style: context.textTheme.bodyMedium?.copyWith(
+                            color: AppColors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
                       ],
                     ),
                   ],
                 ),
               ),
-              const Icon(Icons.more_horiz, color: Colors.grey),
+              InkWell(
+                  onTap: () async {
+                    BottomSheetService.showSaveSheet(context);
+                  },
+                  child: SvgPicture.asset(
+                    Assets.moreOptions,
+                    color: AppColors.textGrey,
+                  )),
             ],
           ),
         ],

@@ -5,11 +5,24 @@ import 'package:kulture/ui/button/primary_button.dart';
 import 'package:kulture/utils/extensions/extended_context.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
 
-class SuggestedUserCard extends StatelessWidget {
+import '../../../config/routes/nav_router.dart';
+import '../pages/user_profile_screen.dart';
+
+class SuggestedUserCard extends StatefulWidget {
   final SuggestedUser user;
+  final VoidCallback onDismiss;
+  const SuggestedUserCard({
+    super.key,
+    required this.user,
+    required this.onDismiss,
+  });
 
-  const SuggestedUserCard({super.key, required this.user});
+  @override
+  State<SuggestedUserCard> createState() => _SuggestedUserCardState();
+}
 
+class _SuggestedUserCardState extends State<SuggestedUserCard> {
+  bool isFollow = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,7 +38,7 @@ class SuggestedUserCard extends StatelessWidget {
           Align(
             alignment: Alignment.topRight,
             child: GestureDetector(
-              onTap: () {},
+              onTap: widget.onDismiss,
               child: const Icon(
                 Icons.close,
                 size: 13,
@@ -33,22 +46,38 @@ class SuggestedUserCard extends StatelessWidget {
               ),
             ),
           ),
-          CircleAvatar(
-            radius: 32,
-            backgroundImage: AssetImage(user.imageUrl),
+          InkWell(
+             onTap: () {
+                        NavRouter.push(
+                          context,
+                          const UserProfileScreen(),
+                        );
+                      },
+            child: CircleAvatar(
+              radius: 32,
+              backgroundImage: AssetImage(widget.user.imageUrl),
+            ),
           ),
           h1,
-          Text(
-            user.name,
-            style: context.textTheme.bodySmall?.copyWith(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: AppColors.black,
+          InkWell(
+             onTap: () {
+                        NavRouter.push(
+                          context,
+                          const UserProfileScreen(),
+                        );
+                      },
+            child: Text(
+              widget.user.name,
+              style: context.textTheme.bodySmall?.copyWith(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: AppColors.black,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
           ),
           Text(
-            user.username,
+            widget.user.username,
             style: context.textTheme.bodySmall?.copyWith(
               fontSize: 12,
               fontWeight: FontWeight.w300,
@@ -57,13 +86,22 @@ class SuggestedUserCard extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           PrimaryButton(
-            onPressed: () {},
-            title: 'Follow',
-            shadowColor: AppColors.transparent,
+            title: isFollow ? 'Follow' : 'Unfollow',
+            onPressed: () {
+              setState(() {
+                isFollow = !isFollow;
+              });
+            },
+            backgroundColor:
+                isFollow ? AppColors.primaryColor : AppColors.primaryColor,
+            titleColor: isFollow ? AppColors.white : AppColors.white,
+            borderRadius: 6,
             width: 100,
-            backgroundColor: AppColors.primaryColor,
+            fontSize: 12,
             height: 25,
-          )
+            hMargin: 0,
+            shadowColor: AppColors.transparent,
+          ),
         ],
       ),
     );
