@@ -8,6 +8,7 @@ import 'package:kulture/utils/extensions/extended_context.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
 
 import '../../profile/widgets/suggested_user_card.dart';
+import '../../profile/widgets/switch_tab_copy.dart';
 
 class StitchTab extends StatefulWidget {
   StitchTab({super.key});
@@ -34,7 +35,7 @@ class _StitchTabState extends State<StitchTab> {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: posts.length,
               itemBuilder: (context, index) {
-                return SwitchTabItem(
+                return SwitchTabItemCopy(
                   post: posts[index],
                   profileImageUrl: Assets.pngImage5,
                   isProfileScreen: false,
@@ -91,7 +92,7 @@ class _StitchTabState extends State<StitchTab> {
             physics: const NeverScrollableScrollPhysics(),
             itemCount: posts.length,
             itemBuilder: (context, index) {
-              return SwitchTabItem(
+              return SwitchTabItemCopy(
                 post: posts[index],
                 profileImageUrl: Assets.pngImage5,
                 isProfileScreen: false,
