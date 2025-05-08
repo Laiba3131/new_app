@@ -4,7 +4,10 @@ import 'package:kulture/modules/home/widgets/repost_sheet.dart';
 import 'package:kulture/modules/home/widgets/save_bottom_sheet.dart';
 import 'package:kulture/modules/profile/widgets/comment_bottom_sheet.dart';
 import 'package:kulture/modules/profile/widgets/send_notes_bottom_sheet.dart';
+import 'package:kulture/modules/profile/widgets/share_profile_sheet.dart';
 import 'package:kulture/ui/bottom_bar_visibility_provider.dart';
+
+import '../../modules/profile/widgets/user_profile_bottom_sheet.dart';
 
 class BottomSheetService {
   static Future<void> showSaveSheet(BuildContext context) async {
@@ -15,6 +18,32 @@ class BottomSheetService {
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
       builder: (_) => const SaveBottomSheet(),
+    );
+
+    BottomBarVisibilityProvider().show();
+  }
+
+   static Future<void> showShareProfileSheet(BuildContext context) async {
+    BottomBarVisibilityProvider().hide();
+
+    await showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => const ShareProfileSheet(),
+    );
+
+    BottomBarVisibilityProvider().show();
+  }
+
+   static Future<void> showUserBottomSheet(BuildContext context) async {
+    BottomBarVisibilityProvider().hide();
+
+    await showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => const UserProfileBottomSheet(),
     );
 
     BottomBarVisibilityProvider().show();

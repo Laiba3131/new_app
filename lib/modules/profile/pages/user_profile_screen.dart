@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kulture/config/routes/nav_router.dart';
 import 'package:kulture/constants/app_colors.dart';
+import 'package:kulture/core/service/bottm_sheet_service.dart';
 import 'package:kulture/generated/assets.dart';
 import 'package:kulture/modules/profile/model/suggested_user_model.dart';
 import 'package:kulture/modules/profile/pages/dummy_data.dart';
@@ -73,14 +74,15 @@ class _UserProfileScreenState extends State<UserProfileScreen>
                   color: AppColors.black,
                   fontWeight: FontWeight.w400)),
           titleSpacing: 0,
-          actions: const [
+          actions:  [
             Padding(
               padding: EdgeInsets.only(right: 20.0),
-              child: Icon(
-                Icons.more_horiz,
-                color: AppColors.black,
-                weight: 16,
-              ),
+              child:  InkWell(
+              onTap: () async {
+                BottomSheetService.showUserBottomSheet(context);
+              },
+              child: SvgPicture.asset(Assets.moreOptions,
+                  color: AppColors.textGrey)),
             ),
           ],
         ),

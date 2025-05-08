@@ -185,24 +185,22 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                             builder: (context) => BioBottomSheet(),
                           );
 
-                          _bioController.text = result ??
-                              ''; 
+                          _bioController.text = result ?? '';
                         },
                         child: CustomInputField(
                           fun: () async {
                             final result = await showModalBottomSheet<String>(
-                            context: context,
-                            isScrollControlled: true,
-                            backgroundColor: Colors.white,
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.vertical(
-                                  top: Radius.circular(20)),
-                            ),
-                            builder: (context) => BioBottomSheet(),
-                          );
+                              context: context,
+                              isScrollControlled: true,
+                              backgroundColor: Colors.white,
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(20)),
+                              ),
+                              builder: (context) => BioBottomSheet(),
+                            );
 
-                          _bioController.text = result ??
-                              ''; 
+                            _bioController.text = result ?? '';
                           },
                           title: 'Bio',
                           iconPath: Assets.addIcon,
@@ -230,18 +228,19 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                         },
                         child: CustomInputField(
                           fun: () async {
-                             selectedInterests =
-                              await showModalBottomSheet<List<String>>(
-                            context: context,
-                            isScrollControlled: true,
-                            backgroundColor: Colors.transparent,
-                            builder: (context) => const InterestsBottomSheet(),
-                          );
+                            selectedInterests =
+                                await showModalBottomSheet<List<String>>(
+                              context: context,
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              builder: (context) =>
+                                  const InterestsBottomSheet(),
+                            );
 
-                          if (selectedInterests != null) {
-                            _interestController.text =
-                                selectedInterests!.join(', ');
-                          }
+                            if (selectedInterests != null) {
+                              _interestController.text =
+                                  selectedInterests!.join(', ');
+                            }
                           },
                           title: 'Interests',
                           iconPath: Assets.addIcon,
@@ -334,7 +333,9 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                               iconPath: Assets.addIcon,
                               hintText: 'Number',
                               controller: _phoneNumberController,
-                              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                              inputFormatters: [
+                                FilteringTextInputFormatter.digitsOnly
+                              ],
                               minLines: 1,
                               keyboardType: TextInputType.number,
                               validator: (value) {
