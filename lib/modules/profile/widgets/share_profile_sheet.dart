@@ -56,7 +56,7 @@ class _ShareProfileSheetState extends State<ShareProfileSheet> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.only(top: 12,bottom: 6),
       height: MediaQuery.of(context).size.height * 0.3,
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -66,25 +66,15 @@ class _ShareProfileSheetState extends State<ShareProfileSheet> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Center(
-            child: Container(
-              height: 4,
-              width: 40,
-              margin: const EdgeInsets.only(bottom: 20),
-              decoration: BoxDecoration(
-                color: Colors.grey[400],
-                borderRadius: BorderRadius.circular(2),
-              ),
-            ),
-          ),
+
           Container(
             width: double.infinity,
             height: 70,
-            decoration: BoxDecoration(
-                // color: AppColors.textGrey,
-                border:
-                    Border.all(color: AppColors.searchBarTextColor, width: 0.5),
-                borderRadius: const BorderRadius.all(Radius.circular(15))),
+            // decoration: BoxDecoration(
+            //     // color: AppColors.textGrey,
+            //     border:
+            //         Border.all(color: AppColors.searchBarTextColor, width: 0.5),
+            //     borderRadius: const BorderRadius.all(Radius.circular(15))),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -104,15 +94,17 @@ class _ShareProfileSheetState extends State<ShareProfileSheet> {
               ],
             ),
           ),
-          h1,
+          h0P5,
+          Divider(color: AppColors.searchBarColor,),
+           h0P5,
           Container(
             width: double.infinity,
             height: 70,
-            decoration: BoxDecoration(
-                // color: AppColors.textGrey,
-                border:
-                    Border.all(color: AppColors.searchBarTextColor, width: 0.5),
-                borderRadius: const BorderRadius.all(Radius.circular(15))),
+            // decoration: BoxDecoration(
+            //     // color: AppColors.textGrey,
+            //     border:
+            //         Border.all(color: AppColors.searchBarTextColor, width: 0.5),
+                // borderRadius: const BorderRadius.all(Radius.circular(15))),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -133,20 +125,20 @@ class _ShareProfileSheetState extends State<ShareProfileSheet> {
             ),
           ),
           h1,
-          PrefixIconButton(
-            mainAxisAlignment: MainAxisAlignment.start,
-            borderColor: AppColors.transparent,
+          Divider(color: AppColors.searchBarColor,),
+          h1,
+          
+          PrimaryButton(
             height: 45,
             onPressed: () async {
               Navigator.pop(context);
               await Future.delayed(const Duration(milliseconds: 200));
               BottomSheetService.showReportSheet(context);
             },
-            prefixIconPath: Assets.reporting,
-            prefixIconSize: 20,
             title: 'Cancel',
             backgroundColor: AppColors.white,
-            titleColor: AppColors.red,
+            shadowColor: AppColors.grey,
+            titleColor: AppColors.black,
             borderRadius: 15,
           ),
         ],

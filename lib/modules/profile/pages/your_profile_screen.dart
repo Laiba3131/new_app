@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:kulture/config/config.dart';
 import 'package:kulture/constants/app_colors.dart';
+import 'package:kulture/core/service/bottm_sheet_service.dart';
 import 'package:kulture/generated/assets.dart';
 import 'package:kulture/modules/dashboard/pages/dashboard_persistent_bottom_bar.dart';
 import 'package:kulture/modules/profile/pages/dummy_data.dart';
@@ -193,12 +194,7 @@ class _YourProfileScreenState extends State<YourProfileScreen>
                             child: PrimaryButton(
                           height: 43,
                           onPressed: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => const NotesScreen(),
-                            //   ),
-                            // );
+                            BottomSheetService.showShareProfileSheet(context);
                           },
                           title: 'Share profile',
                           shadowColor: AppColors.transparent,
