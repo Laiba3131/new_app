@@ -24,7 +24,7 @@ class SwitchTabItemCopy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal:  16,vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -40,12 +40,12 @@ class SwitchTabItemCopy extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(top: 10),
                 width: 1,
-                height: 120, 
-                color:AppColors.lightGreyColor,
+                height: 120,
+                color: AppColors.lightGreyColor,
               ),
             ],
           ),
-         w2,
+          w2,
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,21 +111,21 @@ class SwitchTabItemCopy extends StatelessWidget {
                     ),
                     w1,
                     Text("587", style: _statStyle(context)),
-                     w2,
-                        CustomFavoriteIcon(
-                          unFillColor: AppColors.svgIconColor,
-                          outlineAssetPath: Assets.thum,
-                          filledAssetPath: Assets.dislikeIcon,
-                          size: 20,
-                          fillColor: AppColors.black,
-                          initiallyFavorited: false,
-                          onToggle: (isFav) {},
-                        ),
+                    w2,
+                    CustomFavoriteIcon(
+                      unFillColor: AppColors.svgIconColor,
+                      outlineAssetPath: Assets.thum,
+                      filledAssetPath: Assets.dislikeIcon,
+                      size: 20,
+                      fillColor: AppColors.black,
+                      initiallyFavorited: false,
+                      onToggle: (isFav) {},
+                    ),
                     w2,
                     InkWell(
-                        onTap: () async {
-                            BottomSheetService.showCommentSheet(context);
-                          },
+                      onTap: () async {
+                        BottomSheetService.showCommentSheet(context);
+                      },
                       child: SvgPicture.asset(Assets.svgComment,
                           color: AppColors.svgIconColor, height: 20),
                     ),
@@ -138,9 +138,9 @@ class SwitchTabItemCopy extends StatelessWidget {
                     Text("5", style: _statStyle(context)),
                     w2,
                     InkWell(
-                       onTap: () async {
-                            BottomSheetService.showSendNoteSheet(context);
-                          },
+                      onTap: () async {
+                        BottomSheetService.showSendNoteSheet(context);
+                      },
                       child: SvgPicture.asset(Assets.svgSendIcon,
                           color: AppColors.svgIconColor, height: 20),
                     ),
@@ -150,7 +150,12 @@ class SwitchTabItemCopy extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 8),
-          SvgPicture.asset(Assets.moreOptions, color: AppColors.textGrey),
+          InkWell(
+              onTap: () async {
+                BottomSheetService.showSaveSheet(context);
+              },
+              child: SvgPicture.asset(Assets.moreOptions,
+                  color: AppColors.textGrey)),
         ],
       ),
     );

@@ -334,7 +334,9 @@ class _CustomizedProfileScreenState extends State<CustomizedProfileScreen> {
                               iconPath: Assets.addIcon,
                               hintText: 'Number',
                               controller: _phoneNumberController,
+                              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                               minLines: 1,
+                              keyboardType: TextInputType.number,
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return 'Enter a number';

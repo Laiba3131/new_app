@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/generated/assets.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
@@ -18,6 +19,7 @@ class CustomInputField extends StatelessWidget {
   final FormFieldValidator<String>? validator;
   final bool isReadOnly;
   final TextInputType keyboardType;
+   final List<TextInputFormatter>? inputFormatters;
 
   const CustomInputField({
     super.key,
@@ -34,6 +36,7 @@ class CustomInputField extends StatelessWidget {
     this.textColor,
     this.isReadOnly = false,
     this.keyboardType = TextInputType.text,
+    this.inputFormatters,
   });
 
   @override
@@ -61,6 +64,7 @@ class CustomInputField extends StatelessWidget {
           keyboardType: inputType,
           minLines: minLines,
           maxLines: maxLines,
+           inputFormatters: inputFormatters,
           decoration: InputDecoration(
             errorStyle: const TextStyle(
               color: AppColors.red,
