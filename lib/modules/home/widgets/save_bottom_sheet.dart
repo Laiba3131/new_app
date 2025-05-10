@@ -119,7 +119,7 @@ class _SaveBottomSheetState extends State<SaveBottomSheet> {
             },
             prefixIconPath: Assets.block,
             prefixIconSize: 20,
-            title: !isBlock ? 'Block' : '“Unblock',
+            title: !isBlock ? 'Block' : 'Unblock',
             backgroundColor: AppColors.white,
             titleColor: AppColors.black,
             borderRadius: 15,

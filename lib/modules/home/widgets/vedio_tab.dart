@@ -121,7 +121,7 @@ class _VideoGridWidgetState extends State<VideoGridWidget> {
                           child: Stack(
                             children: [
                               CircleAvatar(
-                                radius: 15,
+                                radius: 10,
                                 backgroundImage: AssetImage(
                                   _getImageForIndex(index + 2),
                                 ),
@@ -137,7 +137,7 @@ class _VideoGridWidgetState extends State<VideoGridWidget> {
                                         color: Colors.white, width: 2),
                                   ),
                                   child: const Icon(Icons.add_circle,
-                                      color: Colors.black, size: 14),
+                                      color: Colors.black, size: 8),
                                 ),
                               ),
                             ],

@@ -104,7 +104,7 @@ class PhotoTab extends StatelessWidget {
                           child: Stack(
                             children: [
                               const CircleAvatar(
-                                radius: 13,
+                                radius: 10,
                                 backgroundImage: AssetImage(
                                   Assets.pngImage1,
                                 ),
@@ -120,7 +120,7 @@ class PhotoTab extends StatelessWidget {
                                         color: Colors.white, width: 2),
                                   ),
                                   child: const Icon(Icons.add_circle,
-                                      color: Colors.black, size: 13),
+                                      color: Colors.black, size: 8),
                                 ),
                               ),
                             ],

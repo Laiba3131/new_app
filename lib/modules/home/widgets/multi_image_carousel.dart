@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:kulture/constants/app_colors.dart';
+import 'package:kulture/utils/heights_and_widths.dart';
 
 class MultiImageCarousel extends StatefulWidget {
   final List<String> imageUrls;
@@ -57,7 +59,7 @@ class _MultiImageCarouselState extends State<MultiImageCarousel> {
             ),
           ),
         ),
-        const SizedBox(height: 8),
+       h0P4,
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: widget.imageUrls.asMap().entries.map((entry) {
@@ -68,8 +70,8 @@ class _MultiImageCarouselState extends State<MultiImageCarousel> {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: _currentIndex == entry.key
-                    ? Colors.black
-                    : Colors.grey.shade400,
+                    ? AppColors.primaryColor
+                    : AppColors.black,
               ),
             );
           }).toList(),

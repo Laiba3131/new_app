@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:kulture/config/routes/nav_router.dart';
 import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/generated/assets.dart';
 import 'package:kulture/modules/profile/model/post_data_model.dart';
@@ -32,10 +33,51 @@ class SwitchTabItemCopy extends StatelessWidget {
           Column(
             children: [
               // Avatar
-              CircleAvatar(
-                radius: 18,
-                backgroundImage: AssetImage(profileImageUrl),
-              ),
+              isProfileScreen
+                  ? InkWell(
+                      onTap: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const UserProfileScreen(),
+                          ),
+                        );
+                      },
+                      child: CircleAvatar(
+                        radius: 18,
+                        backgroundImage: AssetImage(profileImageUrl),
+                      ),
+                    )
+                  : InkWell(
+                      onTap: () {
+                        NavRouter.push(
+                          context,
+                          const UserProfileScreen(),
+                        );
+                      },
+                      child: Stack(
+                        children: [
+                          CircleAvatar(
+                            radius: 20,
+                            backgroundImage: AssetImage(profileImageUrl),
+                          ),
+                          Positioned(
+                            bottom: -2,
+                            right: -2,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                                border:
+                                    Border.all(color: Colors.white, width: 2),
+                              ),
+                              child: const Icon(Icons.add_circle,
+                                  color: Colors.black, size: 16),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
               // Vertical line
               Container(
                 margin: const EdgeInsets.only(top: 10),
