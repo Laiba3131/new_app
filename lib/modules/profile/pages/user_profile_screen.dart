@@ -186,16 +186,19 @@ class _UserProfileScreenState extends State<UserProfileScreen>
                       ),
                     )
                   : SizedBox.shrink(),
-              h2,
+              // h2,
               DefaultTabController(
                 length: 3,
                 child: Column(
                   children: [
                     TabBar(
-                      controller: _tabController,
-                      labelColor: AppColors.primaryColor,
+                       controller: _tabController,
+                      labelColor: Colors.black,
                       unselectedLabelColor: Colors.grey,
                       indicatorColor: AppColors.primaryColor,
+                      indicatorSize: TabBarIndicatorSize.tab,
+                       indicatorPadding: const EdgeInsets.symmetric(horizontal: 8,vertical: 0),
+                      dividerColor: AppColors.lightGreyColor,
                       tabs: const [
                         Tab(text: "PicVids"),
                         Tab(text: "Stitch"),

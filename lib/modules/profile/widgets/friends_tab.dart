@@ -189,8 +189,8 @@ class _FriendsTabWidgetState extends State<FriendsTabWidget> {
                     title: 'Follow',
                     backgroundColor: AppColors.primaryColor,
                     borderRadius: 11,
-                    height: 36,
-                    width: 85,
+                    height: 35,
+                    width: 125,
                     shadowColor: AppColors.transparent,
                   ),
                   GestureDetector(
@@ -250,8 +250,8 @@ class _FriendsTabWidgetState extends State<FriendsTabWidget> {
                     title: 'Follow',
                     backgroundColor: AppColors.primaryColor,
                     borderRadius: 11,
-                    height: 36,
-                    width: 85,
+                    height: 35,
+                    width: 125,
                     shadowColor: AppColors.transparent,
                   ),
                   GestureDetector(
@@ -325,8 +325,8 @@ class _FriendsTabWidgetState extends State<FriendsTabWidget> {
                     title: 'Follow',
                     backgroundColor: AppColors.primaryColor,
                     borderRadius: 11,
-                    height: 36,
-                    width: 85,
+                    height: 35,
+                    width: 125,
                     shadowColor: AppColors.transparent,
                   ),
                   GestureDetector(

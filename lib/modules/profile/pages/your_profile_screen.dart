@@ -207,7 +207,7 @@ class _YourProfileScreenState extends State<YourProfileScreen>
                   ],
                 ),
               ),
-              h2,
+              h1,
               DefaultTabController(
                 length: 3,
                 child: Column(
@@ -216,7 +216,10 @@ class _YourProfileScreenState extends State<YourProfileScreen>
                       controller: _tabController,
                       labelColor: Colors.black,
                       unselectedLabelColor: Colors.grey,
-                      indicatorColor: Colors.black,
+                      indicatorColor: AppColors.primaryColor,
+                      indicatorSize: TabBarIndicatorSize.tab,
+                       indicatorPadding: const EdgeInsets.symmetric(horizontal: 8,vertical: 0),
+                      dividerColor: AppColors.lightGreyColor,
                       tabs: const [
                         Tab(text: "PicVids"),
                         Tab(text: "Stitch"),

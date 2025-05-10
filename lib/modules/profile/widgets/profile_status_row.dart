@@ -19,37 +19,28 @@ class ProfileStatusRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textStyle = context.textTheme.bodySmall?.copyWith(
+      fontSize: 14,
+      fontWeight: FontWeight.w300,
+      color: AppColors.svgIconColor,
+    );
+
+    final linkStyle = textStyle?.copyWith(color: AppColors.primaryColor);
+
     return Row(
       children: [
-        Text(
-          followingText,
-          style: context.textTheme.bodySmall?.copyWith(
-            fontSize: 14,
-            fontWeight: FontWeight.w300,
-            color: AppColors.textGrey,
-          ),
-        ),
+        Text(followingText, style: textStyle),
         w2,
-        Text(
-          followersText,
-          style: context.textTheme.bodySmall?.copyWith(
-            fontSize: 14,
-            fontWeight: FontWeight.w300,
-            color: AppColors.textGrey,
-          ),
-        ),
+        const Text("•", style: TextStyle(color: AppColors.svgIconColor)),
+        w2,
+        Text(followersText, style: textStyle),
         if (website != null) ...[
+          w2,
+          const Text("•", style: TextStyle(color: AppColors.svgIconColor)),
           w2,
           InkWell(
             onTap: onWebsiteTap ?? () {},
-            child: Text(
-              website!,
-              style: context.textTheme.bodySmall?.copyWith(
-                fontSize: 14,
-                fontWeight: FontWeight.w300,
-                color: AppColors.blue,
-              ),
-            ),
+            child: Text(website!, style: linkStyle),
           ),
         ],
       ],
