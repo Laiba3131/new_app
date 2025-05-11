@@ -4,6 +4,7 @@ import 'package:kulture/config/routes/nav_router.dart';
 import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/core/service/bottm_sheet_service.dart';
 import 'package:kulture/generated/assets.dart';
+import 'package:kulture/modules/notes/pages/chat_screen.dart';
 import 'package:kulture/modules/profile/model/suggested_user_model.dart';
 import 'package:kulture/modules/profile/pages/dummy_data.dart';
 import 'package:kulture/modules/profile/widgets/friends_tab.dart';
@@ -29,7 +30,7 @@ class _UserProfileScreenState extends State<UserProfileScreen>
   final TextEditingController _searchController = TextEditingController();
 
   final String profileImageUrl = Assets.pngImage1;
-
+  bool isFollow = true;
   // Sample friends data
   final friends = DummyData.friends;
   final suggestedFriends = DummyData.suggestedFriends;
@@ -74,15 +75,15 @@ class _UserProfileScreenState extends State<UserProfileScreen>
                   color: AppColors.black,
                   fontWeight: FontWeight.w400)),
           titleSpacing: 0,
-          actions:  [
+          actions: [
             Padding(
               padding: const EdgeInsets.only(right: 20.0),
-              child:  InkWell(
-              onTap: () async {
-                BottomSheetService.showUserBottomSheet(context);
-              },
-              child: SvgPicture.asset(Assets.moreOptions,
-                  color: AppColors.black)),
+              child: InkWell(
+                  onTap: () async {
+                    BottomSheetService.showUserBottomSheet(context);
+                  },
+                  child: SvgPicture.asset(Assets.moreOptions,
+                      color: AppColors.black)),
             ),
           ],
         ),
@@ -118,8 +119,12 @@ class _UserProfileScreenState extends State<UserProfileScreen>
                             hMargin: 0,
                             height: 43,
                             width: 165,
-                            onPressed: () {},
-                            title: 'Follow/Unfollow',
+                            onPressed: () {
+                              setState(() {
+                                isFollow = !isFollow;
+                              });
+                            },
+                            title: isFollow ? 'Follow' : 'Unfollow',
                             titleColor: AppColors.white,
                             backgroundColor: AppColors.primaryColor,
                             fontSize: 14,
@@ -133,7 +138,16 @@ class _UserProfileScreenState extends State<UserProfileScreen>
                             height: 43,
                             hMargin: 0,
                             width: 165,
-                            onPressed: () {},
+                            onPressed: () {
+                              NavRouter.push(
+                                context,
+                                const ChatScreen(
+                                  name: 'Khole K.',
+                                  username: 'Khole K.',
+                                  profileImage: Assets.pngImage1,
+                                ),
+                              );
+                            },
                             title: 'Notes',
                             backgroundColor: AppColors.white,
                             bborderColor: AppColors.searchBarColor,
@@ -192,12 +206,13 @@ class _UserProfileScreenState extends State<UserProfileScreen>
                 child: Column(
                   children: [
                     TabBar(
-                       controller: _tabController,
+                      controller: _tabController,
                       labelColor: Colors.black,
                       unselectedLabelColor: Colors.grey,
                       indicatorColor: AppColors.primaryColor,
                       indicatorSize: TabBarIndicatorSize.tab,
-                       indicatorPadding: const EdgeInsets.symmetric(horizontal: 8,vertical: 0),
+                      indicatorPadding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 0),
                       dividerColor: AppColors.lightGreyColor,
                       tabs: const [
                         Tab(text: "PicVids"),
