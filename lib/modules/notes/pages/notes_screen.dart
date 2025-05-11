@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:kulture/config/config.dart';
 import 'package:kulture/constants/app_colors.dart';
+import 'package:kulture/modules/profile/pages/user_profile_screen.dart';
 import 'package:kulture/modules/stories/pages/stories_screen.dart';
 import 'package:kulture/ui/button/primary_button.dart';
 import 'package:kulture/ui/input/input_field.dart';
@@ -18,6 +19,7 @@ class NotesScreen extends StatefulWidget {
 }
 
 class _NotesScreenState extends State<NotesScreen> {
+  List<bool> followStates = [true, true];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -264,12 +266,14 @@ class _NotesScreenState extends State<NotesScreen> {
         ),
         const SizedBox(height: 12),
         _buildSuggestedItem(
-          'bougiedoll',
-          'Fashion is my love...',
+          index: 0,
+          name: 'bougiedoll',
+          bio: 'Fashion is my love...',
         ),
         _buildSuggestedItem(
-          'cagetyourtongue',
-          'What\'s love got to do...',
+          index: 1,
+          name: 'cagetyourtongue',
+          bio: 'What\'s love got to do...',
         ),
       ],
     );
@@ -359,9 +363,7 @@ class _NotesScreenState extends State<NotesScreen> {
                     height: 8,
                     margin: const EdgeInsets.only(top: 4),
                     decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.red,
-                    ),
+                        shape: BoxShape.circle, color: AppColors.primaryColor),
                   ),
               ],
             ),
@@ -371,12 +373,20 @@ class _NotesScreenState extends State<NotesScreen> {
     );
   }
 
-  Widget _buildSuggestedItem(String name, String bio) {
+  Widget _buildSuggestedItem({
+    required int index,
+    required String name,
+    required String bio,
+  }) {
+    final isFollow = followStates[index];
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       child: Row(
         children: [
           InkWell(
+             onTap: (){
+                      NavRouter.push(context, const UserProfileScreen());
+                    },
             child: Container(
               width: 50,
               height: 50,
@@ -395,12 +405,17 @@ class _NotesScreenState extends State<NotesScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  name,
-                  style: context.textTheme.bodyMedium?.copyWith(
-                    color: AppColors.black,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
+                InkWell(
+                  onTap: (){
+                      NavRouter.push(context, const UserProfileScreen());
+                    },
+                  child: Text(
+                    name,
+                    style: context.textTheme.bodyMedium?.copyWith(
+                      color: AppColors.black,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 2),
@@ -416,12 +431,20 @@ class _NotesScreenState extends State<NotesScreen> {
             ),
           ),
           PrimaryButton(
-            onPressed: () {},
-            title: 'Follow',
-            backgroundColor: AppColors.primaryColor,
+            onPressed: () {
+              setState(() {
+                followStates[index] = !followStates[index];
+              });
+            },
+            title: !isFollow ? 'Following' : 'Follow',
+            backgroundColor:
+                !isFollow ? AppColors.white : AppColors.primaryColor,
             borderRadius: 11,
             height: 36,
-            width: 85,
+            bborderColor:
+                !isFollow ? AppColors.searchBarColor : AppColors.transparent,
+            width: 100,
+            titleColor: !isFollow ? AppColors.black : AppColors.white,
             shadowColor: AppColors.transparent,
           ),
           GestureDetector(
@@ -429,6 +452,7 @@ class _NotesScreenState extends State<NotesScreen> {
             child: Image.asset(
               Assets.suggestCancel,
               width: 20,
+              color: AppColors.black,
               height: 20,
             ),
           ),

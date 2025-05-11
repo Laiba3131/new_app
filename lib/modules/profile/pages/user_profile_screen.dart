@@ -76,13 +76,13 @@ class _UserProfileScreenState extends State<UserProfileScreen>
           titleSpacing: 0,
           actions:  [
             Padding(
-              padding: EdgeInsets.only(right: 20.0),
+              padding: const EdgeInsets.only(right: 20.0),
               child:  InkWell(
               onTap: () async {
                 BottomSheetService.showUserBottomSheet(context);
               },
               child: SvgPicture.asset(Assets.moreOptions,
-                  color: AppColors.textGrey)),
+                  color: AppColors.black)),
             ),
           ],
         ),

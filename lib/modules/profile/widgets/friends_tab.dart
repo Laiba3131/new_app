@@ -27,7 +27,7 @@ class FriendsTabWidget extends StatefulWidget {
 
 class _FriendsTabWidgetState extends State<FriendsTabWidget> {
   int _selectedSubTab = 0; // 0 for Following, 1 for Followers
-
+  bool isFollow = true;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -185,14 +185,24 @@ class _FriendsTabWidgetState extends State<FriendsTabWidget> {
                     ),
                   ),
                   PrimaryButton(
-                    onPressed: () {},
-                    title: 'Follow',
-                    backgroundColor: AppColors.primaryColor,
+                    onPressed: () {
+                      // setState(() {
+                      //   isFollow = !isFollow;
+                      // });
+                    },
+                    title: !isFollow ? 'Following' : 'Follow',
+                    backgroundColor:
+                        !isFollow ? AppColors.white : AppColors.primaryColor,
                     borderRadius: 11,
-                    height: 35,
+                    height: 36,
+                    bborderColor: !isFollow
+                        ? AppColors.searchBarColor
+                        : AppColors.transparent,
                     width: 125,
+                    titleColor: !isFollow ? AppColors.black : AppColors.white,
                     shadowColor: AppColors.transparent,
                   ),
+                 
                   GestureDetector(
                     onTap: () {
                       // ScaffoldMessenger.of(context).showSnackBar(

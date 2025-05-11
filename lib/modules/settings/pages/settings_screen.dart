@@ -62,17 +62,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 h1,
-                NotificationSection(
-                  children: [
-                    CustomTileWidget(
-                      title: 'Light mode',
-                      value: true,
-                      onChanged: (value) {},
-                      isBorder: false,
-                      // icon: Icons.favorite_border,
-                    ),
-                  ],
-                ),
+                // NotificationSection(
+                //   children: [
+                //     CustomTileWidget(
+                //       title: 'Light mode',
+                //       value: true,
+                //       onChanged: (value) {},
+                //       isBorder: false,
+                //       // icon: Icons.favorite_border,
+                //     ),
+                //   ],
+                // ),
                 _buildSectionTitle('Profile Management'),
                 NotificationSection(
                   children: [

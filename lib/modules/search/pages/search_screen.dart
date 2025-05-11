@@ -47,10 +47,10 @@ class _SearchScreenState extends State<SearchScreen> {
                       padding: const EdgeInsets.all(16.0),
                       child: Text(
                         'Search',
-                        style: context.textTheme.headlineMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.black,
-                        ),
+                        style: context.textTheme.bodyMedium?.copyWith(
+                            color: AppColors.black,
+                            fontSize: 32,
+                            fontWeight: FontWeight.w700),
                       ),
                     ),
                     Padding(

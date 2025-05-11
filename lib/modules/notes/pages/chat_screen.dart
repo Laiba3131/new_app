@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:kulture/config/routes/nav_router.dart';
 import 'package:kulture/constants/app_colors.dart';
+import 'package:kulture/modules/profile/pages/user_profile_screen.dart';
 import 'package:kulture/ui/button/primary_button.dart';
 import 'package:kulture/utils/extensions/extended_context.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
@@ -49,7 +51,7 @@ class _ChatScreenState extends State<ChatScreen> {
     super.dispose();
   }
 
-  bool isBlocked = true;
+  bool isBlocked = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -131,17 +133,17 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
               child: Row(
                 children: [
-                  Image.asset(
-                    Assets.emojiIcon,
-                    width: 24,
-                    height: 24,
-                  ),
+                  // Image.asset(
+                  //   Assets.emojiIcon,
+                  //   width: 24,
+                  //   height: 24,
+                  // ),
                   const SizedBox(width: 8),
                   Expanded(
                     child: TextField(
                       controller: _messageController,
                       decoration: const InputDecoration(
-                        hintText: 'When are you free?',
+                        hintText: 'What would you like to say?',
                         border: InputBorder.none,
                         isDense: true,
                         contentPadding: EdgeInsets.zero,
@@ -253,18 +255,18 @@ class _ChatScreenState extends State<ChatScreen> {
                 widget.name,
                 style: context.textTheme.bodyMedium?.copyWith(
                   color: AppColors.black,
-                  fontSize: 14,
+                  fontSize: 17,
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              Text(
-                '@${widget.username}',
-                style: context.textTheme.bodyMedium?.copyWith(
-                  color: AppColors.textGrey,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
+              // Text(
+              //   '@${widget.username}',
+              //   style: context.textTheme.bodyMedium?.copyWith(
+              //     color: AppColors.textGrey,
+              //     fontSize: 14,
+              //     fontWeight: FontWeight.w400,
+              //   ),
+              // ),
             ],
           ),
           const Spacer(),
@@ -317,14 +319,16 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
           h1,
           PrimaryButton(
-            onPressed: () {},
+            onPressed: () {
+              NavRouter.push(context, const UserProfileScreen());
+            },
             title: 'View profile',
             backgroundColor: AppColors.white,
             borderRadius: 11,
             height: 36,
             width: 125,
             shadowColor: AppColors.transparent,
-            bborderColor: AppColors.black,
+            bborderColor: AppColors.searchBarColor,
             titleColor: AppColors.black,
           ),
         ],

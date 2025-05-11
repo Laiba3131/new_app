@@ -120,7 +120,7 @@ class UserProfileTile extends StatelessWidget {
               titleColor: user['isFollowing'] ? Colors.black : AppColors.white,
               borderRadius: 11,
               bborderColor: user['isFollowing']
-                  ? AppColors.black
+                  ? AppColors.searchBarColor
                   : AppColors.transparent),
         ],
       ),
