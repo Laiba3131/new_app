@@ -40,6 +40,7 @@ class Assets {
   static const String like2 = 'assets/svg/arcticons_messages-2.svg';
   static const String like3 = 'assets/svg/famicons_people-outline.svg';
   static const String like4 = 'assets/svg/stash_comments-light.svg';
+  static const String shareUrl = 'assets/svg/shareUrl.svg';
   static const String like5 = 'assets/svg/octicon_paper-airplane-16.svg';
   // settign5
   // static 5onst String svgSplashLogo = 'assets/svg/svgLogo.svg';

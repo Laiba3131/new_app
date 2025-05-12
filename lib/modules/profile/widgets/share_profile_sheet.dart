@@ -95,7 +95,7 @@ class _ShareProfileSheetState extends State<ShareProfileSheet> {
             ),
           ),
           h0P5,
-          Divider(color: AppColors.searchBarColor,),
+          const Divider(color: AppColors.searchBarColor,),
            h0P5,
           Container(
             width: double.infinity,
@@ -125,20 +125,20 @@ class _ShareProfileSheetState extends State<ShareProfileSheet> {
             ),
           ),
           h1,
-          Divider(color: AppColors.searchBarColor,),
+          const Divider(color: AppColors.searchBarColor,),
           h1,
           
           PrimaryButton(
             height: 45,
             onPressed: () async {
               Navigator.pop(context);
-              await Future.delayed(const Duration(milliseconds: 200));
-              BottomSheetService.showReportSheet(context);
+              // await Future.delayed(const Duration(milliseconds: 200));
+              // BottomSheetService.showReportSheet(context);
             },
             title: 'Cancel',
             backgroundColor: AppColors.white,
-            shadowColor: AppColors.grey,
-            titleColor: AppColors.black,
+            shadowColor: AppColors.transparent,
+            titleColor: AppColors.red,
             borderRadius: 15,
           ),
         ],

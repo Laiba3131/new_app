@@ -150,13 +150,13 @@ class _UserProfileBottomSheetState extends State<UserProfileBottomSheet> {
             onPressed: () async {
               Navigator.pop(context);
               await Future.delayed(const Duration(milliseconds: 200));
-              BottomSheetService.showReportSheet(context);
+              BottomSheetService.showShareThisProfile(context);
             },
-            prefixIconPath: Assets.reporting,
+            prefixIconPath: Assets.shareUrl,
             prefixIconSize: 20,
-            title: 'Report',
+            title: 'Share this profile',
             backgroundColor: AppColors.white,
-            titleColor: AppColors.red,
+            titleColor: AppColors.black,
             borderRadius: 15,
           ),
           h1,
@@ -169,11 +169,11 @@ class _UserProfileBottomSheetState extends State<UserProfileBottomSheet> {
               await Future.delayed(const Duration(milliseconds: 200));
               BottomSheetService.showReportSheet(context);
             },
-            prefixIconPath: Assets.reporting,
+            prefixIconPath: Assets.saveIcon,
             prefixIconSize: 20,
-            title: 'Report',
+            title: 'Copy profile url',
             backgroundColor: AppColors.white,
-            titleColor: AppColors.red,
+            titleColor: AppColors.black,
             borderRadius: 15,
           )
         ],
