@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:kulture/modules/home/widgets/repost_sheet.dart';
 import 'package:kulture/modules/home/widgets/save_bottom_sheet.dart';
+import 'package:kulture/modules/profile/widgets/block_user_sheet.dart';
 import 'package:kulture/modules/profile/widgets/comment_bottom_sheet.dart';
 import 'package:kulture/modules/profile/widgets/send_notes_bottom_sheet.dart';
 import 'package:kulture/modules/profile/widgets/share_profile_sheet.dart';
@@ -73,6 +74,21 @@ class BottomSheetService {
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (_) => const ReportBottomSheet(),
+    );
+
+    BottomBarVisibilityProvider().show();
+  }
+
+    static Future<void> showBlockSheet(BuildContext context) async {
+    BottomBarVisibilityProvider().hide();
+
+    await showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (_) => const BlockUserSheet(),
     );
 
     BottomBarVisibilityProvider().show();

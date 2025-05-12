@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:kulture/config/config.dart';
 import 'package:kulture/constants/app_colors.dart';
+import 'package:kulture/modules/notes/pages/search_note_screen.dart';
 import 'package:kulture/modules/profile/pages/user_profile_screen.dart';
 import 'package:kulture/modules/stories/pages/stories_screen.dart';
 import 'package:kulture/ui/button/primary_button.dart';
@@ -77,7 +78,9 @@ class _NotesScreenState extends State<NotesScreen> {
           ),
           const Spacer(),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              NavRouter.push(context, const SearchNoteScreen());
+            },
             child: Image.asset(
               Assets.chatSetting,
               width: 24,

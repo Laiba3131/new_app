@@ -67,51 +67,48 @@ class _ShareProfileSheetState extends State<ShareProfileSheet> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
 
-          Container(
-            width: double.infinity,
-            height: 70,
-            // decoration: BoxDecoration(
-            //     // color: AppColors.textGrey,
-            //     border:
-            //         Border.all(color: AppColors.searchBarTextColor, width: 0.5),
-            //     borderRadius: const BorderRadius.all(Radius.circular(15))),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SvgPicture.asset(
-                  Assets.saveIcon,
-                  height: 25,
-                  color: AppColors.searchBarTextColor,
-                ),
-                Text(
-                  'Save',
-                  style: context.textTheme.bodyMedium?.copyWith(
+          InkWell(
+            onTap: () async {
+                Navigator.pop(context);
+              await Future.delayed(const Duration(milliseconds: 200));
+              BottomSheetService.showShareThisProfile(context);
+            },
+            child: SizedBox(
+              width: double.infinity,
+              height: 70,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    Assets.shareUrl,
+                    height: 25,
                     color: AppColors.black,
-                    fontSize: 17,
-                    fontWeight: FontWeight.w600,
                   ),
-                )
-              ],
+                  Text(
+                    'Share Profile',
+                    style: context.textTheme.bodyMedium?.copyWith(
+                      color: AppColors.black,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
           h0P5,
           const Divider(color: AppColors.searchBarColor,),
            h0P5,
-          Container(
+          SizedBox(
             width: double.infinity,
             height: 70,
-            // decoration: BoxDecoration(
-            //     // color: AppColors.textGrey,
-            //     border:
-            //         Border.all(color: AppColors.searchBarTextColor, width: 0.5),
-                // borderRadius: const BorderRadius.all(Radius.circular(15))),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SvgPicture.asset(
-                  Assets.saveIcon,
+                  Assets.shareIcon,
                   height: 25,
-                  color: AppColors.searchBarTextColor,
+                  color: AppColors.black,
                 ),
                 Text(
                   'Copy Link',

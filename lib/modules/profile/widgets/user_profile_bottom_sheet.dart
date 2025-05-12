@@ -39,25 +39,11 @@ class _UserProfileBottomSheetState extends State<UserProfileBottomSheet> {
 
   bool isBlock = false;
 
-  void showErrorDialog(BuildContext context, {String? title, String? message}) {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return DeleteDialog(
-          title: title ?? 'Delete post?',
-          message: message ??
-              'If you delete this post, you won\'t be able to restore it',
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(12),
-      height: MediaQuery.of(context).size.height * 0.3,
+      height: MediaQuery.of(context).size.height * 0.6,
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
@@ -113,9 +99,9 @@ class _UserProfileBottomSheetState extends State<UserProfileBottomSheet> {
               setState(() {
                 isBlock = !isBlock;
               });
-              // Navigator.pop(context);
-              // await Future.delayed(const Duration(milliseconds: 200));
-              // BottomSheetService.showReportSheet(context);
+              Navigator.pop(context);
+              await Future.delayed(const Duration(milliseconds: 200));
+              BottomSheetService.showBlockSheet(context);
             },
             prefixIconPath: Assets.block,
             prefixIconSize: 20,
@@ -169,13 +155,28 @@ class _UserProfileBottomSheetState extends State<UserProfileBottomSheet> {
               await Future.delayed(const Duration(milliseconds: 200));
               BottomSheetService.showReportSheet(context);
             },
-            prefixIconPath: Assets.saveIcon,
+            prefixIconPath: Assets.shareIcon,
             prefixIconSize: 20,
             title: 'Copy profile url',
             backgroundColor: AppColors.white,
             titleColor: AppColors.black,
             borderRadius: 15,
-          )
+          ),
+           h1,
+          
+          PrimaryButton(
+            height: 45,
+            onPressed: () async {
+              Navigator.pop(context);
+              // await Future.delayed(const Duration(milliseconds: 200));
+              // BottomSheetService.showReportSheet(context);
+            },
+            title: 'Cancel',
+            backgroundColor: AppColors.white,
+            shadowColor: AppColors.transparent,
+            titleColor: AppColors.red,
+            borderRadius: 15,
+          ),
         ],
       ),
     );
