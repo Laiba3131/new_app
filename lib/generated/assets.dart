@@ -64,6 +64,13 @@ class Assets {
   static const String dress = 'assets/png/dress.png';
   static const String lips = 'assets/png/lips.png';
 
+  static const String sheetIcon1 = 'assets/png/icon1.png';
+  static const String sheetIcon2 = 'assets/png/icon2.png';
+  static const String sheetIcon3 = 'assets/png/brand-x.png';
+  static const String sheetIcon4 = 'assets/png/brand-threads.png';
+  static const String sheetIcon5 = 'assets/png/brand-google-solid.png';
+
+
 //PnGs
   static const String pngSplashLogo1 = 'assets/png/Group 1.png';
   static const String pngInsta = 'assets/png/mdi_instagram.png';

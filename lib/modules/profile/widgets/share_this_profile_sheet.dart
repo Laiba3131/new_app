@@ -157,8 +157,8 @@ class _ShareThisProfileSheetState extends State<ShareThisProfileSheet> {
         SizedBox(
           width: 50,
           height: 50,
-          child: SvgPicture.asset(
-            Assets.shareIcon,
+          child: Image.asset(
+            Assets.sheetIcon1,
             height: 12,
           ),
         ),

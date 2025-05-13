@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/modules/profile/pages/dummy_data.dart';
+import 'package:kulture/modules/profile/widgets/block_user_dialog.dart';
 import 'package:kulture/modules/settings/widgets/custom_block_user_tile.dart';
 import 'package:kulture/ui/widgets/custom_appbar.dart';
 import 'package:kulture/utils/extensions/extended_context.dart';
@@ -47,7 +48,13 @@ class BlockedUserScreen extends StatelessWidget {
                 return BlockedUserTile(
                   user: user,
                   buttonColor: AppColors.red,
-                  onUnblock: () {},
+                  onUnblock: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                      return const BlockUserDialog();
+                    });
+                  },
                 );
               },
             ),

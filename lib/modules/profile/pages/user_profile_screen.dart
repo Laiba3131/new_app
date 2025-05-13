@@ -12,13 +12,12 @@ import 'package:kulture/modules/profile/widgets/profile_header_row.dart';
 import 'package:kulture/modules/profile/widgets/profile_status_row.dart';
 import 'package:kulture/modules/profile/widgets/suggested_user_card.dart';
 import 'package:kulture/ui/button/primary_button.dart';
-import 'package:kulture/ui/widgets/custom_appbar.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
 import '../../home/widgets/vedio_tab.dart';
 import '../widgets/switch_tab_item.dart';
 
 class UserProfileScreen extends StatefulWidget {
-  const UserProfileScreen({Key? key}) : super(key: key);
+  const UserProfileScreen({super.key});
 
   @override
   State<UserProfileScreen> createState() => _UserProfileScreenState();
@@ -49,6 +48,8 @@ class _UserProfileScreenState extends State<UserProfileScreen>
     super.dispose();
   }
 
+
+bool isShow=true;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -158,18 +159,25 @@ class _UserProfileScreenState extends State<UserProfileScreen>
                         w1,
                         Expanded(
                           flex: 1,
-                          child: Container(
-                            padding: const EdgeInsets.all(8),
-                            height: 43,
-                            decoration: BoxDecoration(
-                              color: AppColors.white,
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(
-                                  color: AppColors.searchBarColor, width: 1),
-                            ),
-                            child: SvgPicture.asset(
-                              Assets.person,
-                              fit: BoxFit.contain,
+                          child: InkWell(
+                            onTap: (){
+                              setState(() {
+                                isShow=!isShow;
+                              });
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.all(8),
+                              height: 43,
+                              decoration: BoxDecoration(
+                                color: AppColors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(
+                                    color: AppColors.searchBarColor, width: 1),
+                              ),
+                              child: SvgPicture.asset(
+                                Assets.person,
+                                fit: BoxFit.contain,
+                              ),
                             ),
                           ),
                         ),
@@ -179,7 +187,7 @@ class _UserProfileScreenState extends State<UserProfileScreen>
                 ),
               ),
               h2,
-              users.isNotEmpty
+              users.isNotEmpty && isShow
                   ? SizedBox(
                       height: 190,
                       child: ListView.separated(
@@ -190,17 +198,16 @@ class _UserProfileScreenState extends State<UserProfileScreen>
                           return SuggestedUserCard(
                               user: users[index],
                               onDismiss: () {
-                                // setState(() {
-                                //   users.removeAt(index);
-                                // });
+                                setState(() {
+                                  users.removeAt(index);
+                                });
                               });
                         },
                         separatorBuilder: (context, index) =>
                             const SizedBox(width: 12),
                       ),
                     )
-                  : SizedBox.shrink(),
-              // h2,
+                  : const SizedBox.shrink(),
               DefaultTabController(
                 length: 3,
                 child: Column(

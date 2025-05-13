@@ -22,19 +22,6 @@ class _DeleteBottomSheetState extends State<DeleteBottomSheet> {
     super.dispose();
   }
 
-  void showErrorDialog(BuildContext context, {String? title, String? message}) {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return DeleteDialog(
-          title: title ?? 'Delete post?',
-          message: message ??
-              'If you delete this post, you won\'t be able to restore it',
-        );
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
