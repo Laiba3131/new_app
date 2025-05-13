@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:kulture/constants/app_colors.dart';
@@ -45,129 +46,124 @@ class _ShareThisProfileSheetState extends State<ShareThisProfileSheet> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.4,
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          h1,
-          SizedBox(
-            height: 90,
-            child: ListView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              scrollDirection: Axis.horizontal,
-              itemCount: users.length,
-              itemBuilder: (context, index) {
-                return _buildUserItem(users[index]);
-              },
-            ),
+    return CupertinoActionSheet(
+      actions: [
+        Container(
+          color: Colors.white,
+          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 90,
+                child: ListView.builder(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: users.length,
+                  itemBuilder: (context, index) {
+                    return _buildUserItem(users[index]);
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 90,
+                child: ListView.builder(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 4,
+                  itemBuilder: (context, index) {
+                    return _buildSendNotesButton();
+                  },
+                ),
+              ),
+            ],
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 16, left: 16),
-            child: _buildSendNotesButton(),
-          ),
-        ],
+        ),
+      ],
+      cancelButton: CupertinoActionSheetAction(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        child: Text('Cancel',
+            style: context.textTheme.bodyMedium?.copyWith(
+                fontSize: 17,
+                fontWeight: FontWeight.w600,
+                color: AppColors.red)),
       ),
     );
   }
 
   Widget _buildUserItem(UserNote user) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Stack(
-            children: [
-              Container(
-                width: 64,
-                height: 64,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Stack(
+          children: [
+            Container(
+              width: 64,
+              height: 64,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: Colors.grey.withOpacity(0.2),
+                  width: 1,
+                ),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(32),
+                child: Image.asset(
+                  user.imageUrl,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: -0,
+              right: -2,
+              left: 24,
+              child: Container(
+                height: 20,
+                width: 20,
                 decoration: BoxDecoration(
+                  color: Colors.white,
                   shape: BoxShape.circle,
-                  border: Border.all(
-                    color: Colors.grey.withOpacity(0.2),
-                    width: 1,
-                  ),
+                  border: Border.all(color: Colors.white, width: 2),
                 ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(32),
-                  child: Image.asset(
-                    user.imageUrl,
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                child: SvgPicture.asset(Assets.messageIcon),
               ),
-              Positioned(
-                bottom: -0,
-                right: -2,
-                left: 24,
-                child: Container(
-                  height: 20,
-                  width: 20,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Colors.white, width: 2),
-                  ),
-                  child: const Icon(Icons.add_circle,
-                      color: Colors.black, size: 16),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 4),
-          Text(
-            user.name.split(' ')[0],
-            // user.name.split(' ')[0],
-            textAlign: TextAlign.center,
-            style: context.textTheme.bodyMedium?.copyWith(
-                color: AppColors.textGrey,
-                fontSize: 14,
-                fontWeight: FontWeight.w600),
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ],
-      ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 4),
+        Text(
+          user.name.split(' ')[0],
+          textAlign: TextAlign.center,
+          style: context.textTheme.bodyMedium?.copyWith(
+              color: AppColors.black,
+              fontSize: 14,
+              fontWeight: FontWeight.w600),
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ],
     );
   }
 
   Widget _buildSendNotesButton() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            'Copy link',
-            style: context.textTheme.bodyMedium?.copyWith(
-              color: AppColors.black,
-              fontSize: 17,
-              fontWeight: FontWeight.w600,
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        h1,
+        SizedBox(
+          width: 50,
+          height: 50,
+          child: SvgPicture.asset(
+            Assets.shareIcon,
+            height: 12,
           ),
-          h1,
-          Container(
-            width: 64,
-            height: 64,
-            padding: const EdgeInsets.all(15),
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: AppColors.textGrey,
-            ),
-            child: SvgPicture.asset(
-              Assets.shareIcon,
-              // height: 12,
-            ),
-          ),
-          h1,
-        ],
-      ),
+        ),
+        h1,
+      ],
     );
   }
 }

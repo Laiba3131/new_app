@@ -50,6 +50,7 @@ class Assets {
   static const String images = 'assets/svg/images.svg';
   static const String dislikeIcon = 'assets/svg/disLike.svg';
   static const String moreOptions = 'assets/svg/more-options.svg';
+  static const String messageIcon = 'assets/svg/messageIcon.svg';
 
   //Images
   static const String pngSplashLogo = 'assets/images/logo.png';
@@ -95,6 +96,7 @@ class Assets {
   static const String emojiIcon = 'assets/png/emojiIcon.png';
   static const String sendMsg = 'assets/png/sendMsg.png';
   static const String mesgIcon = 'assets/png/mesgIcon.png';
+  
 
 //hight quality images
   static const String img1 = 'assets/png/img1.jpg';

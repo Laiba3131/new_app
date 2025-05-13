@@ -106,6 +106,7 @@ class _SaveBottomSheetState extends State<SaveBottomSheet> {
           // ),
           h1,
           PrefixIconButton(
+            fontSize: 17,
             mainAxisAlignment: MainAxisAlignment.start,
             borderColor: AppColors.searchBarTextColor,
             height: 45,
@@ -137,9 +138,11 @@ class _SaveBottomSheetState extends State<SaveBottomSheet> {
               backgroundColor: AppColors.red,
               titleColor: AppColors.white,
               borderRadius: 15,
+             fontSize: 17,
               shadowColor: AppColors.transparent),
           h1,
           PrefixIconButton(
+            fontSize: 17,
             mainAxisAlignment: MainAxisAlignment.start,
             borderColor: AppColors.searchBarTextColor,
             height: 45,

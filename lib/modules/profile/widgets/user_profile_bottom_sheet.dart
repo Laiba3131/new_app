@@ -1,8 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/generated/assets.dart';
-import 'package:kulture/modules/home/widgets/delete_dialog.dart';
 import 'package:kulture/ui/button/primary_button.dart';
 import 'package:kulture/utils/extensions/extended_context.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
@@ -41,143 +40,102 @@ class _UserProfileBottomSheetState extends State<UserProfileBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      height: MediaQuery.of(context).size.height * 0.6,
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Center(
-            child: Container(
-              height: 4,
-              width: 40,
-              margin: const EdgeInsets.only(bottom: 20),
-              decoration: BoxDecoration(
-                color: Colors.grey[400],
-                borderRadius: BorderRadius.circular(2),
+    return CupertinoActionSheet(
+      actions: [
+        Container(
+          color: Colors.white,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              h1,
+              PrefixIconButton(
+                fontSize: 17,
+                mainAxisAlignment: MainAxisAlignment.start,
+                borderColor: AppColors.transparent,
+                height: 45,
+                onPressed: () async {
+                  setState(() {
+                    isBlock = !isBlock;
+                  });
+                  Navigator.pop(context);
+                  await Future.delayed(const Duration(milliseconds: 200));
+                  BottomSheetService.showBlockSheet(context);
+                },
+                prefixIconPath: Assets.block,
+                prefixIconSize: 20,
+                title: !isBlock ? 'Block' : '“Unblock',
+                backgroundColor: AppColors.white,
+                titleColor: AppColors.black,
+                borderRadius: 15,
               ),
-            ),
+              h1,
+              PrefixIconButton(
+                fontSize: 17,
+                mainAxisAlignment: MainAxisAlignment.start,
+                borderColor: AppColors.transparent,
+                height: 45,
+                onPressed: () async {
+                  Navigator.pop(context);
+                  await Future.delayed(const Duration(milliseconds: 200));
+                  BottomSheetService.showReportSheet(context);
+                },
+                prefixIconPath: Assets.reporting,
+                prefixIconSize: 20,
+                title: 'Report',
+                backgroundColor: AppColors.white,
+                titleColor: AppColors.red,
+                borderRadius: 15,
+              ),
+              h1,
+              PrefixIconButton(
+                mainAxisAlignment: MainAxisAlignment.start,
+                borderColor: AppColors.transparent,
+                height: 45,
+                onPressed: () async {
+                  Navigator.pop(context);
+                  await Future.delayed(const Duration(milliseconds: 200));
+                  BottomSheetService.showShareThisProfile(context);
+                },
+                prefixIconPath: Assets.shareUrl,
+                prefixIconSize: 20,
+                title: 'Share this profile',
+                backgroundColor: AppColors.white,
+                titleColor: AppColors.black,
+                borderRadius: 15,
+                fontSize: 17,
+              ),
+              h1,
+              PrefixIconButton(
+                fontSize: 17,
+                mainAxisAlignment: MainAxisAlignment.start,
+                borderColor: AppColors.transparent,
+                height: 45,
+                onPressed: () async {
+                  Navigator.pop(context);
+                  await Future.delayed(const Duration(milliseconds: 200));
+                  BottomSheetService.showReportSheet(context);
+                },
+                prefixIconPath: Assets.shareIcon,
+                prefixIconSize: 20,
+                title: 'Copy profile url',
+                backgroundColor: AppColors.white,
+                titleColor: AppColors.black,
+                borderRadius: 15,
+              ),
+            ],
           ),
-          // Container(
-          //   width: double.infinity,
-          //   height: 70,
-          //   decoration: BoxDecoration(
-          //       // color: AppColors.textGrey,
-          //       border:
-          //           Border.all(color: AppColors.searchBarTextColor, width: 0.5),
-          //       borderRadius: const BorderRadius.all(Radius.circular(15))),
-          //   child: Column(
-          //     mainAxisAlignment: MainAxisAlignment.center,
-          //     children: [
-          //       SvgPicture.asset(
-          //         Assets.saveIcon,
-          //         height: 25,
-          //         color: AppColors.searchBarTextColor,
-          //       ),
-          //       Text(
-          //         'Save',
-          //         style: context.textTheme.bodyMedium?.copyWith(
-          //           color: AppColors.black,
-          //           fontSize: 17,
-          //           fontWeight: FontWeight.w600,
-          //         ),
-          //       )
-          //     ],
-          //   ),
-          // ),
-          h1,
-          PrefixIconButton(
-            mainAxisAlignment: MainAxisAlignment.start,
-            borderColor: AppColors.transparent,
-            height: 45,
-            onPressed: () async {
-              setState(() {
-                isBlock = !isBlock;
-              });
-              Navigator.pop(context);
-              await Future.delayed(const Duration(milliseconds: 200));
-              BottomSheetService.showBlockSheet(context);
-            },
-            prefixIconPath: Assets.block,
-            prefixIconSize: 20,
-            title: !isBlock ? 'Block' : '“Unblock',
-            backgroundColor: AppColors.white,
-            titleColor: AppColors.black,
-            borderRadius: 15,
-          ),
-
-          h1,
-          PrefixIconButton(
-            mainAxisAlignment: MainAxisAlignment.start,
-            borderColor: AppColors.transparent,
-            height: 45,
-            onPressed: () async {
-              Navigator.pop(context);
-              await Future.delayed(const Duration(milliseconds: 200));
-              BottomSheetService.showReportSheet(context);
-            },
-            prefixIconPath: Assets.reporting,
-            prefixIconSize: 20,
-            title: 'Report',
-            backgroundColor: AppColors.white,
-            titleColor: AppColors.red,
-            borderRadius: 15,
-          ),
-          h1,
-          PrefixIconButton(
-            mainAxisAlignment: MainAxisAlignment.start,
-            borderColor: AppColors.transparent,
-            height: 45,
-            onPressed: () async {
-              Navigator.pop(context);
-              await Future.delayed(const Duration(milliseconds: 200));
-              BottomSheetService.showShareThisProfile(context);
-            },
-            prefixIconPath: Assets.shareUrl,
-            prefixIconSize: 20,
-            title: 'Share this profile',
-            backgroundColor: AppColors.white,
-            titleColor: AppColors.black,
-            borderRadius: 15,
-          ),
-          h1,
-          PrefixIconButton(
-            mainAxisAlignment: MainAxisAlignment.start,
-            borderColor: AppColors.transparent,
-            height: 45,
-            onPressed: () async {
-              Navigator.pop(context);
-              await Future.delayed(const Duration(milliseconds: 200));
-              BottomSheetService.showReportSheet(context);
-            },
-            prefixIconPath: Assets.shareIcon,
-            prefixIconSize: 20,
-            title: 'Copy profile url',
-            backgroundColor: AppColors.white,
-            titleColor: AppColors.black,
-            borderRadius: 15,
-          ),
-           h1,
-          
-          PrimaryButton(
-            height: 45,
-            onPressed: () async {
-              Navigator.pop(context);
-              // await Future.delayed(const Duration(milliseconds: 200));
-              // BottomSheetService.showReportSheet(context);
-            },
-            title: 'Cancel',
-            backgroundColor: AppColors.white,
-            shadowColor: AppColors.transparent,
-            titleColor: AppColors.red,
-            borderRadius: 15,
-          ),
-        ],
+        ),
+      ],
+      cancelButton: CupertinoActionSheetAction(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        child: Text('Cancel',
+            style: context.textTheme.bodyMedium?.copyWith(
+                fontSize: 17,
+                fontWeight: FontWeight.w600,
+                color: AppColors.red)),
       ),
     );
   }

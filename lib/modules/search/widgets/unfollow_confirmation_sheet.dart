@@ -18,57 +18,55 @@ class UnfollowConfirmationSheet extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppColors.transparent,
-      child: Container(
-        padding: const EdgeInsets.only(top: 24),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            CircleAvatar(
-              radius: 32,
-              backgroundImage: AssetImage(userImage),
-            ),
-            h2,
-            Text(
-              'Unfollow @$username?',
-              style: context.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-                color: AppColors.textGrey,
+    return CupertinoActionSheet(
+      actions: [
+        Container(
+          color: AppColors.white,
+          padding: const EdgeInsets.only(top: 24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CircleAvatar(
+                radius: 32,
+                backgroundImage: AssetImage(userImage),
               ),
-            ),
-            h2,
-            Divider(
-              height: 1,
-              color: AppColors.textGrey.withOpacity(0.2),
-            ),
-            PrimaryButton(
-              onPressed: onConfirm,
-              title: 'Unfollow',
-              backgroundColor: AppColors.transparent,
-              titleColor: AppColors.red,
-              borderRadius: 8,
-              width: double.infinity,
-              height: 44,
-              shadowColor: AppColors.transparent,
-            ),
-            Divider(
-              height: 1,
-              color: AppColors.textGrey.withOpacity(0.2),
-            ),
-            PrimaryButton(
-              onPressed: () => Navigator.of(context).pop(),
-              title: 'Cancel',
-              backgroundColor: AppColors.transparent,
-              titleColor: AppColors.black,
-              borderRadius: 8,
-              width: double.infinity,
-              height: 44,
-              shadowColor: AppColors.transparent,
-            ),
-          ],
+              h2,
+              Text(
+                'Unfollow @$username?',
+                style: context.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  color: AppColors.textGrey,
+                ),
+              ),
+              h2,
+              Divider(
+                height: 1,
+                color: AppColors.textGrey.withOpacity(0.2),
+              ),
+              PrimaryButton(
+                onPressed: onConfirm,
+                title: 'Unfollow',
+                backgroundColor: AppColors.transparent,
+                titleColor: AppColors.red,
+                borderRadius: 8,
+                width: double.infinity,
+                height: 44,
+                shadowColor: AppColors.transparent,
+              ),
+            ],
+          ),
         ),
+      ],
+      cancelButton: CupertinoActionSheetAction(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        child: Text('Cancel',
+            style: context.textTheme.bodyMedium?.copyWith(
+                fontSize: 17,
+                fontWeight: FontWeight.w600,
+                color: AppColors.red)),
       ),
     );
   }

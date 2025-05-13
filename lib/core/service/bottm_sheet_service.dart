@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:kulture/modules/home/widgets/repost_sheet.dart';
@@ -25,20 +26,18 @@ class BottomSheetService {
     BottomBarVisibilityProvider().show();
   }
 
-    static Future<void> showShareThisProfile(BuildContext context) async {
+  static Future<void> showShareThisProfile(BuildContext context) async {
     BottomBarVisibilityProvider().hide();
 
-    await showModalBottomSheet(
+    await showCupertinoModalPopup(
       context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
       builder: (_) => const ShareThisProfileSheet(),
     );
 
     BottomBarVisibilityProvider().show();
   }
 
-   static Future<void> showShareProfileSheet(BuildContext context) async {
+  static Future<void> showShareProfileSheet(BuildContext context) async {
     BottomBarVisibilityProvider().hide();
 
     await showModalBottomSheet(
@@ -51,13 +50,11 @@ class BottomSheetService {
     BottomBarVisibilityProvider().show();
   }
 
-   static Future<void> showUserBottomSheet(BuildContext context) async {
+  static Future<void> showUserBottomSheet(BuildContext context) async {
     BottomBarVisibilityProvider().hide();
 
-    await showModalBottomSheet(
+    await showCupertinoModalPopup(
       context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
       builder: (_) => const UserProfileBottomSheet(),
     );
 
@@ -79,15 +76,11 @@ class BottomSheetService {
     BottomBarVisibilityProvider().show();
   }
 
-    static Future<void> showBlockSheet(BuildContext context) async {
+  static Future<void> showBlockSheet(BuildContext context) async {
     BottomBarVisibilityProvider().hide();
 
-    await showModalBottomSheet(
+    await showCupertinoModalPopup(
       context: context,
-      isScrollControlled: true,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-      ),
       builder: (_) => const BlockUserSheet(),
     );
 

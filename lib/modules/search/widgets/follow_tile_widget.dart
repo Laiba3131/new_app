@@ -1,5 +1,6 @@
 // lib/modules/profile/widgets/user_profile_tile.dart
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kulture/config/routes/nav_router.dart';
@@ -86,13 +87,8 @@ class UserProfileTile extends StatelessWidget {
                   BottomBarVisibilityProvider().hide();
 
                   // Show the bottom sheet and await its closure
-                  await showModalBottomSheet(
+                  await showCupertinoModalPopup(
                     context: context,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.vertical(top: Radius.circular(20)),
-                    ),
-                    isScrollControlled: true,
                     builder: (_) => UnfollowConfirmationSheet(
                       username: user['name'],
                       userImage: user['imageUrl'],
