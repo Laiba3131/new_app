@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kulture/config/config.dart';
 import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/generated/assets.dart';
 import 'package:kulture/ui/input/input_field.dart';
@@ -32,7 +33,11 @@ class _SearchNoteScreenState extends State<SearchNoteScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.arrow_back_ios_new_sharp),
+        leading: InkWell(
+          onTap: (){
+            NavRouter.pop(context);
+          },
+          child: const Icon(Icons.arrow_back_ios_new_sharp)),
         title: Text(
           'Send a new note',
           style: context.textTheme.bodyMedium?.copyWith(
@@ -52,7 +57,8 @@ class _SearchNoteScreenState extends State<SearchNoteScreen> {
               label: 'To:Search',
               borderRadius: 17,
               borderColor: AppColors.searchBarColor,
-              boxConstraints: 50,
+              focusBorderColor:AppColors.searchBarColor,
+              boxConstraints: 20,
             ),
           ),
           Padding(

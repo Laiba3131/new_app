@@ -124,6 +124,11 @@ class _UserProfileBottomSheetState extends State<UserProfileBottomSheet> {
                 borderRadius: 15,
               ),
             ],
+            //  SvgPicture.asset(
+            //           Assets.shareIcon,
+            //           height: 25,
+            //           color: AppColors.black,
+            //         ),
           ),
         ),
       ],

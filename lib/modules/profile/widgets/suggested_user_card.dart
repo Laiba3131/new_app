@@ -22,7 +22,7 @@ class SuggestedUserCard extends StatefulWidget {
 }
 
 class _SuggestedUserCardState extends State<SuggestedUserCard> {
-  bool isFollow = false;
+  bool isFollow = true;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -93,10 +93,11 @@ class _SuggestedUserCardState extends State<SuggestedUserCard> {
               });
             },
             backgroundColor:
-                isFollow ? AppColors.primaryColor : AppColors.primaryColor,
-            titleColor: isFollow ? AppColors.white : AppColors.white,
+                isFollow ? AppColors.primaryColor : AppColors.white,
+            titleColor: isFollow ? AppColors.white : AppColors.black,
             borderRadius: 6,
             width: 100,
+            bborderColor: isFollow ? AppColors.transparent : AppColors.searchBarColor,
             fontSize: 12,
             height: 25,
             hMargin: 0,

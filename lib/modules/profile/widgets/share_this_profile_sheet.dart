@@ -36,7 +36,13 @@ class _ShareThisProfileSheetState extends State<ShareThisProfileSheet> {
     UserNote(name: 'Sylvia Oliver', imageUrl: Assets.pngImage5),
     UserNote(name: 'Jaci Alexis', imageUrl: Assets.pngImage6),
   ];
-
+  final List<String> icons = [
+    Assets.sheetIcon1,
+    Assets.sheetIcon2,
+    Assets.sheetIcon3,
+    Assets.sheetIcon4,
+    Assets.sheetIcon5,
+  ];
   @override
   void dispose() {
     _noteController.dispose();
@@ -70,9 +76,9 @@ class _ShareThisProfileSheetState extends State<ShareThisProfileSheet> {
                 child: ListView.builder(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   scrollDirection: Axis.horizontal,
-                  itemCount: 4,
+                  itemCount: 5,
                   itemBuilder: (context, index) {
-                    return _buildSendNotesButton();
+                    return _buildSendNotesButton(icons[index]);
                   },
                 ),
               ),
@@ -94,76 +100,50 @@ class _ShareThisProfileSheetState extends State<ShareThisProfileSheet> {
   }
 
   Widget _buildUserItem(UserNote user) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Stack(
-          children: [
-            Container(
-              width: 64,
-              height: 64,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
-                  color: Colors.grey.withOpacity(0.2),
-                  width: 1,
-                ),
+    return Padding(
+      padding: const EdgeInsets.only(right: 10),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Stack(
+            children: [
+              CircleAvatar(
+                radius: 28,
+                backgroundImage: AssetImage(user.imageUrl),
               ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(32),
+              Positioned(
+                bottom: -0,
+                right: -4,
+                left: 24,
                 child: Image.asset(
-                  user.imageUrl,
-                  fit: BoxFit.cover,
+                  Assets.sheetIcon1,
+                  height: 22,
+                  width: 22,
                 ),
               ),
-            ),
-            Positioned(
-              bottom: -0,
-              right: -2,
-              left: 24,
-              child: Container(
-                height: 20,
-                width: 20,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white, width: 2),
-                ),
-                child: SvgPicture.asset(Assets.messageIcon),
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 4),
-        Text(
-          user.name.split(' ')[0],
-          textAlign: TextAlign.center,
-          style: context.textTheme.bodyMedium?.copyWith(
-              color: AppColors.black,
-              fontSize: 14,
-              fontWeight: FontWeight.w600),
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
-        ),
-      ],
+            ],
+          ),
+          const SizedBox(height: 4),
+          Text(
+            user.name.split(' ')[0],
+            textAlign: TextAlign.center,
+            style: context.textTheme.bodyMedium?.copyWith(
+                color: AppColors.black,
+                fontSize: 14,
+                fontWeight: FontWeight.w600),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
+      ),
     );
   }
 
-  Widget _buildSendNotesButton() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        h1,
-        SizedBox(
-          width: 50,
-          height: 50,
-          child: Image.asset(
-            Assets.sheetIcon1,
-            height: 12,
-          ),
-        ),
-        h1,
-      ],
+  Widget _buildSendNotesButton(icon) {
+    return Image.asset(
+      icon,
+      height: 12,
+      color: AppColors.black,
     );
   }
 }
