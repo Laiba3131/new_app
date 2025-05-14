@@ -12,51 +12,49 @@ class BlockUserDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-      backgroundColor: AppColors.lightGreyColor,
-      child: Container(
-        constraints: const BoxConstraints(maxWidth: 300),
-        padding: const EdgeInsets.only(top: 23.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            h2,
-            Text(
-              'You can unlock them at any time',
-              style: context.textTheme.bodyMedium
-                  ?.copyWith(fontSize: 17, fontWeight: FontWeight.w700),
-            ),
-            h1,
-            PrimaryButton(
-              height: 45,
-              onPressed: () async {
-                Navigator.pop(context);
-                // await Future.delayed(const Duration(milliseconds: 200));
-                // BottomSheetService.showReportSheet(context);
-              },
-              title: 'Unblock',
-              backgroundColor: AppColors.primaryColor,
-              shadowColor: AppColors.transparent,
-              titleColor: AppColors.white,
-              borderRadius: 15,
-            ),
-            h1,
-            PrimaryButton(
-              height: 45,
-              onPressed: () async {
-                Navigator.pop(context);
-                // await Future.delayed(const Duration(milliseconds: 200));
-                // BottomSheetService.showReportSheet(context);
-              },
-              title: 'Cancel',
-              backgroundColor: AppColors.primaryColor,
-              shadowColor: AppColors.transparent,
-              titleColor: AppColors.white,
-              borderRadius: 15,
-            ),
-            h1,
-          ],
-        ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+      backgroundColor: AppColors.white,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          h3,
+          Text(
+            'Unblock misskhole?',
+            style: context.textTheme.bodyMedium
+                ?.copyWith(fontSize: 17, fontWeight: FontWeight.w700),
+          ),
+          h2,
+          PrimaryButton(
+            vMargin: 0,
+            height: 45,
+            onPressed: () async {
+              Navigator.pop(context);
+              // await Future.delayed(const Duration(milliseconds: 200));
+              // BottomSheetService.showReportSheet(context);
+            },
+            title: 'Unblock',
+            backgroundColor: AppColors.primaryColor,
+            shadowColor: AppColors.transparent,
+            titleColor: AppColors.white,
+            borderRadius: 15,
+          ),
+          h1,
+          PrimaryButton(
+            vMargin: 0,
+            height: 45,
+            onPressed: () async {
+              Navigator.pop(context);
+              // await Future.delayed(const Duration(milliseconds: 200));
+              // BottomSheetService.showReportSheet(context);
+            },
+            title: 'Cancel',
+            backgroundColor: AppColors.primaryColor,
+            shadowColor: AppColors.transparent,
+            titleColor: AppColors.white,
+            borderRadius: 15,
+          ),
+          h2,
+        ],
       ),
     );
   }

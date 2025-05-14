@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kulture/constants/app_colors.dart';
+import 'package:kulture/generated/assets.dart';
 import 'package:kulture/ui/input/input_field.dart';
+import 'package:kulture/utils/extensions/extended_context.dart';
 
 class SearchNoteScreen extends StatefulWidget {
-
   const SearchNoteScreen({super.key});
 
   @override
@@ -11,79 +12,62 @@ class SearchNoteScreen extends StatefulWidget {
 }
 
 class _SearchNoteScreenState extends State<SearchNoteScreen> {
-  TextEditingController searchController=TextEditingController();
+  TextEditingController searchController = TextEditingController();
 
   final List<Map<String, String>> users = [
-    {
-      'name': 'Queen Bee',
-      'username': 'queenofthebees',
-      'image': 'https://via.placeholder.com/150'
-    },
+    {'name': 'Queen Bee', 'username': 'queenofthebees', 'image': Assets.img1},
     {
       'name': 'Ashley Backer',
       'username': 'ashleythename',
-      'image': 'https://via.placeholder.com/150'
+      'image': Assets.img2
     },
-    {
-      'name': 'Bee Queen',
-      'username': 'officialqueenbee',
-      'image': 'https://via.placeholder.com/150'
-    },
-    {
-      'name': 'Cindy Pat',
-      'username': 'cindysandy',
-      'image': 'https://via.placeholder.com/150'
-    },
+    {'name': 'Bee Queen', 'username': 'officialqueenbee', 'image': Assets.img3},
+    {'name': 'Cindy Pat', 'username': 'cindysandy', 'image': Assets.img4},
   ];
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, String>> repeatedUsers = List.generate(
-        3, (_) => users).expand((userList) => userList).toList();
+    List<Map<String, String>> repeatedUsers =
+        List.generate(3, (_) => users).expand((userList) => userList).toList();
 
     return Scaffold(
       appBar: AppBar(
-        leading: BackButton(color: Colors.black),
+        leading: const Icon(Icons.arrow_back_ios_new_sharp),
         title: Text(
           'Send a new note',
-          style: TextStyle(color: Colors.black),
+          style: context.textTheme.bodyMedium?.copyWith(
+              color: AppColors.black,
+              fontSize: 17,
+              fontWeight: FontWeight.w600),
         ),
         backgroundColor: Colors.white,
         elevation: 0,
       ),
       body: Column(
         children: [
-          // Search Field
           Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
-          child: InputField(
-            controller: searchController,
-            label: 'Search...',
-            borderRadius: 17,
-            borderColor: AppColors.searchBarColor,
-            // fillColor: AppColors.searchBarColor,
-            prefixIcon: const Icon(
-              Icons.search,
-              color: AppColors.textGrey,
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
+            child: InputField(
+              controller: searchController,
+              label: 'To:Search',
+              borderRadius: 17,
+              borderColor: AppColors.searchBarColor,
+              boxConstraints: 50,
             ),
-            boxConstraints: 50,
           ),
-        ),
-          // Suggested Accounts Title
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
                 'Suggested accounts',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                ),
+                style: context.textTheme.bodyMedium?.copyWith(
+                    color: AppColors.black,
+                    fontSize: 17,
+                    fontWeight: FontWeight.w600),
               ),
             ),
           ),
-          // Suggested Accounts List
           Expanded(
             child: ListView.builder(
               itemCount: repeatedUsers.length,
@@ -91,16 +75,23 @@ class _SearchNoteScreenState extends State<SearchNoteScreen> {
                 final user = repeatedUsers[index];
                 return ListTile(
                   leading: CircleAvatar(
-                    backgroundImage: NetworkImage(user['image']!),
+                    backgroundImage: AssetImage(user['image']!),
                   ),
-                  title: Text(user['name']!),
+                  title: Text(
+                    user['name']!,
+                    style: context.textTheme.bodyMedium?.copyWith(
+                        color: AppColors.black,
+                        fontSize: 17,
+                        fontWeight: FontWeight.w400),
+                  ),
                   subtitle: Text(
                     user['username']!,
-                    style: TextStyle(color: Colors.grey[600]),
+                    style: context.textTheme.bodyMedium?.copyWith(
+                        color: AppColors.svgIconColor,
+                        fontSize: 17,
+                        fontWeight: FontWeight.w400),
                   ),
-                  onTap: () {
-                   
-                  },
+                  onTap: () {},
                 );
               },
             ),

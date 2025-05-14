@@ -9,11 +9,16 @@ import 'package:kulture/utils/extensions/extended_context.dart';
 
 import '../pages/infinity_scrolling_photos.dart';
 
-class PhotoTab extends StatelessWidget {
+class PhotoTab extends StatefulWidget {
   final int itemCount;
-  
-   const PhotoTab({super.key, this.itemCount = 10});
 
+  const PhotoTab({super.key, this.itemCount = 10});
+
+  @override
+  State<PhotoTab> createState() => _PhotoTabState();
+}
+
+class _PhotoTabState extends State<PhotoTab> {
   String _getImageForIndex(int index) {
     final List<String> images = [
       Assets.pngImage1,
@@ -26,16 +31,23 @@ class PhotoTab extends StatelessWidget {
     return images[index % images.length];
   }
 
+  late List<bool> likedItems;
+  @override
+  void initState() {
+    likedItems = List<bool>.filled(widget.itemCount, false);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MasonryGridView.count(
       crossAxisCount: 2,
-     mainAxisSpacing: 7,
+      mainAxisSpacing: 7,
       crossAxisSpacing: 5,
       padding: const EdgeInsets.symmetric(horizontal: 12),
-      itemCount: itemCount,
+      itemCount: widget.itemCount,
       itemBuilder: (context, index) {
-        bool isImages= index%3==0;
+        bool isImages = index % 3 == 0;
         final isEven = index % 2 == 0;
         final imageAsset = _getImageForIndex(index);
         return ClipRRect(
@@ -67,10 +79,12 @@ class PhotoTab extends StatelessWidget {
                         fit: BoxFit.cover,
                       ),
                     ),
-                      (isImages)
-                ? Positioned(
-                    top: 12, right: 12, child: SvgPicture.asset(Assets.images))
-                : SizedBox()
+                    (isImages)
+                        ? Positioned(
+                            top: 12,
+                            right: 12,
+                            child: SvgPicture.asset(Assets.images))
+                        : SizedBox()
                   ],
                 ),
               ),
@@ -109,7 +123,7 @@ class PhotoTab extends StatelessWidget {
                                   Assets.pngImage1,
                                 ),
                               ),
-                               Positioned(
+                              Positioned(
                                 bottom: -2,
                                 right: -2,
                                 child: Container(
@@ -144,8 +158,22 @@ class PhotoTab extends StatelessWidget {
                           ),
                         ),
                         const Spacer(),
-                        const Icon(Icons.favorite_border,
-                            size: 18, color: AppColors.black),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              likedItems[index] = !likedItems[index];
+                            });
+                          },
+                          child: Icon(
+                            likedItems[index]
+                                ? Icons.favorite
+                                : Icons.favorite_border,
+                            size: 18,
+                            color: likedItems[index]
+                                ? Colors.red
+                                : AppColors.black,
+                          ),
+                        ),
                         const SizedBox(width: 2),
                         Text(
                           '${(index + 1) * 100}',

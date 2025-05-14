@@ -216,9 +216,11 @@ class _YourProfileScreenState extends State<YourProfileScreen>
                       controller: _tabController,
                       labelColor: Colors.black,
                       unselectedLabelColor: Colors.grey,
+                      indicatorWeight: 2,
                       indicatorColor: AppColors.primaryColor,
-                      indicatorSize: TabBarIndicatorSize.tab,
-                       indicatorPadding: const EdgeInsets.symmetric(horizontal: 8,vertical: 0),
+                      indicatorSize: TabBarIndicatorSize.label,
+                      indicatorPadding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 0),
                       dividerColor: AppColors.lightGreyColor,
                       tabs: const [
                         Tab(text: "PicVids"),

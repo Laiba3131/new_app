@@ -26,6 +26,7 @@ class HomeScreen extends StatelessWidget {
                  indicatorColor: AppColors.primaryColor,
                  dividerColor: AppColors.transparent,
                  indicatorWeight: 2,
+                 indicatorSize: TabBarIndicatorSize.tab,
                  indicatorPadding: const EdgeInsets.symmetric(horizontal: 5,vertical: 0),
                  labelStyle:  context.textTheme.bodySmall?.copyWith(
                    color: AppColors.black,
@@ -37,11 +38,6 @@ class HomeScreen extends StatelessWidget {
                    fontWeight: FontWeight.w400,
                    fontSize: 14,
                  ),
-                 // labelColor: Colors.black,
-                 // // unselectedLabelColor: Colors.grey,
-                 // indicatorColor: Colors.blue,
-                 // indicatorWeight: 3,
-                 // indicatorSize: TabBarIndicatorSize.label,
                  tabs: const [
                    Tab(text: 'Trending'),
                    Tab(text: 'Videos'),
