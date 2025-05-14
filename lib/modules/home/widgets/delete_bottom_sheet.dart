@@ -22,7 +22,6 @@ class _DeleteBottomSheetState extends State<DeleteBottomSheet> {
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Container(

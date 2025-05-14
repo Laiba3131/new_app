@@ -79,16 +79,15 @@ class _TrendingGridState extends State<TrendingGrid> {
         return TrendingItem(
           imageUrl: assetImages[index % assetImages.length],
           username: 'User ${totalIndex + 1}',
-          likes: (100 + totalIndex * 127), 
+          likes: (100 + totalIndex * 127),
           aspectRatio: aspectRatio,
-          isVideo: totalIndex % 3 == 0, 
+          isVideo: totalIndex % 3 == 0,
           isImage: totalIndex % 2 == 0,
         );
       }));
       _isLoading = false;
     });
   }
-
 
   Future<void> _onRefresh() async {
     setState(() {
@@ -157,11 +156,11 @@ class TrendingTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
-        if(item.isVideo){
-           NavRouter.push(context, const InfinityScrollingScreen());
-        }else{
-           NavRouter.push(context, const InfinityScrollingPhotos());
+      onTap: () {
+        if (item.isVideo) {
+          NavRouter.push(context, const InfinityScrollingScreen());
+        } else {
+          NavRouter.push(context, const InfinityScrollingPhotos());
         }
       },
       child: AspectRatio(
@@ -192,7 +191,7 @@ class TrendingTile extends StatelessWidget {
                 },
               ),
             ),
-      
+
             // Gradient overlay
             Positioned.fill(
               child: DecoratedBox(
@@ -209,17 +208,18 @@ class TrendingTile extends StatelessWidget {
                 ),
               ),
             ),
-      
+
             // Video play icon
             (item.isVideo)
                 ? Positioned(
-                    top: 12, right: 12, child: SvgPicture.asset(Assets.vedioPlay))
+                    top: 12,
+                    right: 12,
+                    child: SvgPicture.asset(Assets.vedioPlay))
                 : (item.isImage)
                     ? Positioned(
                         top: 12,
                         right: 12,
-                        child: SvgPicture.asset(Assets.images)
-                      )
+                        child: SvgPicture.asset(Assets.images))
                     : const SizedBox(),
           ],
         ),

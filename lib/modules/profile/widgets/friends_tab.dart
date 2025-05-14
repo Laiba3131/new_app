@@ -202,7 +202,6 @@ class _FriendsTabWidgetState extends State<FriendsTabWidget> {
                     titleColor: !isFollow ? AppColors.black : AppColors.white,
                     shadowColor: AppColors.transparent,
                   ),
-                 
                   GestureDetector(
                     onTap: () {
                       // ScaffoldMessenger.of(context).showSnackBar(

@@ -56,7 +56,7 @@ class DeleteDialog extends StatelessWidget {
                 InkWell(
                   onTap: () => Navigator.of(context).pop(),
                   child: Padding(
-                   padding: const EdgeInsets.only(bottom: 10,top: 3),
+                    padding: const EdgeInsets.only(bottom: 10, top: 3),
                     child: Text(
                       'Delete',
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
@@ -70,11 +70,12 @@ class DeleteDialog extends StatelessWidget {
                 Container(
                   height: 50,
                   width: 1,
-                  decoration: const BoxDecoration(color: AppColors.greyColor),),
+                  decoration: const BoxDecoration(color: AppColors.greyColor),
+                ),
                 InkWell(
                   onTap: () => Navigator.of(context).pop(),
                   child: Padding(
-                    padding: const EdgeInsets.only(bottom: 10,top: 3),
+                    padding: const EdgeInsets.only(bottom: 10, top: 3),
                     child: Text(
                       'Cancel',
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(

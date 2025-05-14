@@ -8,7 +8,7 @@ class MultiImageCarousel extends StatefulWidget {
   final double imageHeight; // New parameter for custom height
 
   const MultiImageCarousel({
-    super.key, 
+    super.key,
     required this.imageUrls,
     this.imageHeight = 380, // Default height
   });
@@ -59,7 +59,7 @@ class _MultiImageCarouselState extends State<MultiImageCarousel> {
             ),
           ),
         ),
-       h0P4,
+        h0P4,
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: widget.imageUrls.asMap().entries.map((entry) {

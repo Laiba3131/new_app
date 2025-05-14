@@ -63,8 +63,8 @@ class _InfinityScrollingScreenState extends State<InfinityScrollingScreen>
       'shares': '320'
     }
   ];
-  bool isDislike=false;
-bool isFollow=true;
+  bool isDislike = false;
+  bool isFollow = true;
   @override
   void initState() {
     super.initState();
@@ -207,8 +207,8 @@ bool isFollow=true;
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     CustomFavoriteIcon(
-                                      unFillColor:AppColors.white,
-                                       fillColor:AppColors.red,
+                                      unFillColor: AppColors.white,
+                                      fillColor: AppColors.red,
                                       outlineAssetPath: Assets.svgFvt,
                                       filledAssetPath: Assets.svgFvtFilled,
                                       size: 25,
@@ -225,12 +225,12 @@ bool isFollow=true;
                                       ),
                                     ),
                                     h2,
-                                     CustomFavoriteIcon(
-                                       unFillColor:AppColors.white,
+                                    CustomFavoriteIcon(
+                                      unFillColor: AppColors.white,
                                       outlineAssetPath: Assets.thum,
                                       filledAssetPath: Assets.dislikeIcon,
                                       size: 25,
-                                      fillColor:AppColors.black,
+                                      fillColor: AppColors.black,
                                       initiallyFavorited: false,
                                       onToggle: (isFav) {},
                                     ),
@@ -241,8 +241,8 @@ bool isFollow=true;
                                     //   child: SvgPicture.asset(Assets.thum,
                                     //       height: 25, color: AppColors.white),
                                     // ),
-                                     Text(
-                                     'Dislike',
+                                    Text(
+                                      'Dislike',
                                       style: context.textTheme.bodyMedium
                                           ?.copyWith(
                                         color: AppColors.white,
@@ -358,7 +358,11 @@ bool isFollow=true;
                                               const UserProfileScreen(),
                                             );
                                           },
-                                          child: Text(item['username'].toString().toLowerCase().replaceAll(' ', ''),
+                                          child: Text(
+                                              item['username']
+                                                  .toString()
+                                                  .toLowerCase()
+                                                  .replaceAll(' ', ''),
                                               style: context
                                                   .textTheme.bodyMedium
                                                   ?.copyWith(
@@ -369,15 +373,19 @@ bool isFollow=true;
                                         ),
                                         const SizedBox(width: 8),
                                         PrimaryButton(
-                                          title:isFollow? 'Follow':'Unfollow',
+                                          title:
+                                              isFollow ? 'Follow' : 'Unfollow',
                                           onPressed: () {
                                             setState(() {
-                                              isFollow=!isFollow;
+                                              isFollow = !isFollow;
                                             });
                                           },
-                                          backgroundColor:
-                                             isFollow? AppColors.primaryColor:AppColors.white,
-                                          titleColor: isFollow? AppColors.white:AppColors.black,
+                                          backgroundColor: isFollow
+                                              ? AppColors.primaryColor
+                                              : AppColors.white,
+                                          titleColor: isFollow
+                                              ? AppColors.white
+                                              : AppColors.black,
                                           borderRadius: 6,
                                           width: 75,
                                           fontSize: 12,

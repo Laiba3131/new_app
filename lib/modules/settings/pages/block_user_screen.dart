@@ -50,10 +50,10 @@ class BlockedUserScreen extends StatelessWidget {
                   buttonColor: AppColors.red,
                   onUnblock: () {
                     showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                      return const BlockUserDialog();
-                    });
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const BlockUserDialog();
+                        });
                   },
                 );
               },

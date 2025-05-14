@@ -53,7 +53,7 @@ class _BlockUserSheetState extends State<BlockUserSheet> {
               ),
               h1,
               PrimaryButton(
-                 vMargin: 0,
+                vMargin: 0,
                 height: 45,
                 onPressed: () async {
                   Navigator.pop(context);
@@ -90,12 +90,11 @@ class _BlockUserSheetState extends State<BlockUserSheet> {
         onPressed: () {
           Navigator.of(context).pop();
         },
-        child:  Text('Cancel',
+        child: Text('Cancel',
             style: context.textTheme.bodyMedium?.copyWith(
-              fontSize: 17,
-              fontWeight: FontWeight.w600,
-              color: AppColors.red
-            )),
+                fontSize: 17,
+                fontWeight: FontWeight.w600,
+                color: AppColors.red)),
       ),
     );
   }

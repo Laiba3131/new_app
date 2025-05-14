@@ -65,11 +65,10 @@ class Assets {
   static const String lips = 'assets/png/lips.png';
 
   static const String sheetIcon1 = 'assets/png/icon1.png';
-  static const String sheetIcon2 = 'assets/png/icon2.png';
-  static const String sheetIcon3 = 'assets/png/brand-x.png';
-  static const String sheetIcon4 = 'assets/png/brand-threads.png';
-  static const String sheetIcon5 = 'assets/png/brand-google-solid.png';
-
+  static const String sheetIcon2 = 'assets/png/fb.png';
+  static const String sheetIcon3 = 'assets/png/x.png';
+  static const String sheetIcon4 = 'assets/png/@.png';
+  static const String sheetIcon5 = 'assets/png/google.png';
 
 //PnGs
   static const String pngSplashLogo1 = 'assets/png/Group 1.png';
@@ -103,7 +102,6 @@ class Assets {
   static const String emojiIcon = 'assets/png/emojiIcon.png';
   static const String sendMsg = 'assets/png/sendMsg.png';
   static const String mesgIcon = 'assets/png/mesgIcon.png';
-  
 
 //hight quality images
   static const String img1 = 'assets/png/img1.jpg';

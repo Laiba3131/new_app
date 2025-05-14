@@ -166,23 +166,22 @@ class DummyData {
           timeAgo: '1h',
           userImage: Assets.pngImage1,
           likes: 5,
-           replies: [
-        Comment(
-          username: 'Tierra Tierra',
-          text: 'Monica Avila Me too!! I reall love it ',
-          timeAgo: '1h',
-          userImage: Assets.pngImage1,
-          likes: 5,
-        ),
-         Comment(
-          username: 'Tierra Tierra',
-          text: 'Monica Avila Me too!! I reall love it ',
-          timeAgo: '1h',
-          userImage: Assets.pngImage1,
-          likes: 5,
-        ),
-      ],
-   
+          replies: [
+            Comment(
+              username: 'Tierra Tierra',
+              text: 'Monica Avila Me too!! I reall love it ',
+              timeAgo: '1h',
+              userImage: Assets.pngImage1,
+              likes: 5,
+            ),
+            Comment(
+              username: 'Tierra Tierra',
+              text: 'Monica Avila Me too!! I reall love it ',
+              timeAgo: '1h',
+              userImage: Assets.pngImage1,
+              likes: 5,
+            ),
+          ],
         ),
         //  Comment(
         //   username: 'Tierra Tierra',
@@ -199,7 +198,7 @@ class DummyData {
       timeAgo: '5h',
       userImage: Assets.pngImage7,
       likes: 42,
-        replies: [
+      replies: [
         Comment(
           username: 'Tierra Tierra',
           text: 'Monica Avila Me too!! Hii ',
@@ -207,7 +206,7 @@ class DummyData {
           userImage: Assets.pngImage1,
           likes: 5,
         ),
-         Comment(
+        Comment(
           username: 'Tierra Tierra',
           text: 'Monica Avila Me too!! Hello ',
           timeAgo: '2h',

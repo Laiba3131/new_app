@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/generated/assets.dart';
-import 'package:kulture/ui/bottom_bar_visibility_provider.dart';
 import 'package:kulture/utils/extensions/extended_context.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
 
@@ -60,6 +58,7 @@ class _ShareThisProfileSheetState extends State<ShareThisProfileSheet> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              h1,
               SizedBox(
                 height: 90,
                 child: ListView.builder(
@@ -71,17 +70,42 @@ class _ShareThisProfileSheetState extends State<ShareThisProfileSheet> {
                   },
                 ),
               ),
-              SizedBox(
-                height: 90,
-                child: ListView.builder(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return _buildSendNotesButton(icons[index]);
-                  },
+              h1,
+              const Divider(
+                color: AppColors.searchBarColor,
+              ),
+              h1,
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                // height: 90,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Image.asset(
+                      icons[0],
+                      height: 55,
+                    ),
+                    Image.asset(
+                      icons[1],
+                      height: 55,
+                    ),
+                    Image.asset(
+                      icons[2],
+                      height: 45,
+                    ),
+                    Image.asset(
+                      icons[3],
+                      height: 45,
+                    ),
+                    Image.asset(
+                      icons[4],
+                      height: 45,
+                    ),
+                  ],
                 ),
               ),
+              h2
             ],
           ),
         ),
@@ -101,7 +125,7 @@ class _ShareThisProfileSheetState extends State<ShareThisProfileSheet> {
 
   Widget _buildUserItem(UserNote user) {
     return Padding(
-      padding: const EdgeInsets.only(right: 10),
+      padding: const EdgeInsets.only(right: 13),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -136,14 +160,6 @@ class _ShareThisProfileSheetState extends State<ShareThisProfileSheet> {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildSendNotesButton(icon) {
-    return Image.asset(
-      icon,
-      height: 12,
-      color: AppColors.black,
     );
   }
 }

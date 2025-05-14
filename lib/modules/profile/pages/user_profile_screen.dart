@@ -48,8 +48,7 @@ class _UserProfileScreenState extends State<UserProfileScreen>
     super.dispose();
   }
 
-
-bool isShow=true;
+  bool isShow = true;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -160,9 +159,9 @@ bool isShow=true;
                         Expanded(
                           flex: 1,
                           child: InkWell(
-                            onTap: (){
+                            onTap: () {
                               setState(() {
-                                isShow=!isShow;
+                                isShow = !isShow;
                               });
                             },
                             child: Container(

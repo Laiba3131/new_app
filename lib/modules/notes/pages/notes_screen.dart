@@ -387,9 +387,9 @@ class _NotesScreenState extends State<NotesScreen> {
       child: Row(
         children: [
           InkWell(
-             onTap: (){
-                      NavRouter.push(context, const UserProfileScreen());
-                    },
+            onTap: () {
+              NavRouter.push(context, const UserProfileScreen());
+            },
             child: Container(
               width: 50,
               height: 50,
@@ -409,9 +409,9 @@ class _NotesScreenState extends State<NotesScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 InkWell(
-                  onTap: (){
-                      NavRouter.push(context, const UserProfileScreen());
-                    },
+                  onTap: () {
+                    NavRouter.push(context, const UserProfileScreen());
+                  },
                   child: Text(
                     name,
                     style: context.textTheme.bodyMedium?.copyWith(

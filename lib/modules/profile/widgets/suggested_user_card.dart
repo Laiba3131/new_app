@@ -47,12 +47,12 @@ class _SuggestedUserCardState extends State<SuggestedUserCard> {
             ),
           ),
           InkWell(
-             onTap: () {
-                        NavRouter.push(
-                          context,
-                          const UserProfileScreen(),
-                        );
-                      },
+            onTap: () {
+              NavRouter.push(
+                context,
+                const UserProfileScreen(),
+              );
+            },
             child: CircleAvatar(
               radius: 32,
               backgroundImage: AssetImage(widget.user.imageUrl),
@@ -60,12 +60,12 @@ class _SuggestedUserCardState extends State<SuggestedUserCard> {
           ),
           h1,
           InkWell(
-             onTap: () {
-                        NavRouter.push(
-                          context,
-                          const UserProfileScreen(),
-                        );
-                      },
+            onTap: () {
+              NavRouter.push(
+                context,
+                const UserProfileScreen(),
+              );
+            },
             child: Text(
               widget.user.name,
               style: context.textTheme.bodySmall?.copyWith(
@@ -97,7 +97,8 @@ class _SuggestedUserCardState extends State<SuggestedUserCard> {
             titleColor: isFollow ? AppColors.white : AppColors.black,
             borderRadius: 6,
             width: 100,
-            bborderColor: isFollow ? AppColors.transparent : AppColors.searchBarColor,
+            bborderColor:
+                isFollow ? AppColors.transparent : AppColors.searchBarColor,
             fontSize: 12,
             height: 25,
             hMargin: 0,

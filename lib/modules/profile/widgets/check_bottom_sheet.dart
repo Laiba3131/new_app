@@ -47,11 +47,11 @@ class MyHomePage extends StatelessWidget {
             onPressed: () {
               Navigator.of(cont).pop();
             },
-            child:  Text('Cancel', style: context.textTheme.bodyMedium?.copyWith(
-              fontSize: 17,
-              fontWeight: FontWeight.w600,
-              color: AppColors.red
-            )),
+            child: Text('Cancel',
+                style: context.textTheme.bodyMedium?.copyWith(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.red)),
           ),
         );
       },

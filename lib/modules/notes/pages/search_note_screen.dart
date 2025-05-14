@@ -16,14 +16,22 @@ class _SearchNoteScreenState extends State<SearchNoteScreen> {
   TextEditingController searchController = TextEditingController();
 
   final List<Map<String, String>> users = [
-    {'name': 'Queen Bee', 'username': 'queenofthebees', 'image': Assets.img1},
+    {
+      'name': 'Queen Bee',
+      'username': 'queenofthebees',
+      'image': Assets.pngImage2
+    },
     {
       'name': 'Ashley Backer',
       'username': 'ashleythename',
-      'image': Assets.img2
+      'image': Assets.pngImage7
     },
-    {'name': 'Bee Queen', 'username': 'officialqueenbee', 'image': Assets.img3},
-    {'name': 'Cindy Pat', 'username': 'cindysandy', 'image': Assets.img4},
+    {
+      'name': 'Bee Queen',
+      'username': 'officialqueenbee',
+      'image': Assets.pngImage4
+    },
+    {'name': 'Cindy Pat', 'username': 'cindysandy', 'image': Assets.pngImage5},
   ];
 
   @override
@@ -34,10 +42,10 @@ class _SearchNoteScreenState extends State<SearchNoteScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: InkWell(
-          onTap: (){
-            NavRouter.pop(context);
-          },
-          child: const Icon(Icons.arrow_back_ios_new_sharp)),
+            onTap: () {
+              NavRouter.pop(context);
+            },
+            child: const Icon(Icons.arrow_back_ios_new_sharp)),
         title: Text(
           'Send a new note',
           style: context.textTheme.bodyMedium?.copyWith(
@@ -57,7 +65,7 @@ class _SearchNoteScreenState extends State<SearchNoteScreen> {
               label: 'To:Search',
               borderRadius: 17,
               borderColor: AppColors.searchBarColor,
-              focusBorderColor:AppColors.searchBarColor,
+              focusBorderColor: AppColors.searchBarColor,
               boxConstraints: 20,
             ),
           ),

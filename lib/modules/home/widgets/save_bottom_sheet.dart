@@ -138,7 +138,7 @@ class _SaveBottomSheetState extends State<SaveBottomSheet> {
               backgroundColor: AppColors.red,
               titleColor: AppColors.white,
               borderRadius: 15,
-             fontSize: 17,
+              fontSize: 17,
               shadowColor: AppColors.transparent),
           h1,
           PrefixIconButton(

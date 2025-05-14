@@ -103,10 +103,11 @@ class _PostCardState extends State<PostCard> {
                           isFollow = !isFollow;
                         });
                       },
-                      backgroundColor: isFollow
-                          ? AppColors.primaryColor
-                          : AppColors.primaryColor,
-                      titleColor: isFollow ? AppColors.white : AppColors.white,
+                      backgroundColor:
+                          isFollow ? AppColors.primaryColor : AppColors.white,
+                      titleColor: isFollow ? AppColors.white : AppColors.black,
+                      bborderColor:
+                          isFollow ? AppColors.searchBarColor : AppColors.black,
                       borderRadius: 6,
                       width: 75,
                       fontSize: 12,

@@ -19,7 +19,7 @@ class CustomInputField extends StatelessWidget {
   final FormFieldValidator<String>? validator;
   final bool isReadOnly;
   final TextInputType keyboardType;
-   final List<TextInputFormatter>? inputFormatters;
+  final List<TextInputFormatter>? inputFormatters;
 
   const CustomInputField({
     super.key,
@@ -64,7 +64,7 @@ class CustomInputField extends StatelessWidget {
           keyboardType: inputType,
           minLines: minLines,
           maxLines: maxLines,
-           inputFormatters: inputFormatters,
+          inputFormatters: inputFormatters,
           decoration: InputDecoration(
             errorStyle: const TextStyle(
               color: AppColors.red,
@@ -76,9 +76,7 @@ class CustomInputField extends StatelessWidget {
             ),
             prefixIcon: Padding(
               padding: const EdgeInsets.only(right: 7.0),
-              child: InkWell(
-                onTap: fun,
-                child: iconWidget),
+              child: InkWell(onTap: fun, child: iconWidget),
             ),
             prefixIconConstraints: const BoxConstraints(
               minWidth: 0,

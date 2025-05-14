@@ -21,30 +21,31 @@ class HomeScreen extends StatelessWidget {
           body: Column(
             children: [
               // Tab Bar
-               TabBar(
-                 padding: const EdgeInsets.only(bottom: 2),
-                 indicatorColor: AppColors.primaryColor,
-                 dividerColor: AppColors.transparent,
-                 indicatorWeight: 2,
-                 indicatorSize: TabBarIndicatorSize.tab,
-                 indicatorPadding: const EdgeInsets.symmetric(horizontal: 5,vertical: 0),
-                 labelStyle:  context.textTheme.bodySmall?.copyWith(
-                   color: AppColors.black,
-                   fontWeight: FontWeight.w400,
-                   fontSize: 14,
-                 ),
-                 unselectedLabelStyle:  context.textTheme.bodySmall?.copyWith(
-                   color: AppColors.textGrey,
-                   fontWeight: FontWeight.w400,
-                   fontSize: 14,
-                 ),
-                 tabs: const [
-                   Tab(text: 'Trending'),
-                   Tab(text: 'Videos'),
-                   Tab(text: 'Photos'),
-                   Tab(text: 'Stitch'),
-                 ],
-               ),
+              TabBar(
+                padding: const EdgeInsets.only(bottom: 2),
+                indicatorColor: AppColors.primaryColor,
+                dividerColor: AppColors.transparent,
+                indicatorWeight: 2,
+                indicatorSize: TabBarIndicatorSize.tab,
+                indicatorPadding:
+                    const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+                labelStyle: context.textTheme.bodySmall?.copyWith(
+                  color: AppColors.black,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                ),
+                unselectedLabelStyle: context.textTheme.bodySmall?.copyWith(
+                  color: AppColors.textGrey,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                ),
+                tabs: const [
+                  Tab(text: 'Trending'),
+                  Tab(text: 'Videos'),
+                  Tab(text: 'Photos'),
+                  Tab(text: 'Stitch'),
+                ],
+              ),
 
               // Tab Bar View
               Expanded(
@@ -57,9 +58,8 @@ class HomeScreen extends StatelessWidget {
                         itemCount: 14,
                         isIconTrue: true,
                       ),
-                       const PhotoTab(
+                      const PhotoTab(
                         itemCount: 15,
-                        
                       ),
                       StitchTab(),
                     ],

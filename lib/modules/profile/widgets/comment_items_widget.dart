@@ -90,7 +90,8 @@ class _CommentItemState extends State<CommentItem> {
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: '${widget.comment.username.toString().toLowerCase().replaceAll(' ', '')} ',
+                              text:
+                                  '${widget.comment.username.toString().toLowerCase().replaceAll(' ', '')} ',
                               style: context.textTheme.bodyMedium?.copyWith(
                                 color: AppColors.primaryColor,
                                 fontWeight: FontWeight.bold,
@@ -138,24 +139,24 @@ class _CommentItemState extends State<CommentItem> {
                         ),
                         w2,
                         CustomFavoriteIcon(
-                           unFillColor:AppColors.svgIconColor,
-                                       fillColor:AppColors.red,
-                                      outlineAssetPath: Assets.svgFvt,
-                                      filledAssetPath: Assets.svgFvtFilled,
-                                      size: 12,
-                                      initiallyFavorited: false,
-                                      onToggle: (isFav) {},
-                                    ),
+                          unFillColor: AppColors.svgIconColor,
+                          fillColor: AppColors.red,
+                          outlineAssetPath: Assets.svgFvt,
+                          filledAssetPath: Assets.svgFvtFilled,
+                          size: 12,
+                          initiallyFavorited: false,
+                          onToggle: (isFav) {},
+                        ),
                         w2,
                         CustomFavoriteIcon(
-                           unFillColor:AppColors.svgIconColor,
-                                      outlineAssetPath: Assets.thum,
-                                      filledAssetPath: Assets.dislikeIcon,
-                                      size: 12,
-                                      fillColor:AppColors.black,
-                                      initiallyFavorited: false,
-                                      onToggle: (isFav) {},
-                                    ),
+                          unFillColor: AppColors.svgIconColor,
+                          outlineAssetPath: Assets.thum,
+                          filledAssetPath: Assets.dislikeIcon,
+                          size: 12,
+                          fillColor: AppColors.black,
+                          initiallyFavorited: false,
+                          onToggle: (isFav) {},
+                        ),
                         w2,
                         InkWell(
                           onTap: () {
@@ -191,7 +192,8 @@ class _CommentItemState extends State<CommentItem> {
             ],
           ),
           // Show replies section
-          if (widget.comment.replies != null && widget.comment.replies!.isNotEmpty) ...[
+          if (widget.comment.replies != null &&
+              widget.comment.replies!.isNotEmpty) ...[
             const SizedBox(height: 8),
             // Show first reply by default
             if (widget.comment.replies!.isNotEmpty)
