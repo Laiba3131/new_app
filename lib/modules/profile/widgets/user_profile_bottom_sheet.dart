@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/generated/assets.dart';
 import 'package:kulture/ui/button/primary_button.dart';
@@ -55,9 +56,9 @@ class _UserProfileBottomSheetState extends State<UserProfileBottomSheet> {
                 borderColor: AppColors.transparent,
                 height: 45,
                 onPressed: () async {
-                  setState(() {
-                    isBlock = !isBlock;
-                  });
+                  // setState(() {
+                  //   isBlock = !isBlock;
+                  // });
                   Navigator.pop(context);
                   await Future.delayed(const Duration(milliseconds: 200));
                   BottomSheetService.showBlockSheet(context);
@@ -112,9 +113,10 @@ class _UserProfileBottomSheetState extends State<UserProfileBottomSheet> {
                 borderColor: AppColors.transparent,
                 height: 45,
                 onPressed: () async {
+                   await Clipboard.setData(
+      ClipboardData(text: "https://yourapp.com/profile/username"),
+    );
                   Navigator.pop(context);
-                  await Future.delayed(const Duration(milliseconds: 200));
-                  BottomSheetService.showReportSheet(context);
                 },
                 prefixIconPath: Assets.shareIcon,
                 prefixIconSize: 20,
@@ -122,13 +124,9 @@ class _UserProfileBottomSheetState extends State<UserProfileBottomSheet> {
                 backgroundColor: AppColors.white,
                 titleColor: AppColors.black,
                 borderRadius: 15,
+                IconColor:AppColors.black
               ),
             ],
-            //  SvgPicture.asset(
-            //           Assets.shareIcon,
-            //           height: 25,
-            //           color: AppColors.black,
-            //         ),
           ),
         ),
       ],

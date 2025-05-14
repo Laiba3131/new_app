@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:kulture/config/config.dart';
 import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/generated/assets.dart';
 import 'package:kulture/modules/home/widgets/delete_dialog.dart';
@@ -95,26 +97,34 @@ class _ShareProfileSheetState extends State<ShareProfileSheet> {
                 color: AppColors.searchBarColor,
               ),
               h0P5,
-              SizedBox(
-                width: double.infinity,
-                height: 70,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(
-                      Assets.shareIcon,
-                      height: 25,
-                      color: AppColors.black,
-                    ),
-                    Text(
-                      'Copy Link',
-                      style: context.textTheme.bodyMedium?.copyWith(
+              InkWell(
+                onTap: () async {
+                   await Clipboard.setData(
+      const ClipboardData(text: "https://yourapp.com/profile/username"),
+    );
+    NavRouter.pop(context);
+                },
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 70,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        Assets.shareIcon,
+                        height: 25,
                         color: AppColors.black,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w600,
                       ),
-                    )
-                  ],
+                      Text(
+                        'Copy Link',
+                        style: context.textTheme.bodyMedium?.copyWith(
+                          color: AppColors.black,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
               h1,

@@ -181,6 +181,7 @@ class PrefixIconButton extends StatelessWidget {
       this.prefixIconSize = 16,
       this.borderRadius = 6,
       this.foregroundColor,
+      this.IconColor,
       this.width,
       this.mainAxisAlignment = MainAxisAlignment.center,
       this.titleGap = 14});
@@ -194,6 +195,7 @@ class PrefixIconButton extends StatelessWidget {
   final Color? foregroundColor;
   final double borderRadius;
   final String? prefixIconPath;
+  final Color? IconColor;
   final double prefixIconSize;
   final double hPadding;
   final Color titleColor;
@@ -226,6 +228,7 @@ class PrefixIconButton extends StatelessWidget {
             SvgPicture.asset(
               height: prefixIconSize,
               prefixIconPath!,
+              color: IconColor,
             ),
             SizedBox(
               width: titleGap,

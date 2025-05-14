@@ -74,7 +74,7 @@ class _ShareThisProfileSheetState extends State<ShareThisProfileSheet> {
               const Divider(
                 color: AppColors.searchBarColor,
               ),
-              h1,
+              h2,
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 // height: 90,
@@ -130,15 +130,16 @@ class _ShareThisProfileSheetState extends State<ShareThisProfileSheet> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Stack(
+            clipBehavior: Clip.none,
             children: [
               CircleAvatar(
                 radius: 28,
                 backgroundImage: AssetImage(user.imageUrl),
               ),
               Positioned(
-                bottom: -0,
-                right: -4,
-                left: 24,
+                bottom: 0,
+                right: -10,
+                left: 37,
                 child: Image.asset(
                   Assets.sheetIcon1,
                   height: 22,

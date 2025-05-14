@@ -52,7 +52,7 @@ class _UserProfileScreenState extends State<UserProfileScreen>
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      top: true,
+      top: false,
       bottom: false,
       child: Scaffold(
         backgroundColor: AppColors.white,
@@ -76,15 +76,15 @@ class _UserProfileScreenState extends State<UserProfileScreen>
                   fontWeight: FontWeight.w400)),
           titleSpacing: 0,
           actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 20.0),
-              child: InkWell(
-                  onTap: () async {
-                    BottomSheetService.showUserBottomSheet(context);
-                  },
+            InkWell(
+                onTap: () async {
+                  BottomSheetService.showUserBottomSheet(context);
+                },
+                child: Padding(
+                   padding: const EdgeInsets.only(right: 20.0),
                   child: SvgPicture.asset(Assets.moreOptions,
-                      color: AppColors.black)),
-            ),
+                      color: AppColors.black),
+                )),
           ],
         ),
         body: SingleChildScrollView(
@@ -139,7 +139,7 @@ class _UserProfileScreenState extends State<UserProfileScreen>
                             hMargin: 0,
                             width: 165,
                             onPressed: () {
-                              NavRouter.push(
+                              NavRouter.pushFromRoot(
                                 context,
                                 const ChatScreen(
                                   name: 'Khole K.',

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kulture/constants/app_colors.dart';
+import 'package:kulture/core/service/bottm_sheet_service.dart';
 import 'package:kulture/ui/button/primary_button.dart';
 import 'package:kulture/utils/extensions/extended_context.dart';
 import 'package:kulture/utils/heights_and_widths.dart';
@@ -71,9 +72,9 @@ class _BlockUserSheetState extends State<BlockUserSheet> {
                 vMargin: 0,
                 height: 45,
                 onPressed: () async {
-                  Navigator.pop(context);
-                  // await Future.delayed(const Duration(milliseconds: 200));
-                  // BottomSheetService.showReportSheet(context);
+                   Navigator.pop(context);
+                  await Future.delayed(const Duration(milliseconds: 200));
+                  BottomSheetService.showReportSheet(context);
                 },
                 title: 'Block and report',
                 backgroundColor: AppColors.primaryColor,
