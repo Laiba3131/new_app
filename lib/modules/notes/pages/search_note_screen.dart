@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kulture/config/config.dart';
 import 'package:kulture/constants/app_colors.dart';
 import 'package:kulture/generated/assets.dart';
+import 'package:kulture/modules/notes/pages/chat_screen.dart';
 import 'package:kulture/ui/input/input_field.dart';
 import 'package:kulture/utils/extensions/extended_context.dart';
 
@@ -87,25 +88,36 @@ class _SearchNoteScreenState extends State<SearchNoteScreen> {
               itemCount: repeatedUsers.length,
               itemBuilder: (context, index) {
                 final user = repeatedUsers[index];
-                return ListTile(
-                  leading: CircleAvatar(
-                    backgroundImage: AssetImage(user['image']!),
+                return InkWell(
+                  onTap: () {
+                    NavRouter.pushFromRoot(
+                      context,
+                      ChatScreen(
+                          name: user['name']!,
+                          username: user['username']!,
+                          profileImage: user['image']!),
+                    );
+                  },
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      backgroundImage: AssetImage(user['image']!),
+                    ),
+                    title: Text(
+                      user['name']!,
+                      style: context.textTheme.bodyMedium?.copyWith(
+                          color: AppColors.black,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w400),
+                    ),
+                    subtitle: Text(
+                      user['username']!,
+                      style: context.textTheme.bodyMedium?.copyWith(
+                          color: AppColors.svgIconColor,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w400),
+                    ),
+                    onTap: () {},
                   ),
-                  title: Text(
-                    user['name']!,
-                    style: context.textTheme.bodyMedium?.copyWith(
-                        color: AppColors.black,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w400),
-                  ),
-                  subtitle: Text(
-                    user['username']!,
-                    style: context.textTheme.bodyMedium?.copyWith(
-                        color: AppColors.svgIconColor,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w400),
-                  ),
-                  onTap: () {},
                 );
               },
             ),

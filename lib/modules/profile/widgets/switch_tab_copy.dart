@@ -95,12 +95,22 @@ class SwitchTabItemCopy extends StatelessWidget {
                 // Username + Time
                 Row(
                   children: [
-                    Text(
-                      post.username,
-                      style: context.textTheme.bodySmall?.copyWith(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14,
-                        color: AppColors.black,
+                    InkWell(
+                       onTap: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const UserProfileScreen(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        post.username,
+                        style: context.textTheme.bodySmall?.copyWith(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                          color: AppColors.black,
+                        ),
                       ),
                     ),
                     w2,
