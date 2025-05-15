@@ -184,8 +184,13 @@ class SwitchTabItemCopy extends StatelessWidget {
                     w1,
                     Text("20", style: _statStyle(context)),
                     w2,
-                    SvgPicture.asset(Assets.svgReload,
-                        color: AppColors.svgIconColor, height: 17),
+                    InkWell(
+                       onTap: () async {
+                        BottomSheetService.showStitchSheet(context);
+                      },
+                      child: SvgPicture.asset(Assets.svgReload,
+                          color: AppColors.svgIconColor, height: 17),
+                    ),
                     w1,
                     Text("5", style: _statStyle(context)),
                     w2,

@@ -5,6 +5,7 @@ import 'package:kulture/modules/home/widgets/repost_sheet.dart';
 import 'package:kulture/modules/home/widgets/save_bottom_sheet.dart';
 import 'package:kulture/modules/profile/widgets/block_user_sheet.dart';
 import 'package:kulture/modules/profile/widgets/comment_bottom_sheet.dart';
+import 'package:kulture/modules/profile/widgets/repost_stitch_sheet.dart';
 import 'package:kulture/modules/profile/widgets/send_notes_bottom_sheet.dart';
 import 'package:kulture/modules/profile/widgets/share_profile_sheet.dart';
 import 'package:kulture/modules/profile/widgets/share_this_profile_sheet.dart';
@@ -119,4 +120,15 @@ class BottomSheetService {
     // Show the bottom bar again after the sheet is closed
     BottomBarVisibilityProvider().show();
   }
+
+ static void showStitchSheet(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+    ),
+    isScrollControlled: false,
+    builder: (_) => const RepostStitchSheet(),
+  );
+}
 }
