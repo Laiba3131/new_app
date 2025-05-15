@@ -51,6 +51,7 @@ class Assets {
   static const String dislikeIcon = 'assets/svg/disLike.svg';
   static const String moreOptions = 'assets/svg/more-options.svg';
   static const String messageIcon = 'assets/svg/messageIcon.svg';
+  static const String statusIcon = 'assets/svg/statusIcon.svg';
 
   //Images
   static const String pngSplashLogo = 'assets/images/logo.png';

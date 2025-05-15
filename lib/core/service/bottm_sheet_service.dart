@@ -121,14 +121,18 @@ class BottomSheetService {
     BottomBarVisibilityProvider().show();
   }
 
- static void showStitchSheet(BuildContext context) {
-  showModalBottomSheet(
+ static Future<void> showStitchSheet(BuildContext context) async {
+    BottomBarVisibilityProvider().hide();
+ await showModalBottomSheet(
     context: context,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
     ),
-    isScrollControlled: false,
-    builder: (_) => const RepostStitchSheet(),
+    isScrollControlled: true,
+    builder: (_){
+      return RepostStitchSheet();
+    },
   );
+   BottomBarVisibilityProvider().show();
 }
 }

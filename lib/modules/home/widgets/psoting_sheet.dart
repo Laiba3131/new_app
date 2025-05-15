@@ -84,7 +84,7 @@ class _PostingSheetState extends State<PostingSheet> {
                     shadowColor: AppColors.transparent,
                     hMargin: 0,
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.pop(context,true);
                     },
                   ),
                 ],

@@ -88,9 +88,27 @@ class _SearchNoteScreenState extends State<SearchNoteScreen> {
               itemCount: repeatedUsers.length,
               itemBuilder: (context, index) {
                 final user = repeatedUsers[index];
-                return InkWell(
+                return ListTile(
+                  leading: CircleAvatar(
+                    backgroundImage: AssetImage(user['image']!),
+                  ),
+                  title: Text(
+                    user['name']!,
+                    style: context.textTheme.bodyMedium?.copyWith(
+                        color: AppColors.black,
+                        fontSize: 17,
+                        fontWeight: FontWeight.w400),
+                  ),
+                  subtitle: Text(
+                    user['username']!,
+                    style: context.textTheme.bodyMedium?.copyWith(
+                        color: AppColors.svgIconColor,
+                        fontSize: 17,
+                        fontWeight: FontWeight.w400),
+                  ),
                   onTap: () {
-                    NavRouter.pushFromRoot(
+                      print('object');
+                    NavRouter.push(
                       context,
                       ChatScreen(
                           name: user['name']!,
@@ -98,26 +116,6 @@ class _SearchNoteScreenState extends State<SearchNoteScreen> {
                           profileImage: user['image']!),
                     );
                   },
-                  child: ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: AssetImage(user['image']!),
-                    ),
-                    title: Text(
-                      user['name']!,
-                      style: context.textTheme.bodyMedium?.copyWith(
-                          color: AppColors.black,
-                          fontSize: 17,
-                          fontWeight: FontWeight.w400),
-                    ),
-                    subtitle: Text(
-                      user['username']!,
-                      style: context.textTheme.bodyMedium?.copyWith(
-                          color: AppColors.svgIconColor,
-                          fontSize: 17,
-                          fontWeight: FontWeight.w400),
-                    ),
-                    onTap: () {},
-                  ),
                 );
               },
             ),

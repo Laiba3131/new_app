@@ -11,6 +11,7 @@ class AppColors {
   static const primaryGreenDarker = Color(0xff207888);
   static const primaryColor = Color(0xff44acf3);
   static const pink = Color(0xfff263b8);
+  static const bottomSheetColor = Color(0xfff4f4f4);
   static const purpule = Color(0xff9B88D6);
   static const lightPrimaryColor = Color(0xfffcb889);
   static const greyColor = Colors.grey;
